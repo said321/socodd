@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 		<bean id="routeDao" class="com.socodd.dao.impl.RouteDaoImpl" />
+		<bean id="routeService" class="com.socodd.services.impl.RouteServiceImpl">
+			<property name="dao" ref="routeDao"></property>
+		</bean> -->
+		
+		<bean id="varieteDao" class="com.socodd.dao.impl.VarieteDaoImpl" />
+		<bean id="varieteService" class="com.socodd.services.impl.VarieteServiceImpl">
+			<property name="dao" ref="varieteDao"></property>
+		</bean>
+		
+		<bean id="usineDao" class="com.socodd.dao.impl.UsineDaoImpl" />
+		<bean id="usineService" class="com.socodd.services.impl.UsineServiceImpl">
+			<property name="dao" ref="usineDao"></property>
+		</bean>
+		
+		<bean id="zoneDao" class="com.socodd.dao.impl.ZoneDaoImpl" />
+		<bean id="zoneService" class="com.socodd.services.impl.ZoneServiceImpl">
+			<property name="dao" ref="zoneDao"></property>
+		</bean>
+		
+		<!-- 
+		<bean id="flickrDao" class="com.gestion_stock_projet.ensaf.dao.impl.FlickrDaoImpl" />
+		<bean id="flickrService" class=com.gestion_stock_projet.ensaf.services.impl.FlickrServiceImpl">
+			<property name="dao" ref="flickrDao"></property>
+		</bean>
+		 -->
+
+	
+</beans>
