@@ -9,11 +9,10 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 	 
-<!-- 	 <s:http>
-		 <s:intercept-url pattern="/**" access="ROLE_ADMIN_PROD"/>
-	     <s:intercept-url pattern="/**" access="ROLE_ADMIN_CAT"/>
-	     <s:form-login login-page="/llogin" default-target-url="/home" authentication-failure-url="/lLogin" />
-	     <s:logout logout-success-url="/logout" />
+<!-- 	 <s:http auto-config='true'>
+		 <s:intercept-url pattern="/**" access="ROLE_ADMIN"/>
+	     <s:form-login login-page="/login" default-target-url="/home" authentication-failure-url="/error" />
+	     <s:logout logout-success-url="/login" />
      </s:http>
      
 	 <s:authentication-manager>
@@ -21,9 +20,9 @@
 			 <s:password-encoder hash="md5"></s:password-encoder>
 			 <s:jdbc-user-service data-source-ref="datasource" users-by-username-query="select nomUser, passwd ,actived from User where nomUser=?"
 			 authorities-by-username-query="select u.nomUser, r.nomRole from users u , role r where u.user_id = r.user_id and u.nomUser =?"/>
-			<user-service>
-            	<user name="user1" password="user1Pass" authorities="ROLE_ADMIN" />
-        	</user-service>
+			<s:user-service>
+            	<s:user name="admin" password="admin" authorities="ROLE_ADMIN" />
+        	</s:user-service>
 		 </s:authentication-provider>
 	 </s:authentication-manager> -->
 

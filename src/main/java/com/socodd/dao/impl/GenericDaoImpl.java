@@ -74,8 +74,8 @@ import com.socodd.dao.IGenericDao;
 		
 		if(query.getResultList().size() > 0)
 			return (E) query.getResultList().get(0);
-			else
-				return null;
+		else
+			return null;
 	//ou bien -----> //	//return query.getResultList().size() > 0 ? (E) query.getResultList().get(0) : null;
 		
 	}

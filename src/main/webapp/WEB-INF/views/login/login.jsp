@@ -40,16 +40,16 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Socodd</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="j_spring_security_check" method="post">
+                        <form role="form" action="/app/home" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="j_username" type="email" autofocus>
+                                    <input class="form-control" placeholder="Username" name="username" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="j_password" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>

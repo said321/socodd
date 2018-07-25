@@ -9,7 +9,7 @@
 	
 	<import resource="classpath:META-INF/config/data-source-config.xml"/>
 	
-	<import resource="classpath:META-INF/config/internationalisation-config.xml"/> 
+	<import resource="classpath:META-INF/config/internationalisation-config.xml"/>
 	
 	
 </beans>

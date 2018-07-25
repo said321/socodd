@@ -42,119 +42,12 @@
             <%@ include file="/WEB-INF/views/menu_top/topMenu.jsp" %>
 			
             <%@ include file="/WEB-INF/views/menu_left/leftMenu.jsp" %>
+            
             <!-- /.navbar-static-side -->
         </nav>
-
-<%--         <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-							<c:forEach items="${zones }" var = "zone">
-	                                        <H1>${zone.getId() }</H1>
-	                                        <H1>${zone.getCode() }</H1>
-	                                        <H1 >${zone.getNom() }</H1>
-							</c:forEach>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper --> --%>
+        
     
-    <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header"><fmt:message code="common.zone" /></h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                
-                <div class="row">
-					<div class="col-lg-12">
-						<ol class="breadcrumb">
-						  <li><a href="<c:url value="/client/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
-						  <li><a href="#"><i class="fa fa-download">&nbsp;<fmt:message code="common.exporter" /></i></a></li>
-						</ol>					
-					</div>                
-                </div>
-                
-                <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <fmt:message code="zone.liste" />
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                    	<th>ID</th>
-                                        <th><fmt:message code="common.code" /></th>
-                                        <th><fmt:message code="common.nom" /></th>
-                                        <th><fmt:message code="common.actions" /></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                	<c:forEach items="${zones }" var = "zone">
-	                                    <tr class="odd gradeX">
-	                                    	<td >${zone.getId() }</td>
-	                                        <td >${zone.getCode() }</td>
-	                                        <td>${zone.getNom() }</td>
-	                                        <td>
-	                                        	<c:url value="/client/modifier/${zone.getId() }" var="urlModif" />
-	                                        	<a href="${urlModif }"><i class="fa fa-edit"></i></a>
-	                                        	&nbsp;|&nbsp;
-	                                        	<a href="javascript:void(0);" data-toggle="modal" data-target="#modalClient${zone.getId() }"><i class="fa fa-trash-o"></i></a>
-	                                        	<div class="modal fade" id="modalClient${zone.getId() }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-													<div class="modal-dialog">
-														<div class="modal-content">
-															<div class="modal-header">
-																<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-																<h4 class="modal-title" id="myModalLabel"><fmt:message code="common.confirm.suppression" /></h4>
-															</div>
-															<div class="modal-body">
-																<fmt:message code="client.confirm.suppression.msg" />
-															</div>
-															<div class="modal-footer">
-																<button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message code="common.annuler" /></button>
-																<c:url value="/client/supprimer/${zone.getId() }" var="urlSuppression" />
-																<a href="${urlSuppression }" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp;<fmt:message code="common.confirmer" /></a>
-															</div>
-														</div>
-														<!-- /.modal-content -->
-													</div>
-													<!-- /.modal-dialog -->
-												</div>
-	                                        </td>
-	                                    </tr>
-                                	</c:forEach>
-                                </tbody>
-                            </table>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
+    <h1>Blank Page</h1>
 
     <!-- jQuery -->
     <script src="<%=request.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
