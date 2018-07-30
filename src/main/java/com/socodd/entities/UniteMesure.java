@@ -1,11 +1,15 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +22,7 @@ public class UniteMesure implements java.io.Serializable {
 	private Integer id;
 	private String code;
 	private String nom;
+	private Set<ContratAchat> contratAchats = new HashSet<ContratAchat>(0);
 
 	public UniteMesure() {
 	}
@@ -25,6 +30,12 @@ public class UniteMesure implements java.io.Serializable {
 	public UniteMesure(String code, String nom) {
 		this.code = code;
 		this.nom = nom;
+	}
+
+	public UniteMesure(String code, String nom, Set<ContratAchat> contratAchats) {
+		this.code = code;
+		this.nom = nom;
+		this.contratAchats = contratAchats;
 	}
 
 	@Id
@@ -55,6 +66,15 @@ public class UniteMesure implements java.io.Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "uniteMesure")
+	public Set<ContratAchat> getContratAchats() {
+		return this.contratAchats;
+	}
+
+	public void setContratAchats(Set<ContratAchat> contratAchats) {
+		this.contratAchats = contratAchats;
 	}
 
 }

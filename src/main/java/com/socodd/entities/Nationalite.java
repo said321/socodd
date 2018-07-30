@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +23,7 @@ public class Nationalite implements java.io.Serializable {
 	private String code;
 	private String nom;
 	private Set<Superviseur> superviseurs = new HashSet<Superviseur>(0);
+	private Set<Producteur> producteurs = new HashSet<Producteur>(0);
 	private Set<Employee> employees = new HashSet<Employee>(0);
 
 	public Nationalite() {
@@ -33,10 +34,12 @@ public class Nationalite implements java.io.Serializable {
 		this.nom = nom;
 	}
 
-	public Nationalite(String code, String nom, Set<Superviseur> superviseurs, Set<Employee> employees) {
+	public Nationalite(String code, String nom, Set<Superviseur> superviseurs, Set<Producteur> producteurs,
+			Set<Employee> employees) {
 		this.code = code;
 		this.nom = nom;
 		this.superviseurs = superviseurs;
+		this.producteurs = producteurs;
 		this.employees = employees;
 	}
 
@@ -77,6 +80,15 @@ public class Nationalite implements java.io.Serializable {
 
 	public void setSuperviseurs(Set<Superviseur> superviseurs) {
 		this.superviseurs = superviseurs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nationalite")
+	public Set<Producteur> getProducteurs() {
+		return this.producteurs;
+	}
+
+	public void setProducteurs(Set<Producteur> producteurs) {
+		this.producteurs = producteurs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nationalite")

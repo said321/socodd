@@ -1,12 +1,16 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,23 +23,35 @@ import javax.persistence.TemporalType;
 public class TypeSac implements java.io.Serializable {
 
 	private Integer id;
-	private int code;
-	private int nom;
+	private String code;
+	private String nom;
 	private float tare;
 	private int stockDernierInventaire;
 	private Date date;
 	private int stockDisponible;
+	private Set<ReceptionProduits> receptionProduitses = new HashSet<ReceptionProduits>(0);
 
 	public TypeSac() {
 	}
 
-	public TypeSac(int code, int nom, float tare, int stockDernierInventaire, Date date, int stockDisponible) {
+	public TypeSac(String code, String nom, float tare, int stockDernierInventaire, Date date, int stockDisponible) {
 		this.code = code;
 		this.nom = nom;
 		this.tare = tare;
 		this.stockDernierInventaire = stockDernierInventaire;
 		this.date = date;
 		this.stockDisponible = stockDisponible;
+	}
+
+	public TypeSac(String code, String nom, float tare, int stockDernierInventaire, Date date, int stockDisponible,
+			Set<ReceptionProduits> receptionProduitses) {
+		this.code = code;
+		this.nom = nom;
+		this.tare = tare;
+		this.stockDernierInventaire = stockDernierInventaire;
+		this.date = date;
+		this.stockDisponible = stockDisponible;
+		this.receptionProduitses = receptionProduitses;
 	}
 
 	@Id
@@ -50,21 +66,21 @@ public class TypeSac implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "code", nullable = false)
-	public int getCode() {
+	@Column(name = "code", nullable = false, length = 5)
+	public String getCode() {
 		return this.code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
-	@Column(name = "nom", nullable = false)
-	public int getNom() {
+	@Column(name = "nom", nullable = false, length = 50)
+	public String getNom() {
 		return this.nom;
 	}
 
-	public void setNom(int nom) {
+	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
@@ -103,6 +119,15 @@ public class TypeSac implements java.io.Serializable {
 
 	public void setStockDisponible(int stockDisponible) {
 		this.stockDisponible = stockDisponible;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeSac")
+	public Set<ReceptionProduits> getReceptionProduitses() {
+		return this.receptionProduitses;
+	}
+
+	public void setReceptionProduitses(Set<ReceptionProduits> receptionProduitses) {
+		this.receptionProduitses = receptionProduitses;
 	}
 
 }

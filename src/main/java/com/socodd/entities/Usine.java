@@ -1,6 +1,8 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,6 +27,8 @@ public class Usine implements java.io.Serializable {
 	private int nom;
 	private float longitude;
 	private float latitude;
+	private Set<ReceptionProduits> receptionProduitses = new HashSet<ReceptionProduits>(0);
+	private Set<FabricationLots> fabricationLotses = new HashSet<FabricationLots>(0);
 
 	public Usine() {
 	}
@@ -34,6 +39,17 @@ public class Usine implements java.io.Serializable {
 		this.nom = nom;
 		this.longitude = longitude;
 		this.latitude = latitude;
+	}
+
+	public Usine(Localite localite, int code, int nom, float longitude, float latitude,
+			Set<ReceptionProduits> receptionProduitses, Set<FabricationLots> fabricationLotses) {
+		this.localite = localite;
+		this.code = code;
+		this.nom = nom;
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.receptionProduitses = receptionProduitses;
+		this.fabricationLotses = fabricationLotses;
 	}
 
 	@Id
@@ -92,6 +108,24 @@ public class Usine implements java.io.Serializable {
 
 	public void setLatitude(float latitude) {
 		this.latitude = latitude;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usine")
+	public Set<ReceptionProduits> getReceptionProduitses() {
+		return this.receptionProduitses;
+	}
+
+	public void setReceptionProduitses(Set<ReceptionProduits> receptionProduitses) {
+		this.receptionProduitses = receptionProduitses;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usine")
+	public Set<FabricationLots> getFabricationLotses() {
+		return this.fabricationLotses;
+	}
+
+	public void setFabricationLotses(Set<FabricationLots> fabricationLotses) {
+		this.fabricationLotses = fabricationLotses;
 	}
 
 }

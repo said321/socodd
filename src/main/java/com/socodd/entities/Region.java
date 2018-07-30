@@ -1,11 +1,15 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +22,8 @@ public class Region implements java.io.Serializable {
 	private Integer id;
 	private String code;
 	private String nom;
+	private Set<Route> routes = new HashSet<Route>(0);
+	private Set<Prefecture> prefectures = new HashSet<Prefecture>(0);
 
 	public Region() {
 	}
@@ -25,6 +31,13 @@ public class Region implements java.io.Serializable {
 	public Region(String code, String nom) {
 		this.code = code;
 		this.nom = nom;
+	}
+
+	public Region(String code, String nom, Set<Route> routes, Set<Prefecture> prefectures) {
+		this.code = code;
+		this.nom = nom;
+		this.routes = routes;
+		this.prefectures = prefectures;
 	}
 
 	@Id
@@ -55,6 +68,24 @@ public class Region implements java.io.Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "region")
+	public Set<Route> getRoutes() {
+		return this.routes;
+	}
+
+	public void setRoutes(Set<Route> routes) {
+		this.routes = routes;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "region")
+	public Set<Prefecture> getPrefectures() {
+		return this.prefectures;
+	}
+
+	public void setPrefectures(Set<Prefecture> prefectures) {
+		this.prefectures = prefectures;
 	}
 
 }

@@ -1,7 +1,9 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +25,8 @@ import javax.persistence.TemporalType;
 public class Employee implements java.io.Serializable {
 
 	private Integer id;
+	private Departement departement;
+	private Equipe equipe;
 	private Nationalite nationalite;
 	private int code;
 	private String matricule;
@@ -32,18 +37,19 @@ public class Employee implements java.io.Serializable {
 	private int numCompteTier;
 	private String telephone;
 	private String email;
-	private int departement;
 	private String fonctionOccupee;
-	private int equipe;
 	private String banque;
 	private int numCompte;
+	private Set<Equipe> equipes = new HashSet<Equipe>(0);
 
 	public Employee() {
 	}
 
-	public Employee(Nationalite nationalite, int code, String matricule, String nom, Date dateNaissance, String adresse,
-			Date dateEntree, int numCompteTier, String telephone, String email, int departement, String fonctionOccupee,
-			int equipe, String banque, int numCompte) {
+	public Employee(Departement departement, Equipe equipe, Nationalite nationalite, int code, String matricule,
+			String nom, Date dateNaissance, String adresse, Date dateEntree, int numCompteTier, String telephone,
+			String email, String fonctionOccupee, String banque, int numCompte) {
+		this.departement = departement;
+		this.equipe = equipe;
 		this.nationalite = nationalite;
 		this.code = code;
 		this.matricule = matricule;
@@ -54,11 +60,30 @@ public class Employee implements java.io.Serializable {
 		this.numCompteTier = numCompteTier;
 		this.telephone = telephone;
 		this.email = email;
-		this.departement = departement;
 		this.fonctionOccupee = fonctionOccupee;
-		this.equipe = equipe;
 		this.banque = banque;
 		this.numCompte = numCompte;
+	}
+
+	public Employee(Departement departement, Equipe equipe, Nationalite nationalite, int code, String matricule,
+			String nom, Date dateNaissance, String adresse, Date dateEntree, int numCompteTier, String telephone,
+			String email, String fonctionOccupee, String banque, int numCompte, Set<Equipe> equipes) {
+		this.departement = departement;
+		this.equipe = equipe;
+		this.nationalite = nationalite;
+		this.code = code;
+		this.matricule = matricule;
+		this.nom = nom;
+		this.dateNaissance = dateNaissance;
+		this.adresse = adresse;
+		this.dateEntree = dateEntree;
+		this.numCompteTier = numCompteTier;
+		this.telephone = telephone;
+		this.email = email;
+		this.fonctionOccupee = fonctionOccupee;
+		this.banque = banque;
+		this.numCompte = numCompte;
+		this.equipes = equipes;
 	}
 
 	@Id
@@ -71,6 +96,26 @@ public class Employee implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "departement", nullable = false)
+	public Departement getDepartement() {
+		return this.departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "equipe", nullable = false)
+	public Equipe getEquipe() {
+		return this.equipe;
+	}
+
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -166,15 +211,6 @@ public class Employee implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "departement", nullable = false)
-	public int getDepartement() {
-		return this.departement;
-	}
-
-	public void setDepartement(int departement) {
-		this.departement = departement;
-	}
-
 	@Column(name = "fonction_occupee", nullable = false, length = 10)
 	public String getFonctionOccupee() {
 		return this.fonctionOccupee;
@@ -182,15 +218,6 @@ public class Employee implements java.io.Serializable {
 
 	public void setFonctionOccupee(String fonctionOccupee) {
 		this.fonctionOccupee = fonctionOccupee;
-	}
-
-	@Column(name = "equipe", nullable = false)
-	public int getEquipe() {
-		return this.equipe;
-	}
-
-	public void setEquipe(int equipe) {
-		this.equipe = equipe;
 	}
 
 	@Column(name = "banque", nullable = false, length = 50)
@@ -209,6 +236,15 @@ public class Employee implements java.io.Serializable {
 
 	public void setNumCompte(int numCompte) {
 		this.numCompte = numCompte;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+	public Set<Equipe> getEquipes() {
+		return this.equipes;
+	}
+
+	public void setEquipes(Set<Equipe> equipes) {
+		this.equipes = equipes;
 	}
 
 }

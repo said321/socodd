@@ -1,12 +1,15 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,43 +22,43 @@ import javax.persistence.TemporalType;
 public class Client implements java.io.Serializable {
 
 	private Integer id;
+	private TypeClient typeClient;
 	private String code;
-	private int typeClient;
 	private String nom;
 	private String adresse;
+	private Date dateEntree;
+	private String email;
 	private String telephone;
 	private String fax;
-	private String email;
-	private Date dateEntree;
-	private int numCompteTiers;
 	private int banque;
-	private int numCompte;
-	private int numCC;
-	private int numRccm;
-	private int numAgrement;
 	private String importBic;
+	private int numAgrement;
+	private int numCC;
+	private int numCompte;
+	private int numCompteTiers;
+	private int numRccm;
 
 	public Client() {
 	}
 
-	public Client(String code, int typeClient, String nom, String adresse, String telephone, String fax, String email,
-			Date dateEntree, int numCompteTiers, int banque, int numCompte, int numCC, int numRccm, int numAgrement,
-			String importBic) {
-		this.code = code;
+	public Client(TypeClient typeClient, String code, String nom, String adresse, Date dateEntree, String email,
+			String telephone, String fax, int banque, String importBic, int numAgrement, int numCC, int numCompte,
+			int numCompteTiers, int numRccm) {
 		this.typeClient = typeClient;
+		this.code = code;
 		this.nom = nom;
 		this.adresse = adresse;
+		this.dateEntree = dateEntree;
+		this.email = email;
 		this.telephone = telephone;
 		this.fax = fax;
-		this.email = email;
-		this.dateEntree = dateEntree;
-		this.numCompteTiers = numCompteTiers;
 		this.banque = banque;
-		this.numCompte = numCompte;
-		this.numCC = numCC;
-		this.numRccm = numRccm;
-		this.numAgrement = numAgrement;
 		this.importBic = importBic;
+		this.numAgrement = numAgrement;
+		this.numCC = numCC;
+		this.numCompte = numCompte;
+		this.numCompteTiers = numCompteTiers;
+		this.numRccm = numRccm;
 	}
 
 	@Id
@@ -70,6 +73,16 @@ public class Client implements java.io.Serializable {
 		this.id = id;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "type_client", nullable = false)
+	public TypeClient getTypeClient() {
+		return this.typeClient;
+	}
+
+	public void setTypeClient(TypeClient typeClient) {
+		this.typeClient = typeClient;
+	}
+
 	@Column(name = "code", nullable = false, length = 9)
 	public String getCode() {
 		return this.code;
@@ -77,15 +90,6 @@ public class Client implements java.io.Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	@Column(name = "type_client", nullable = false)
-	public int getTypeClient() {
-		return this.typeClient;
-	}
-
-	public void setTypeClient(int typeClient) {
-		this.typeClient = typeClient;
 	}
 
 	@Column(name = "nom", nullable = false, length = 50)
@@ -106,6 +110,25 @@ public class Client implements java.io.Serializable {
 		this.adresse = adresse;
 	}
 
+	@Temporal(TemporalType.DATE)
+	@Column(name = "date_entree", nullable = false, length = 10)
+	public Date getDateEntree() {
+		return this.dateEntree;
+	}
+
+	public void setDateEntree(Date dateEntree) {
+		this.dateEntree = dateEntree;
+	}
+
+	@Column(name = "email", nullable = false, length = 50)
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	@Column(name = "telephone", nullable = false, length = 10)
 	public String getTelephone() {
 		return this.telephone;
@@ -124,34 +147,6 @@ public class Client implements java.io.Serializable {
 		this.fax = fax;
 	}
 
-	@Column(name = "email", nullable = false, length = 50)
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "date_entree", nullable = false, length = 10)
-	public Date getDateEntree() {
-		return this.dateEntree;
-	}
-
-	public void setDateEntree(Date dateEntree) {
-		this.dateEntree = dateEntree;
-	}
-
-	@Column(name = "num_compte_tiers", nullable = false)
-	public int getNumCompteTiers() {
-		return this.numCompteTiers;
-	}
-
-	public void setNumCompteTiers(int numCompteTiers) {
-		this.numCompteTiers = numCompteTiers;
-	}
-
 	@Column(name = "banque", nullable = false)
 	public int getBanque() {
 		return this.banque;
@@ -161,31 +156,13 @@ public class Client implements java.io.Serializable {
 		this.banque = banque;
 	}
 
-	@Column(name = "num_compte", nullable = false)
-	public int getNumCompte() {
-		return this.numCompte;
+	@Column(name = "import_bic", nullable = false, length = 50)
+	public String getImportBic() {
+		return this.importBic;
 	}
 
-	public void setNumCompte(int numCompte) {
-		this.numCompte = numCompte;
-	}
-
-	@Column(name = "num_c_c", nullable = false)
-	public int getNumCC() {
-		return this.numCC;
-	}
-
-	public void setNumCC(int numCC) {
-		this.numCC = numCC;
-	}
-
-	@Column(name = "num_rccm", nullable = false)
-	public int getNumRccm() {
-		return this.numRccm;
-	}
-
-	public void setNumRccm(int numRccm) {
-		this.numRccm = numRccm;
+	public void setImportBic(String importBic) {
+		this.importBic = importBic;
 	}
 
 	@Column(name = "num_agrement", nullable = false)
@@ -197,13 +174,40 @@ public class Client implements java.io.Serializable {
 		this.numAgrement = numAgrement;
 	}
 
-	@Column(name = "import_bic", nullable = false, length = 50)
-	public String getImportBic() {
-		return this.importBic;
+	@Column(name = "num_c_c", nullable = false)
+	public int getNumCC() {
+		return this.numCC;
 	}
 
-	public void setImportBic(String importBic) {
-		this.importBic = importBic;
+	public void setNumCC(int numCC) {
+		this.numCC = numCC;
+	}
+
+	@Column(name = "num_compte", nullable = false)
+	public int getNumCompte() {
+		return this.numCompte;
+	}
+
+	public void setNumCompte(int numCompte) {
+		this.numCompte = numCompte;
+	}
+
+	@Column(name = "num_compte_tiers", nullable = false)
+	public int getNumCompteTiers() {
+		return this.numCompteTiers;
+	}
+
+	public void setNumCompteTiers(int numCompteTiers) {
+		this.numCompteTiers = numCompteTiers;
+	}
+
+	@Column(name = "num_rccm", nullable = false)
+	public int getNumRccm() {
+		return this.numRccm;
+	}
+
+	public void setNumRccm(int numRccm) {
+		this.numRccm = numRccm;
 	}
 
 }

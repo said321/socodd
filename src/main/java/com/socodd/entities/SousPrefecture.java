@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,31 +22,34 @@ import javax.persistence.Table;
 public class SousPrefecture implements java.io.Serializable {
 
 	private Integer id;
+	private Prefecture prefecture;
 	private String code;
 	private String nom;
-	private int prefecture;
-	private float longitude;
 	private float latitude;
+	private float longitude;
 	private Set<Route> routes = new HashSet<Route>(0);
+	private Set<Localite> localites = new HashSet<Localite>(0);
 
 	public SousPrefecture() {
 	}
 
-	public SousPrefecture(String code, String nom, int prefecture, float longitude, float latitude) {
+	public SousPrefecture(Prefecture prefecture, String code, String nom, float latitude, float longitude) {
+		this.prefecture = prefecture;
 		this.code = code;
 		this.nom = nom;
-		this.prefecture = prefecture;
-		this.longitude = longitude;
 		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
-	public SousPrefecture(String code, String nom, int prefecture, float longitude, float latitude, Set<Route> routes) {
+	public SousPrefecture(Prefecture prefecture, String code, String nom, float latitude, float longitude,
+			Set<Route> routes, Set<Localite> localites) {
+		this.prefecture = prefecture;
 		this.code = code;
 		this.nom = nom;
-		this.prefecture = prefecture;
-		this.longitude = longitude;
 		this.latitude = latitude;
+		this.longitude = longitude;
 		this.routes = routes;
+		this.localites = localites;
 	}
 
 	@Id
@@ -57,6 +62,16 @@ public class SousPrefecture implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "prefecture", nullable = false)
+	public Prefecture getPrefecture() {
+		return this.prefecture;
+	}
+
+	public void setPrefecture(Prefecture prefecture) {
+		this.prefecture = prefecture;
 	}
 
 	@Column(name = "code", nullable = false, length = 5)
@@ -77,13 +92,13 @@ public class SousPrefecture implements java.io.Serializable {
 		this.nom = nom;
 	}
 
-	@Column(name = "prefecture", nullable = false)
-	public int getPrefecture() {
-		return this.prefecture;
+	@Column(name = "latitude", nullable = false, precision = 12, scale = 0)
+	public float getLatitude() {
+		return this.latitude;
 	}
 
-	public void setPrefecture(int prefecture) {
-		this.prefecture = prefecture;
+	public void setLatitude(float latitude) {
+		this.latitude = latitude;
 	}
 
 	@Column(name = "longitude", nullable = false, precision = 12, scale = 0)
@@ -95,15 +110,6 @@ public class SousPrefecture implements java.io.Serializable {
 		this.longitude = longitude;
 	}
 
-	@Column(name = "latitude", nullable = false, precision = 12, scale = 0)
-	public float getLatitude() {
-		return this.latitude;
-	}
-
-	public void setLatitude(float latitude) {
-		this.latitude = latitude;
-	}
-
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sousPrefecture")
 	public Set<Route> getRoutes() {
 		return this.routes;
@@ -111,6 +117,15 @@ public class SousPrefecture implements java.io.Serializable {
 
 	public void setRoutes(Set<Route> routes) {
 		this.routes = routes;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sousPrefecture")
+	public Set<Localite> getLocalites() {
+		return this.localites;
+	}
+
+	public void setLocalites(Set<Localite> localites) {
+		this.localites = localites;
 	}
 
 }

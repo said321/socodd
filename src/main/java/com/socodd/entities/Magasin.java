@@ -1,6 +1,8 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +25,7 @@ public class Magasin implements java.io.Serializable {
 	private Localite localite;
 	private String code;
 	private int nom;
+	private Set<FabricationLots> fabricationLotses = new HashSet<FabricationLots>(0);
 
 	public Magasin() {
 	}
@@ -30,6 +34,13 @@ public class Magasin implements java.io.Serializable {
 		this.localite = localite;
 		this.code = code;
 		this.nom = nom;
+	}
+
+	public Magasin(Localite localite, String code, int nom, Set<FabricationLots> fabricationLotses) {
+		this.localite = localite;
+		this.code = code;
+		this.nom = nom;
+		this.fabricationLotses = fabricationLotses;
 	}
 
 	@Id
@@ -70,6 +81,15 @@ public class Magasin implements java.io.Serializable {
 
 	public void setNom(int nom) {
 		this.nom = nom;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "magasin")
+	public Set<FabricationLots> getFabricationLotses() {
+		return this.fabricationLotses;
+	}
+
+	public void setFabricationLotses(Set<FabricationLots> fabricationLotses) {
+		this.fabricationLotses = fabricationLotses;
 	}
 
 }

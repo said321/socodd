@@ -1,11 +1,15 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +22,7 @@ public class TypeFormat implements java.io.Serializable {
 	private Integer id;
 	private String code;
 	private String nom;
+	private Set<ConsommablesPieces> consommablesPieceses = new HashSet<ConsommablesPieces>(0);
 
 	public TypeFormat() {
 	}
@@ -25,6 +30,12 @@ public class TypeFormat implements java.io.Serializable {
 	public TypeFormat(String code, String nom) {
 		this.code = code;
 		this.nom = nom;
+	}
+
+	public TypeFormat(String code, String nom, Set<ConsommablesPieces> consommablesPieceses) {
+		this.code = code;
+		this.nom = nom;
+		this.consommablesPieceses = consommablesPieceses;
 	}
 
 	@Id
@@ -55,6 +66,15 @@ public class TypeFormat implements java.io.Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeFormat")
+	public Set<ConsommablesPieces> getConsommablesPieceses() {
+		return this.consommablesPieceses;
+	}
+
+	public void setConsommablesPieceses(Set<ConsommablesPieces> consommablesPieceses) {
+		this.consommablesPieceses = consommablesPieceses;
 	}
 
 }

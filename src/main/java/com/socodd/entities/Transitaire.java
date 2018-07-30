@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,31 +17,31 @@ public class Transitaire implements java.io.Serializable {
 
 	private Integer id;
 	private String code;
-	private String nom;
 	private String adresse;
+	private String nom;
+	private String email;
 	private String telephone;
 	private String fax;
-	private String email;
-	private int numCompteTiers;
-	private int numCC;
-	private int numRccm;
 	private int numAgrement;
+	private int numCC;
+	private int numCompteTiers;
+	private int numRccm;
 
 	public Transitaire() {
 	}
 
-	public Transitaire(String code, String nom, String adresse, String telephone, String fax, String email,
-			int numCompteTiers, int numCC, int numRccm, int numAgrement) {
+	public Transitaire(String code, String adresse, String nom, String email, String telephone, String fax,
+			int numAgrement, int numCC, int numCompteTiers, int numRccm) {
 		this.code = code;
-		this.nom = nom;
 		this.adresse = adresse;
+		this.nom = nom;
+		this.email = email;
 		this.telephone = telephone;
 		this.fax = fax;
-		this.email = email;
-		this.numCompteTiers = numCompteTiers;
-		this.numCC = numCC;
-		this.numRccm = numRccm;
 		this.numAgrement = numAgrement;
+		this.numCC = numCC;
+		this.numCompteTiers = numCompteTiers;
+		this.numRccm = numRccm;
 	}
 
 	@Id
@@ -65,6 +65,15 @@ public class Transitaire implements java.io.Serializable {
 		this.code = code;
 	}
 
+	@Column(name = "adresse", nullable = false)
+	public String getAdresse() {
+		return this.adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
 	@Column(name = "nom", nullable = false, length = 50)
 	public String getNom() {
 		return this.nom;
@@ -74,13 +83,13 @@ public class Transitaire implements java.io.Serializable {
 		this.nom = nom;
 	}
 
-	@Column(name = "adresse", nullable = false, length = 65535)
-	public String getAdresse() {
-		return this.adresse;
+	@Column(name = "email", nullable = false, length = 50)
+	public String getEmail() {
+		return this.email;
 	}
 
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Column(name = "telephone", nullable = false, length = 10)
@@ -101,22 +110,13 @@ public class Transitaire implements java.io.Serializable {
 		this.fax = fax;
 	}
 
-	@Column(name = "email", nullable = false, length = 50)
-	public String getEmail() {
-		return this.email;
+	@Column(name = "num_agrement", nullable = false)
+	public int getNumAgrement() {
+		return this.numAgrement;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@Column(name = "num_compte_tiers", nullable = false)
-	public int getNumCompteTiers() {
-		return this.numCompteTiers;
-	}
-
-	public void setNumCompteTiers(int numCompteTiers) {
-		this.numCompteTiers = numCompteTiers;
+	public void setNumAgrement(int numAgrement) {
+		this.numAgrement = numAgrement;
 	}
 
 	@Column(name = "num_c_c", nullable = false)
@@ -128,6 +128,15 @@ public class Transitaire implements java.io.Serializable {
 		this.numCC = numCC;
 	}
 
+	@Column(name = "num_compte_tiers", nullable = false)
+	public int getNumCompteTiers() {
+		return this.numCompteTiers;
+	}
+
+	public void setNumCompteTiers(int numCompteTiers) {
+		this.numCompteTiers = numCompteTiers;
+	}
+
 	@Column(name = "num_rccm", nullable = false)
 	public int getNumRccm() {
 		return this.numRccm;
@@ -135,15 +144,6 @@ public class Transitaire implements java.io.Serializable {
 
 	public void setNumRccm(int numRccm) {
 		this.numRccm = numRccm;
-	}
-
-	@Column(name = "num_agrement", nullable = false)
-	public int getNumAgrement() {
-		return this.numAgrement;
-	}
-
-	public void setNumAgrement(int numAgrement) {
-		this.numAgrement = numAgrement;
 	}
 
 }

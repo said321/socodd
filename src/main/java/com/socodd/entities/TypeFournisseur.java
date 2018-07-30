@@ -1,11 +1,15 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +22,7 @@ public class TypeFournisseur implements java.io.Serializable {
 	private Integer id;
 	private String code;
 	private String nom;
+	private Set<Fournisseur> fournisseurs = new HashSet<Fournisseur>(0);
 
 	public TypeFournisseur() {
 	}
@@ -25,6 +30,12 @@ public class TypeFournisseur implements java.io.Serializable {
 	public TypeFournisseur(String code, String nom) {
 		this.code = code;
 		this.nom = nom;
+	}
+
+	public TypeFournisseur(String code, String nom, Set<Fournisseur> fournisseurs) {
+		this.code = code;
+		this.nom = nom;
+		this.fournisseurs = fournisseurs;
 	}
 
 	@Id
@@ -39,7 +50,7 @@ public class TypeFournisseur implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "code", nullable = false, length = 2)
+	@Column(name = "code", nullable = false, length = 5)
 	public String getCode() {
 		return this.code;
 	}
@@ -55,6 +66,15 @@ public class TypeFournisseur implements java.io.Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeFournisseur")
+	public Set<Fournisseur> getFournisseurs() {
+		return this.fournisseurs;
+	}
+
+	public void setFournisseurs(Set<Fournisseur> fournisseurs) {
+		this.fournisseurs = fournisseurs;
 	}
 
 }

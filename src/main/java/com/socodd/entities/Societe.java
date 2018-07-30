@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,40 +17,40 @@ public class Societe implements java.io.Serializable {
 
 	private Integer id;
 	private String code;
-	private String raisonSociale;
-	private String adresse;
 	private String activite;
-	private String pays;
-	private String ville;
+	private String adresse;
+	private String agrement;
+	private String codeFiscal;
+	private String codeImpExp;
+	private String compteContrib;
+	private String email;
 	private String telephone;
 	private String fax;
+	private String pays;
+	private String raisonSociale;
 	private String siteWeb;
-	private String email;
-	private String codeFiscal;
-	private String agrement;
-	private String compteContrib;
-	private String codeImpExp;
+	private String ville;
 
 	public Societe() {
 	}
 
-	public Societe(String code, String raisonSociale, String adresse, String activite, String pays, String ville,
-			String telephone, String fax, String siteWeb, String email, String codeFiscal, String agrement,
-			String compteContrib, String codeImpExp) {
+	public Societe(String code, String activite, String adresse, String agrement, String codeFiscal, String codeImpExp,
+			String compteContrib, String email, String telephone, String fax, String pays, String raisonSociale,
+			String siteWeb, String ville) {
 		this.code = code;
-		this.raisonSociale = raisonSociale;
-		this.adresse = adresse;
 		this.activite = activite;
-		this.pays = pays;
-		this.ville = ville;
+		this.adresse = adresse;
+		this.agrement = agrement;
+		this.codeFiscal = codeFiscal;
+		this.codeImpExp = codeImpExp;
+		this.compteContrib = compteContrib;
+		this.email = email;
 		this.telephone = telephone;
 		this.fax = fax;
+		this.pays = pays;
+		this.raisonSociale = raisonSociale;
 		this.siteWeb = siteWeb;
-		this.email = email;
-		this.codeFiscal = codeFiscal;
-		this.agrement = agrement;
-		this.compteContrib = compteContrib;
-		this.codeImpExp = codeImpExp;
+		this.ville = ville;
 	}
 
 	@Id
@@ -74,24 +74,6 @@ public class Societe implements java.io.Serializable {
 		this.code = code;
 	}
 
-	@Column(name = "raison_sociale", nullable = false, length = 50)
-	public String getRaisonSociale() {
-		return this.raisonSociale;
-	}
-
-	public void setRaisonSociale(String raisonSociale) {
-		this.raisonSociale = raisonSociale;
-	}
-
-	@Column(name = "adresse", nullable = false, length = 65535)
-	public String getAdresse() {
-		return this.adresse;
-	}
-
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-
 	@Column(name = "activite", nullable = false, length = 50)
 	public String getActivite() {
 		return this.activite;
@@ -101,22 +83,58 @@ public class Societe implements java.io.Serializable {
 		this.activite = activite;
 	}
 
-	@Column(name = "pays", nullable = false, length = 50)
-	public String getPays() {
-		return this.pays;
+	@Column(name = "adresse", nullable = false)
+	public String getAdresse() {
+		return this.adresse;
 	}
 
-	public void setPays(String pays) {
-		this.pays = pays;
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
 	}
 
-	@Column(name = "ville", nullable = false, length = 50)
-	public String getVille() {
-		return this.ville;
+	@Column(name = "agrement", nullable = false, length = 50)
+	public String getAgrement() {
+		return this.agrement;
 	}
 
-	public void setVille(String ville) {
-		this.ville = ville;
+	public void setAgrement(String agrement) {
+		this.agrement = agrement;
+	}
+
+	@Column(name = "code_fiscal", nullable = false, length = 50)
+	public String getCodeFiscal() {
+		return this.codeFiscal;
+	}
+
+	public void setCodeFiscal(String codeFiscal) {
+		this.codeFiscal = codeFiscal;
+	}
+
+	@Column(name = "code_imp_exp", nullable = false, length = 50)
+	public String getCodeImpExp() {
+		return this.codeImpExp;
+	}
+
+	public void setCodeImpExp(String codeImpExp) {
+		this.codeImpExp = codeImpExp;
+	}
+
+	@Column(name = "compte_contrib", nullable = false, length = 50)
+	public String getCompteContrib() {
+		return this.compteContrib;
+	}
+
+	public void setCompteContrib(String compteContrib) {
+		this.compteContrib = compteContrib;
+	}
+
+	@Column(name = "email", nullable = false, length = 50)
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Column(name = "telephone", nullable = false, length = 10)
@@ -137,6 +155,24 @@ public class Societe implements java.io.Serializable {
 		this.fax = fax;
 	}
 
+	@Column(name = "pays", nullable = false, length = 50)
+	public String getPays() {
+		return this.pays;
+	}
+
+	public void setPays(String pays) {
+		this.pays = pays;
+	}
+
+	@Column(name = "raison_sociale", nullable = false, length = 50)
+	public String getRaisonSociale() {
+		return this.raisonSociale;
+	}
+
+	public void setRaisonSociale(String raisonSociale) {
+		this.raisonSociale = raisonSociale;
+	}
+
 	@Column(name = "site_web", nullable = false, length = 50)
 	public String getSiteWeb() {
 		return this.siteWeb;
@@ -146,49 +182,13 @@ public class Societe implements java.io.Serializable {
 		this.siteWeb = siteWeb;
 	}
 
-	@Column(name = "email", nullable = false, length = 50)
-	public String getEmail() {
-		return this.email;
+	@Column(name = "ville", nullable = false, length = 50)
+	public String getVille() {
+		return this.ville;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@Column(name = "code_fiscal", nullable = false, length = 50)
-	public String getCodeFiscal() {
-		return this.codeFiscal;
-	}
-
-	public void setCodeFiscal(String codeFiscal) {
-		this.codeFiscal = codeFiscal;
-	}
-
-	@Column(name = "agrement", nullable = false, length = 50)
-	public String getAgrement() {
-		return this.agrement;
-	}
-
-	public void setAgrement(String agrement) {
-		this.agrement = agrement;
-	}
-
-	@Column(name = "compte_contrib", nullable = false, length = 50)
-	public String getCompteContrib() {
-		return this.compteContrib;
-	}
-
-	public void setCompteContrib(String compteContrib) {
-		this.compteContrib = compteContrib;
-	}
-
-	@Column(name = "code_imp_exp", nullable = false, length = 50)
-	public String getCodeImpExp() {
-		return this.codeImpExp;
-	}
-
-	public void setCodeImpExp(String codeImpExp) {
-		this.codeImpExp = codeImpExp;
+	public void setVille(String ville) {
+		this.ville = ville;
 	}
 
 }

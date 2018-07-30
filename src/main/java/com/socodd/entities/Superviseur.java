@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -25,30 +25,30 @@ public class Superviseur implements java.io.Serializable {
 	private Nationalite nationalite;
 	private int code;
 	private String nom;
+	private String adresse;
 	private String matricule;
+	private Date dateEntree;
 	private Date dateNaissance;
 	private String lieuNaissance;
-	private String adresse;
 	private String email;
 	private String telephone;
-	private Date dateEntree;
 	private int numCompteTiers;
 
 	public Superviseur() {
 	}
 
-	public Superviseur(Nationalite nationalite, int code, String nom, String matricule, Date dateNaissance,
-			String lieuNaissance, String adresse, String email, String telephone, Date dateEntree, int numCompteTiers) {
+	public Superviseur(Nationalite nationalite, int code, String nom, String adresse, String matricule, Date dateEntree,
+			Date dateNaissance, String lieuNaissance, String email, String telephone, int numCompteTiers) {
 		this.nationalite = nationalite;
 		this.code = code;
 		this.nom = nom;
+		this.adresse = adresse;
 		this.matricule = matricule;
+		this.dateEntree = dateEntree;
 		this.dateNaissance = dateNaissance;
 		this.lieuNaissance = lieuNaissance;
-		this.adresse = adresse;
 		this.email = email;
 		this.telephone = telephone;
-		this.dateEntree = dateEntree;
 		this.numCompteTiers = numCompteTiers;
 	}
 
@@ -92,6 +92,15 @@ public class Superviseur implements java.io.Serializable {
 		this.nom = nom;
 	}
 
+	@Column(name = "adresse", nullable = false)
+	public String getAdresse() {
+		return this.adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
 	@Column(name = "matricule", nullable = false, length = 50)
 	public String getMatricule() {
 		return this.matricule;
@@ -99,6 +108,16 @@ public class Superviseur implements java.io.Serializable {
 
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
+	}
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "date_entree", nullable = false, length = 10)
+	public Date getDateEntree() {
+		return this.dateEntree;
+	}
+
+	public void setDateEntree(Date dateEntree) {
+		this.dateEntree = dateEntree;
 	}
 
 	@Temporal(TemporalType.DATE)
@@ -120,15 +139,6 @@ public class Superviseur implements java.io.Serializable {
 		this.lieuNaissance = lieuNaissance;
 	}
 
-	@Column(name = "adresse", nullable = false, length = 65535)
-	public String getAdresse() {
-		return this.adresse;
-	}
-
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-
 	@Column(name = "email", nullable = false, length = 50)
 	public String getEmail() {
 		return this.email;
@@ -145,16 +155,6 @@ public class Superviseur implements java.io.Serializable {
 
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
-	}
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "date_entree", nullable = false, length = 10)
-	public Date getDateEntree() {
-		return this.dateEntree;
-	}
-
-	public void setDateEntree(Date dateEntree) {
-		this.dateEntree = dateEntree;
 	}
 
 	@Column(name = "num_compte_tiers", nullable = false)

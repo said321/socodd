@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,31 +20,33 @@ public class Utilisateur implements java.io.Serializable {
 
 	private Integer id;
 	private ProfileUtilisateur profileUtilisateur;
-	private String code;
-	private String prenom;
-	private String nom;
-	private String matricule;
-	private String fonction;
-	private String email;
 	private String cel;
-	private String telephone;
+	private String code;
+	private String email;
+	private String fonction;
+	private String matricule;
 	private String motPasse;
+	private String nom;
+	private String prenom;
+	private String telephone;
+	private boolean active;
 
 	public Utilisateur() {
 	}
 
-	public Utilisateur(ProfileUtilisateur profileUtilisateur, String code, String prenom, String nom, String matricule,
-			String fonction, String email, String cel, String telephone, String motPasse) {
+	public Utilisateur(ProfileUtilisateur profileUtilisateur, String cel, String code, String email, String fonction,
+			String matricule, String motPasse, String nom, String prenom, String telephone, boolean active) {
 		this.profileUtilisateur = profileUtilisateur;
-		this.code = code;
-		this.prenom = prenom;
-		this.nom = nom;
-		this.matricule = matricule;
-		this.fonction = fonction;
-		this.email = email;
 		this.cel = cel;
-		this.telephone = telephone;
+		this.code = code;
+		this.email = email;
+		this.fonction = fonction;
+		this.matricule = matricule;
 		this.motPasse = motPasse;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.telephone = telephone;
+		this.active = active;
 	}
 
 	@Id
@@ -69,6 +71,15 @@ public class Utilisateur implements java.io.Serializable {
 		this.profileUtilisateur = profileUtilisateur;
 	}
 
+	@Column(name = "cel", nullable = false, length = 10)
+	public String getCel() {
+		return this.cel;
+	}
+
+	public void setCel(String cel) {
+		this.cel = cel;
+	}
+
 	@Column(name = "code", nullable = false, length = 50)
 	public String getCode() {
 		return this.code;
@@ -76,42 +87,6 @@ public class Utilisateur implements java.io.Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	@Column(name = "prenom", nullable = false, length = 50)
-	public String getPrenom() {
-		return this.prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	@Column(name = "nom", nullable = false, length = 50)
-	public String getNom() {
-		return this.nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	@Column(name = "matricule", nullable = false, length = 50)
-	public String getMatricule() {
-		return this.matricule;
-	}
-
-	public void setMatricule(String matricule) {
-		this.matricule = matricule;
-	}
-
-	@Column(name = "fonction", nullable = false, length = 50)
-	public String getFonction() {
-		return this.fonction;
-	}
-
-	public void setFonction(String fonction) {
-		this.fonction = fonction;
 	}
 
 	@Column(name = "email", nullable = false, length = 50)
@@ -123,13 +98,49 @@ public class Utilisateur implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "cel", nullable = false, length = 10)
-	public String getCel() {
-		return this.cel;
+	@Column(name = "fonction", nullable = false, length = 50)
+	public String getFonction() {
+		return this.fonction;
 	}
 
-	public void setCel(String cel) {
-		this.cel = cel;
+	public void setFonction(String fonction) {
+		this.fonction = fonction;
+	}
+
+	@Column(name = "matricule", nullable = false, length = 50)
+	public String getMatricule() {
+		return this.matricule;
+	}
+
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
+	}
+
+	@Column(name = "mot_passe", nullable = false, length = 50)
+	public String getMotPasse() {
+		return this.motPasse;
+	}
+
+	public void setMotPasse(String motPasse) {
+		this.motPasse = motPasse;
+	}
+
+	@Column(name = "nom", nullable = false, length = 50)
+	public String getNom() {
+		return this.nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	@Column(name = "prenom", nullable = false, length = 50)
+	public String getPrenom() {
+		return this.prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
 	@Column(name = "telephone", nullable = false, length = 10)
@@ -141,13 +152,13 @@ public class Utilisateur implements java.io.Serializable {
 		this.telephone = telephone;
 	}
 
-	@Column(name = "mot_passe", nullable = false, length = 50)
-	public String getMotPasse() {
-		return this.motPasse;
+	@Column(name = "active", nullable = false)
+	public boolean isActive() {
+		return this.active;
 	}
 
-	public void setMotPasse(String motPasse) {
-		this.motPasse = motPasse;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }

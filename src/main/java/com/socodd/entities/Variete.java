@@ -1,11 +1,17 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -16,21 +22,32 @@ import javax.persistence.Table;
 public class Variete implements java.io.Serializable {
 
 	private Integer id;
+	private Produit produit;
 	private String code;
-	private int produit;
 	private String nom;
 	private String abrege;
 	private int ordre;
+	private Set<ReceptionProduits> receptionProduitses = new HashSet<ReceptionProduits>(0);
 
 	public Variete() {
 	}
 
-	public Variete(String code, int produit, String nom, String abrege, int ordre) {
-		this.code = code;
+	public Variete(Produit produit, String code, String nom, String abrege, int ordre) {
 		this.produit = produit;
+		this.code = code;
 		this.nom = nom;
 		this.abrege = abrege;
 		this.ordre = ordre;
+	}
+
+	public Variete(Produit produit, String code, String nom, String abrege, int ordre,
+			Set<ReceptionProduits> receptionProduitses) {
+		this.produit = produit;
+		this.code = code;
+		this.nom = nom;
+		this.abrege = abrege;
+		this.ordre = ordre;
+		this.receptionProduitses = receptionProduitses;
 	}
 
 	@Id
@@ -45,6 +62,16 @@ public class Variete implements java.io.Serializable {
 		this.id = id;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "produit", nullable = false)
+	public Produit getProduit() {
+		return this.produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
 	@Column(name = "code", nullable = false, length = 5)
 	public String getCode() {
 		return this.code;
@@ -52,15 +79,6 @@ public class Variete implements java.io.Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	@Column(name = "produit", nullable = false)
-	public int getProduit() {
-		return this.produit;
-	}
-
-	public void setProduit(int produit) {
-		this.produit = produit;
 	}
 
 	@Column(name = "nom", nullable = false, length = 50)
@@ -88,6 +106,15 @@ public class Variete implements java.io.Serializable {
 
 	public void setOrdre(int ordre) {
 		this.ordre = ordre;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "variete")
+	public Set<ReceptionProduits> getReceptionProduitses() {
+		return this.receptionProduitses;
+	}
+
+	public void setReceptionProduitses(Set<ReceptionProduits> receptionProduitses) {
+		this.receptionProduitses = receptionProduitses;
 	}
 
 }

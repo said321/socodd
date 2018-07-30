@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,23 +20,23 @@ public class Route implements java.io.Serializable {
 
 	private Integer id;
 	private Port port;
+	private Region region;
 	private SousPrefecture sousPrefecture;
+	private Producteur producteur;
 	private String code;
-	private int region;
-	private int prefecture;
 	private float coutTkm;
 	private float prixEntreeUsine;
 
 	public Route() {
 	}
 
-	public Route(Port port, SousPrefecture sousPrefecture, String code, int region, int prefecture, float coutTkm,
-			float prixEntreeUsine) {
+	public Route(Port port, Region region, SousPrefecture sousPrefecture, Producteur producteur, String code,
+			float coutTkm, float prixEntreeUsine) {
 		this.port = port;
-		this.sousPrefecture = sousPrefecture;
-		this.code = code;
 		this.region = region;
-		this.prefecture = prefecture;
+		this.sousPrefecture = sousPrefecture;
+		this.producteur = producteur;
+		this.code = code;
 		this.coutTkm = coutTkm;
 		this.prixEntreeUsine = prixEntreeUsine;
 	}
@@ -64,6 +64,16 @@ public class Route implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "region", nullable = false)
+	public Region getRegion() {
+		return this.region;
+	}
+
+	public void setRegion(Region region) {
+		this.region = region;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "sous_prefecture", nullable = false)
 	public SousPrefecture getSousPrefecture() {
 		return this.sousPrefecture;
@@ -73,6 +83,16 @@ public class Route implements java.io.Serializable {
 		this.sousPrefecture = sousPrefecture;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "prefecture", nullable = false)
+	public Producteur getProducteur() {
+		return this.producteur;
+	}
+
+	public void setProducteur(Producteur producteur) {
+		this.producteur = producteur;
+	}
+
 	@Column(name = "code", nullable = false, length = 8)
 	public String getCode() {
 		return this.code;
@@ -80,24 +100,6 @@ public class Route implements java.io.Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	@Column(name = "region", nullable = false)
-	public int getRegion() {
-		return this.region;
-	}
-
-	public void setRegion(int region) {
-		this.region = region;
-	}
-
-	@Column(name = "prefecture", nullable = false)
-	public int getPrefecture() {
-		return this.prefecture;
-	}
-
-	public void setPrefecture(int prefecture) {
-		this.prefecture = prefecture;
 	}
 
 	@Column(name = "cout_tkm", nullable = false, precision = 12, scale = 0)

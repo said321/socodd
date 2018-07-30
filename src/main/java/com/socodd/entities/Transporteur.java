@@ -1,12 +1,16 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,35 +24,54 @@ public class Transporteur implements java.io.Serializable {
 
 	private Integer id;
 	private String code;
-	private int numCompteTiers;
 	private String nom;
 	private String adresse;
 	private String telephone;
 	private String fax;
 	private String email;
 	private Date dateEntree;
+	private int numCompteTiers;
 	private int numCC;
 	private int numRccm;
 	private int numAgrement;
 	private String importBic;
+	private Set<ReceptionProduits> receptionProduitses = new HashSet<ReceptionProduits>(0);
 
 	public Transporteur() {
 	}
 
-	public Transporteur(String code, int numCompteTiers, String nom, String adresse, String telephone, String fax,
-			String email, Date dateEntree, int numCC, int numRccm, int numAgrement, String importBic) {
+	public Transporteur(String code, String nom, String adresse, String telephone, String fax, String email,
+			Date dateEntree, int numCompteTiers, int numCC, int numRccm, int numAgrement, String importBic) {
 		this.code = code;
-		this.numCompteTiers = numCompteTiers;
 		this.nom = nom;
 		this.adresse = adresse;
 		this.telephone = telephone;
 		this.fax = fax;
 		this.email = email;
 		this.dateEntree = dateEntree;
+		this.numCompteTiers = numCompteTiers;
 		this.numCC = numCC;
 		this.numRccm = numRccm;
 		this.numAgrement = numAgrement;
 		this.importBic = importBic;
+	}
+
+	public Transporteur(String code, String nom, String adresse, String telephone, String fax, String email,
+			Date dateEntree, int numCompteTiers, int numCC, int numRccm, int numAgrement, String importBic,
+			Set<ReceptionProduits> receptionProduitses) {
+		this.code = code;
+		this.nom = nom;
+		this.adresse = adresse;
+		this.telephone = telephone;
+		this.fax = fax;
+		this.email = email;
+		this.dateEntree = dateEntree;
+		this.numCompteTiers = numCompteTiers;
+		this.numCC = numCC;
+		this.numRccm = numRccm;
+		this.numAgrement = numAgrement;
+		this.importBic = importBic;
+		this.receptionProduitses = receptionProduitses;
 	}
 
 	@Id
@@ -70,15 +93,6 @@ public class Transporteur implements java.io.Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	@Column(name = "num_compte_tiers", nullable = false)
-	public int getNumCompteTiers() {
-		return this.numCompteTiers;
-	}
-
-	public void setNumCompteTiers(int numCompteTiers) {
-		this.numCompteTiers = numCompteTiers;
 	}
 
 	@Column(name = "nom", nullable = false, length = 50)
@@ -136,6 +150,15 @@ public class Transporteur implements java.io.Serializable {
 		this.dateEntree = dateEntree;
 	}
 
+	@Column(name = "num_compte_tiers", nullable = false)
+	public int getNumCompteTiers() {
+		return this.numCompteTiers;
+	}
+
+	public void setNumCompteTiers(int numCompteTiers) {
+		this.numCompteTiers = numCompteTiers;
+	}
+
 	@Column(name = "num_c_c", nullable = false)
 	public int getNumCC() {
 		return this.numCC;
@@ -170,6 +193,15 @@ public class Transporteur implements java.io.Serializable {
 
 	public void setImportBic(String importBic) {
 		this.importBic = importBic;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "transporteur")
+	public Set<ReceptionProduits> getReceptionProduitses() {
+		return this.receptionProduitses;
+	}
+
+	public void setReceptionProduitses(Set<ReceptionProduits> receptionProduitses) {
+		this.receptionProduitses = receptionProduitses;
 	}
 
 }

@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,16 +17,16 @@ public class Devise implements java.io.Serializable {
 
 	private Integer id;
 	private String code;
-	private String nom;
 	private float monnaieLocale;
+	private String nom;
 
 	public Devise() {
 	}
 
-	public Devise(String code, String nom, float monnaieLocale) {
+	public Devise(String code, float monnaieLocale, String nom) {
 		this.code = code;
-		this.nom = nom;
 		this.monnaieLocale = monnaieLocale;
+		this.nom = nom;
 	}
 
 	@Id
@@ -50,15 +50,6 @@ public class Devise implements java.io.Serializable {
 		this.code = code;
 	}
 
-	@Column(name = "nom", nullable = false, length = 50)
-	public String getNom() {
-		return this.nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
 	@Column(name = "monnaie_locale", nullable = false, precision = 12, scale = 0)
 	public float getMonnaieLocale() {
 		return this.monnaieLocale;
@@ -66,6 +57,15 @@ public class Devise implements java.io.Serializable {
 
 	public void setMonnaieLocale(float monnaieLocale) {
 		this.monnaieLocale = monnaieLocale;
+	}
+
+	@Column(name = "nom", nullable = false, length = 50)
+	public String getNom() {
+		return this.nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 }

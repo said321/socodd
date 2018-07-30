@@ -1,11 +1,14 @@
 package com.socodd.entities;
-// Generated 21 juil. 2018 07:15:20 by Hibernate Tools 5.1.7.Final
+// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -16,19 +19,19 @@ import javax.persistence.Table;
 public class Marque implements java.io.Serializable {
 
 	private Integer id;
+	private Produit produit;
 	private String code;
 	private String nom;
-	private int produit;
 	private String abrege;
 	private int ordre;
 
 	public Marque() {
 	}
 
-	public Marque(String code, String nom, int produit, String abrege, int ordre) {
+	public Marque(Produit produit, String code, String nom, String abrege, int ordre) {
+		this.produit = produit;
 		this.code = code;
 		this.nom = nom;
-		this.produit = produit;
 		this.abrege = abrege;
 		this.ordre = ordre;
 	}
@@ -43,6 +46,16 @@ public class Marque implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "produit", nullable = false)
+	public Produit getProduit() {
+		return this.produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
 	}
 
 	@Column(name = "code", nullable = false, length = 5)
@@ -61,15 +74,6 @@ public class Marque implements java.io.Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
-	}
-
-	@Column(name = "produit", nullable = false)
-	public int getProduit() {
-		return this.produit;
-	}
-
-	public void setProduit(int produit) {
-		this.produit = produit;
 	}
 
 	@Column(name = "abrege", nullable = false, length = 50)
