@@ -8,6 +8,16 @@
 			<property name="dao" ref="routeDao"></property>
 		</bean> -->
 		
+		<bean id="produitDao" class="com.socodd.dao.impl.ProduitDaoImpl" />
+		<bean id="produitService" class="com.socodd.services.impl.ProduitServiceImpl">
+			<property name="dao" ref="produitDao"></property>
+		</bean>		
+		
+		<bean id="unitemesureDao" class="com.socodd.dao.impl.UniteMesureDaoImpl" />
+		<bean id="unitemesureService" class="com.socodd.services.impl.UniteMesureServiceImpl">
+			<property name="dao" ref="unitemesureDao"></property>
+		</bean>
+		
 		<bean id="varieteDao" class="com.socodd.dao.impl.VarieteDaoImpl" />
 		<bean id="varieteService" class="com.socodd.services.impl.VarieteServiceImpl">
 			<property name="dao" ref="varieteDao"></property>

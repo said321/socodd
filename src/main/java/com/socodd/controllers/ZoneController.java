@@ -32,13 +32,6 @@ public class ZoneController {
 		
 	}
 	
-	@RequestMapping(value = "/modifier")
-	public String modifier(Model model) {
-		
-		return "pages/zone/addUpZone";
-		
-	}
-
 	@RequestMapping(value = "/nouveau")
 	public String nouveau(Model model) {
 		
@@ -51,8 +44,6 @@ public class ZoneController {
 	
 	@RequestMapping(value = "/enregistrer")
 	public String enregistrer(Model model, Zone zone) {
-		
-		System.out.println(zone.getNom() + " <> " + zone.getCode());
 		
 		if(zone != null) {
 			if (zone.getId() != null) {

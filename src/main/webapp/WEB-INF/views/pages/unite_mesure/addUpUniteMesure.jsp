@@ -42,20 +42,51 @@
             <%@ include file="/WEB-INF/views/menu_top/topMenu.jsp" %>
 			
             <%@ include file="/WEB-INF/views/menu_left/leftMenu.jsp" %>
-            
             <!-- /.navbar-static-side -->
         </nav>
-        
     
-  <!-- Page Content -->
+	<!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">hello world</h1>
+                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
+                
+                <div class="row">
+	                <div class="col-lg-12">
+	                    <div class="panel panel-primary">
+	                        <div class="panel-heading">
+	                            <fmt:message code="common.ajouter" />
+	                        </div>
+	                        <!-- /.panel-heading -->
+	                        <div class="panel-body">
+	                        	<c:url value="/unite_mesure/enregistrer" var ="urlEnregistrer" />
+								<f:form modelAttribute="unite_mesure" action="${urlEnregistrer }" role = "form">
+									<f:hidden path="id"/>
+									<div class="form-group">
+                                            <label><fmt:message code="common.code" /></label>
+                                        <f:input path="code" class="form-control" placeholder="Code" />
+                                    </div>
+									<div class="form-group">
+                                        <label><fmt:message code="common.nom" /></label>
+                                        <f:input path="nom" class="form-control" placeholder="Nom" />
+                                    </div>
+	                                <div class="panel-footer">
+                                    	<button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;<fmt:message code="common.enregister" /></i></button>
+                                    	<a href="<c:url value="/unite_mesure/" />" class="btn btn-danger"> <i class="fa fa-arrow-left">&nbsp;<fmt:message code="common.annuler" /></i></a>
+                                    </div>
+								</f:form>	                        
+	                        </div>
+	                        <!-- /.panel-body -->
+	                    </div>
+	                    <!-- /.panel -->
+	                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+                <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
         </div>
@@ -63,8 +94,7 @@
 
     </div>
     <!-- /#wrapper -->
-  
-  
+    
 
     <!-- jQuery -->
     <script src="<%=request.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>

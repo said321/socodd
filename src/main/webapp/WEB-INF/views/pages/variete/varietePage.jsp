@@ -60,7 +60,7 @@
                 <div class="row">
 					<div class="col-lg-12">
 						<ol class="breadcrumb">
-						  <li><a href="<c:url value="/zone/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
+						  <li><a href="<c:url value="/variete/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
 						  <li><a href="#"><i class="fa fa-download">&nbsp;<fmt:message code="common.exporter" /></i></a></li>
 						</ol>					
 					</div>                
@@ -78,23 +78,29 @@
                                 <thead>
                                     <tr>
                                     	<th>ID</th>
-                                        <th><fmt:message code="common.code" /></th>
-                                        <th><fmt:message code="common.nom" /></th>
+                                        <th>code</th>
+                                        <th>nom</th>
+                                        <th>produit</th>
+                                        <th>abrege</th>
+                                        <th>ordre</th>
                                         <th><fmt:message code="common.actions" /></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<c:forEach items="${zones }" var = "zone">
+                                	<c:forEach items="${varietes }" var = "variete">
 	                                    <tr class="odd gradeX">
-	                                    	<td >${zone.getId() }</td>
-	                                        <td >${zone.getCode() }</td>
-	                                        <td>${zone.getNom() }</td>
+	                                    	<td >${variete.getId() }</td>
+	                                        <td >${variete.getCode() }</td>
+	                                        <td>${variete.getNom() }</td>
+	                                        <td>${variete.getProduit().getNom() }</td>
+	                                        <td>${variete.getAbrege() }</td>
+	                                        <td>${variete.getOrdre() }</td>
 	                                        <td>
-	                                        	<c:url value="/zone/modifier/${zone.getId() }" var="urlModif" />
+	                                        	<c:url value="/variete/modifier/${variete.getId() }" var="urlModif" />
 	                                        	<a href="${urlModif }"><i class="fa fa-edit"></i></a>
 	                                        	&nbsp;|&nbsp;
-	                                        	<a href="javascript:void(0);" data-toggle="modal" data-target="#modalZone${zone.getId() }"><i class="fa fa-trash-o"></i></a>
-	                                        	<div class="modal fade" id="modalZone${zone.getId() }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	                                        	<a href="javascript:void(0);" data-toggle="modal" data-target="#modalVariete${variete.getId() }"><i class="fa fa-trash-o"></i></a>
+	                                        	<div class="modal fade" id="modalVariete${variete.getId() }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 													<div class="modal-dialog">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -106,7 +112,7 @@
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message code="common.annuler" /></button>
-																<c:url value="/zone/supprimer/${zone.getId() }" var="urlSuppression" />
+																<c:url value="/variete/supprimer/${variete.getId() }" var="urlSuppression" />
 																<a href="${urlSuppression }" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp;<fmt:message code="common.confirmer" /></a>
 															</div>
 														</div>
@@ -158,10 +164,6 @@
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true
-            //"paging" : false,
-            //"ordering" : false,
-            //"info"  : false,
-            //"searching" : false 
         });
     });
     </script>
