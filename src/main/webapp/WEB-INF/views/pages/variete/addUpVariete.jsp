@@ -82,16 +82,39 @@
                                         <label><fmt:message code="common.nom" /></label>
                                         <f:input path="ordre" class="form-control" placeholder="Nom" />
                                     </div>
+
+
+
                                     
-									<div class="col-md-4 mb-3">
-	                                    <label><fmt:message code="common.nom" /></label>
-	                                    <select class = "form-control" id="listVariete">
-	                                    	<option value = "-1"><fmt:message code="common.nom" /></option>
-	                                    	<c:forEach items = "${produits }" var = "produit">
-	                                    		<option value = "${produit.getId() }">${produit.getNom() }</option>
-	                                    	</c:forEach>
-	                                    </select>
-	                                </div>
+                                    <c:if test="${ttt=='nouveau' }">
+										<div class="col-md-4 mb-3">
+		                                    <label><fmt:message code="common.nom" /></label>
+		                                    <select name="pid" class = "form-control" id="listVariete">
+		                                    	<option value = "-1"><fmt:message code="common.nom" /></option>
+		                                    	<c:forEach items = "${produits }" var = "produit">
+		                                    		<option value = "${produit.getId() }" >${produit.getNom() }</option>
+		                                    	</c:forEach>
+		                                    </select>
+		                                </div>
+	                                </c:if>
+	                                
+	                                
+	                                
+	                               <c:if test="${ttt=='modifier' }"> 
+		                               <div class="col-md-4 mb-3">
+		                                    <label><fmt:message code="common.nom" /></label>
+		                                    <select name="pid" class = "form-control" id="listVariete">
+		                                    	<option value = "${variete.getProduit().getId() }">${variete.getProduit().getNom() }</option>
+		                                    	<c:forEach items = "${produits }" var = "produit">
+		                                    		<c:if test="${variete.getProduit().getId()!=produit.getId() }"> 
+		                                    			<option value = "${produit.getId() }">${produit.getNom() }</option>
+		                                    		</c:if>
+		                                    	</c:forEach>
+		                                    </select>
+		                                </div>
+	                                </c:if>
+	                                
+	                                
                                     
 	                                <div class="panel-footer">
                                     	<button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;<fmt:message code="common.enregister" /></i></button>

@@ -22,11 +22,5 @@ public class LoginController {
 		
 	}
 	
-	@RequestMapping(value = "/error")
-	public String error(Model model) {
-		
-		return "error/errorPage";
-		
-	}
 	
 }

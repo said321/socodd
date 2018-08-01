@@ -3,7 +3,10 @@ package com.socodd.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,18 +58,26 @@ public class VarieteController {
 		model.addAttribute("produits", produits);
 		model.addAttribute("variete", variete);
 		
+		model.addAttribute("ttt", "nouveau");
+		
 		return "pages/variete/addUpVariete";
 		
 	}
 	
 	@RequestMapping(value = "/enregistrer")
-	public String enregistrer(Model model, Variete variete) {
+	public String enregistrer(Model model, Variete variete, HttpServletRequest request) {
 		
 		
-		variete.setProduit(produitService.getById(variete.getProduit().getId()));
+		
+		int pid = Integer.parseInt(request.getParameter("pid"));
+		
+		System.out.println(pid);
 		
 		
 		if(variete != null) {
+			
+			variete.setProduit(produitService.getById(pid));
+			
 			if (variete.getId() != null) {
 				varieteService.update(variete);
 			} else {
@@ -93,6 +104,9 @@ public class VarieteController {
 				
 				
 				variete.setProduit(produitService.getById(variete.getProduit().getId()));
+				
+				
+				model.addAttribute("ttt", "modifier");
 				
 				model.addAttribute("variete", variete);
 			}
