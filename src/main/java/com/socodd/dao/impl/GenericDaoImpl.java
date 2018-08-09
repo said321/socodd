@@ -109,5 +109,5 @@ import com.socodd.dao.IGenericDao;
 		query.setParameter(paramName, paramValue);
 		return query.getResultList().size() > 0 ? ((Long) query.getSingleResult()).intValue() : 0;
 	}
-
+	
 }

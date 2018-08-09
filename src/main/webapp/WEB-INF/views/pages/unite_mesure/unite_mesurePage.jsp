@@ -77,7 +77,6 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                    	<th>ID</th>
                                         <th><fmt:message code="common.code" /></th>
                                         <th><fmt:message code="common.nom" /></th>
                                         <th><fmt:message code="common.actions" /></th>
@@ -86,7 +85,6 @@
                                 <tbody>
                                 	<c:forEach items="${unite_mesures }" var = "unite">
 	                                    <tr class="odd gradeX">
-	                                    	<td >${unite.getId() }</td>
 	                                        <td >${unite.getCode() }</td>
 	                                        <td>${unite.getNom() }</td>
 	                                        <td>

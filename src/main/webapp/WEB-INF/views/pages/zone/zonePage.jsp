@@ -77,7 +77,6 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                    	<th>ID</th>
                                         <th><fmt:message code="common.code" /></th>
                                         <th><fmt:message code="common.nom" /></th>
                                         <th><fmt:message code="common.actions" /></th>
@@ -86,7 +85,6 @@
                                 <tbody>
                                 	<c:forEach items="${zones }" var = "zone">
 	                                    <tr class="odd gradeX">
-	                                    	<td >${zone.getId() }</td>
 	                                        <td >${zone.getCode() }</td>
 	                                        <td>${zone.getNom() }</td>
 	                                        <td>
@@ -161,7 +159,7 @@
             //"paging" : false,
             //"ordering" : false,
             //"info"  : false,
-            //"searching" : false 
+            //"searching" : false            
         });
     });
     </script>

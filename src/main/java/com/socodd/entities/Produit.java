@@ -1,15 +1,14 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 2 août 2018 19:58:35 by Hibernate Tools 3.6.0.Final
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,11 +19,11 @@ import javax.persistence.Table;
 public class Produit implements java.io.Serializable {
 
 	private Integer id;
+	private TypeSac typeSacBySacBrousse;
+	private TypeSac typeSacBySacExport;
 	private String code;
 	private String nom;
-	private int titreCompagne;
-	private int sacBrousse;
-	private int sacExport;
+	private String titreCompagne;
 	private int prefNumBE;
 	private int prochainAchatNum;
 	private int cpteAchat;
@@ -40,27 +39,19 @@ public class Produit implements java.io.Serializable {
 	private float tauxDeboursTransit;
 	private int prefixeNumCdc;
 	private int poidsTherorique;
-	private Set<ContratAchat> contratAchats = new HashSet<ContratAchat>(0);
-	private Set<Analyse> analyses = new HashSet<Analyse>(0);
-	private Set<ReceptionProduits> receptionProduitses = new HashSet<ReceptionProduits>(0);
-	private Set<Variete> varietes = new HashSet<Variete>(0);
-	private Set<Marque> marques = new HashSet<Marque>(0);
-	private Set<Qualite> qualites = new HashSet<Qualite>(0);
-	private Set<ItemsDebours> itemsDebourses = new HashSet<ItemsDebours>(0);
-	private Set<FabricationLots> fabricationLotses = new HashSet<FabricationLots>(0);
 
 	public Produit() {
 	}
 
-	public Produit(String code, String nom, int titreCompagne, int sacBrousse, int sacExport, int prefNumBE,
-			int prochainAchatNum, int cpteAchat, float tauxAchatBic, int prefNumBS, int prochainVenteNum, int cpteVte,
-			int cpteVenteBic, float prixAchatIndicatif, float prixVenteIndicatif, float fraisTransport,
+	public Produit(TypeSac typeSacBySacBrousse, TypeSac typeSacBySacExport, String code, String nom, String titreCompagne,
+			int prefNumBE, int prochainAchatNum, int cpteAchat, float tauxAchatBic, int prefNumBS, int prochainVenteNum,
+			int cpteVte, int cpteVenteBic, float prixAchatIndicatif, float prixVenteIndicatif, float fraisTransport,
 			int mntDeboursTransit, float tauxDeboursTransit, int prefixeNumCdc, int poidsTherorique) {
+		this.typeSacBySacBrousse = typeSacBySacBrousse;
+		this.typeSacBySacExport = typeSacBySacExport;
 		this.code = code;
 		this.nom = nom;
 		this.titreCompagne = titreCompagne;
-		this.sacBrousse = sacBrousse;
-		this.sacExport = sacExport;
 		this.prefNumBE = prefNumBE;
 		this.prochainAchatNum = prochainAchatNum;
 		this.cpteAchat = cpteAchat;
@@ -76,43 +67,6 @@ public class Produit implements java.io.Serializable {
 		this.tauxDeboursTransit = tauxDeboursTransit;
 		this.prefixeNumCdc = prefixeNumCdc;
 		this.poidsTherorique = poidsTherorique;
-	}
-
-	public Produit(String code, String nom, int titreCompagne, int sacBrousse, int sacExport, int prefNumBE,
-			int prochainAchatNum, int cpteAchat, float tauxAchatBic, int prefNumBS, int prochainVenteNum, int cpteVte,
-			int cpteVenteBic, float prixAchatIndicatif, float prixVenteIndicatif, float fraisTransport,
-			int mntDeboursTransit, float tauxDeboursTransit, int prefixeNumCdc, int poidsTherorique,
-			Set<ContratAchat> contratAchats, Set<Analyse> analyses, Set<ReceptionProduits> receptionProduitses,
-			Set<Variete> varietes, Set<Marque> marques, Set<Qualite> qualites, Set<ItemsDebours> itemsDebourses,
-			Set<FabricationLots> fabricationLotses) {
-		this.code = code;
-		this.nom = nom;
-		this.titreCompagne = titreCompagne;
-		this.sacBrousse = sacBrousse;
-		this.sacExport = sacExport;
-		this.prefNumBE = prefNumBE;
-		this.prochainAchatNum = prochainAchatNum;
-		this.cpteAchat = cpteAchat;
-		this.tauxAchatBic = tauxAchatBic;
-		this.prefNumBS = prefNumBS;
-		this.prochainVenteNum = prochainVenteNum;
-		this.cpteVte = cpteVte;
-		this.cpteVenteBic = cpteVenteBic;
-		this.prixAchatIndicatif = prixAchatIndicatif;
-		this.prixVenteIndicatif = prixVenteIndicatif;
-		this.fraisTransport = fraisTransport;
-		this.mntDeboursTransit = mntDeboursTransit;
-		this.tauxDeboursTransit = tauxDeboursTransit;
-		this.prefixeNumCdc = prefixeNumCdc;
-		this.poidsTherorique = poidsTherorique;
-		this.contratAchats = contratAchats;
-		this.analyses = analyses;
-		this.receptionProduitses = receptionProduitses;
-		this.varietes = varietes;
-		this.marques = marques;
-		this.qualites = qualites;
-		this.itemsDebourses = itemsDebourses;
-		this.fabricationLotses = fabricationLotses;
 	}
 
 	@Id
@@ -125,6 +79,26 @@ public class Produit implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "sac_brousse", nullable = false)
+	public TypeSac getTypeSacBySacBrousse() {
+		return this.typeSacBySacBrousse;
+	}
+
+	public void setTypeSacBySacBrousse(TypeSac typeSacBySacBrousse) {
+		this.typeSacBySacBrousse = typeSacBySacBrousse;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "sac_export", nullable = false)
+	public TypeSac getTypeSacBySacExport() {
+		return this.typeSacBySacExport;
+	}
+
+	public void setTypeSacBySacExport(TypeSac typeSacBySacExport) {
+		this.typeSacBySacExport = typeSacBySacExport;
 	}
 
 	@Column(name = "code", nullable = false, length = 5)
@@ -146,30 +120,12 @@ public class Produit implements java.io.Serializable {
 	}
 
 	@Column(name = "titre_compagne", nullable = false)
-	public int getTitreCompagne() {
+	public String getTitreCompagne() {
 		return this.titreCompagne;
 	}
 
-	public void setTitreCompagne(int titreCompagne) {
+	public void setTitreCompagne(String titreCompagne) {
 		this.titreCompagne = titreCompagne;
-	}
-
-	@Column(name = "sac_brousse", nullable = false)
-	public int getSacBrousse() {
-		return this.sacBrousse;
-	}
-
-	public void setSacBrousse(int sacBrousse) {
-		this.sacBrousse = sacBrousse;
-	}
-
-	@Column(name = "sac_export", nullable = false)
-	public int getSacExport() {
-		return this.sacExport;
-	}
-
-	public void setSacExport(int sacExport) {
-		this.sacExport = sacExport;
 	}
 
 	@Column(name = "pref_num_b_e", nullable = false)
@@ -305,78 +261,6 @@ public class Produit implements java.io.Serializable {
 
 	public void setPoidsTherorique(int poidsTherorique) {
 		this.poidsTherorique = poidsTherorique;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
-	public Set<ContratAchat> getContratAchats() {
-		return this.contratAchats;
-	}
-
-	public void setContratAchats(Set<ContratAchat> contratAchats) {
-		this.contratAchats = contratAchats;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
-	public Set<Analyse> getAnalyses() {
-		return this.analyses;
-	}
-
-	public void setAnalyses(Set<Analyse> analyses) {
-		this.analyses = analyses;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
-	public Set<ReceptionProduits> getReceptionProduitses() {
-		return this.receptionProduitses;
-	}
-
-	public void setReceptionProduitses(Set<ReceptionProduits> receptionProduitses) {
-		this.receptionProduitses = receptionProduitses;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
-	public Set<Variete> getVarietes() {
-		return this.varietes;
-	}
-
-	public void setVarietes(Set<Variete> varietes) {
-		this.varietes = varietes;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
-	public Set<Marque> getMarques() {
-		return this.marques;
-	}
-
-	public void setMarques(Set<Marque> marques) {
-		this.marques = marques;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
-	public Set<Qualite> getQualites() {
-		return this.qualites;
-	}
-
-	public void setQualites(Set<Qualite> qualites) {
-		this.qualites = qualites;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
-	public Set<ItemsDebours> getItemsDebourses() {
-		return this.itemsDebourses;
-	}
-
-	public void setItemsDebourses(Set<ItemsDebours> itemsDebourses) {
-		this.itemsDebourses = itemsDebourses;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
-	public Set<FabricationLots> getFabricationLotses() {
-		return this.fabricationLotses;
-	}
-
-	public void setFabricationLotses(Set<FabricationLots> fabricationLotses) {
-		this.fabricationLotses = fabricationLotses;
 	}
 
 }

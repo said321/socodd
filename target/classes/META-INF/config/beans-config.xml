@@ -7,6 +7,61 @@
 		<bean id="routeService" class="com.socodd.services.impl.RouteServiceImpl">
 			<property name="dao" ref="routeDao"></property>
 		</bean> -->
+
+		<bean id="fournisseurDao" class="com.socodd.dao.impl.FournisseurDaoImpl" />
+		<bean id="fournisseurService" class="com.socodd.services.impl.FournisseurServiceImpl">
+			<property name="dao" ref="fournisseurDao"></property>
+		</bean>
+
+		<bean id="contratAchatDao" class="com.socodd.dao.impl.ContratAchatDaoImpl" />
+		<bean id="contratAchatService" class="com.socodd.services.impl.ContratAchatServiceImpl">
+			<property name="dao" ref="contratAchatDao"></property>
+		</bean>
+
+		<bean id="typeSacDao" class="com.socodd.dao.impl.TypeSacDaoImpl" />
+		<bean id="typeSacService" class="com.socodd.services.impl.TypeSacServiceImpl">
+			<property name="dao" ref="typeSacDao"></property>
+		</bean>
+
+		<bean id="typeCalculeDao" class="com.socodd.dao.impl.TypeCalculeDaoImpl" />
+		<bean id="typeCalculeService" class="com.socodd.services.impl.TypeCalculeServiceImpl">
+			<property name="dao" ref="typeCalculeDao"></property>
+		</bean>
+
+		<bean id="typeClientDao" class="com.socodd.dao.impl.TypeClientDaoImpl" />
+		<bean id="typeClientService" class="com.socodd.services.impl.TypeClientServiceImpl">
+			<property name="dao" ref="typeClientDao"></property>
+		</bean>
+	
+		<bean id="regionDao" class="com.socodd.dao.impl.RegionDaoImpl" />
+		<bean id="regionService" class="com.socodd.services.impl.RegionServiceImpl">
+			<property name="dao" ref="regionDao"></property>
+		</bean>
+	
+		<bean id="departementDao" class="com.socodd.dao.impl.DepartementDaoImpl" />
+		<bean id="departementService" class="com.socodd.services.impl.DepartementServiceImpl">
+			<property name="dao" ref="departementDao"></property>
+		</bean>
+	
+		<bean id="nationaliteDao" class="com.socodd.dao.impl.NationaliteDaoImpl" />
+		<bean id="nationaliteService" class="com.socodd.services.impl.NationaliteServiceImpl">
+			<property name="dao" ref="nationaliteDao"></property>
+		</bean>
+	
+		<bean id="portDao" class="com.socodd.dao.impl.PortDaoImpl" />
+		<bean id="portService" class="com.socodd.services.impl.PortServiceImpl">
+			<property name="dao" ref="portDao"></property>
+		</bean>
+		
+		<bean id="deviseDao" class="com.socodd.dao.impl.DeviseDaoImpl" />
+		<bean id="deviseService" class="com.socodd.services.impl.DeviseServiceImpl">
+			<property name="dao" ref="deviseDao"></property>
+		</bean>
+
+		<bean id="typeFournisseurDao" class="com.socodd.dao.impl.TypeFournisseurDaoImpl" />
+		<bean id="typeFournisseurService" class="com.socodd.services.impl.TypeFournisseurServiceImpl">
+			<property name="dao" ref="typeFournisseurDao"></property>
+		</bean>
 		
 		<bean id="produitDao" class="com.socodd.dao.impl.ProduitDaoImpl" />
 		<bean id="produitService" class="com.socodd.services.impl.ProduitServiceImpl">

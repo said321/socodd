@@ -13,46 +13,73 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="/app/resources/pages/index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="home"><i class="fa fa-dashboard fa-fw"></i> Dashboard </a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Achats <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Flot Charts</a>
+                                    <a href="<%=request.getContextPath() %>/contratAchat">Contrat d'achat</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                    <a href="<%=request.getContextPath() %>/produit">Produit</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/variete">Variétés</a>
+                                </li>
+                                <li>
+                                    <a href="#">Type de Sacs</a>
+                                </li>
+                                <li>
+                                    <a href="#">Analyses</a>
+                                </li>
+                                <li>
+                                    <a href="#">Qualité</a>
+                                </li>
+                                <li>
+                                    <a href="#">Routes</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/unite_mesure">Unité de Mesure</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/typeFournisseur">Type Fournisseur</a>
+                                </li>
+                                <li>
+                                    <a href="#">Fournisseurs</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Ventes <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
+                                    <a href="<%=request.getContextPath() %>/typeClient">Type Client</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.html">Buttons</a>
+                                    <a href="#">Client</a>
                                 </li>
                                 <li>
-                                    <a href="notifications.html">Notifications</a>
+                                    <a href="#">Transitaire</a>
                                 </li>
                                 <li>
-                                    <a href="typography.html">Typography</a>
+                                    <a href="#">Marque</a>
                                 </li>
                                 <li>
-                                    <a href="icons.html"> Icons</a>
+                                    <a href="#">Type de Contrat</a>
                                 </li>
                                 <li>
-                                    <a href="grid.html">Grid</a>
+                                    <a href="<%=request.getContextPath() %>/devise">Devises</a>
+                                </li>
+                                <li>
+                                    <a href="#">Assurance</a>
+                                </li>
+                                <li>
+                                    <a href="#">Chargeur</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/port">Port</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -83,18 +110,6 @@
                                         </li>
                                     </ul>
                                     <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li class="active">
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a class="active" href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

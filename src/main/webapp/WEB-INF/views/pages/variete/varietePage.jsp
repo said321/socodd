@@ -77,7 +77,6 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                    	<th>ID</th>
                                         <th>code</th>
                                         <th>nom</th>
                                         <th>produit</th>
@@ -89,7 +88,6 @@
                                 <tbody>
                                 	<c:forEach items="${varietes }" var = "variete">
 	                                    <tr class="odd gradeX">
-	                                    	<td >${variete.getId() }</td>
 	                                        <td >${variete.getCode() }</td>
 	                                        <td>${variete.getNom() }</td>
 	                                        <td>${variete.getProduit().getNom() }</td>

@@ -66,10 +66,7 @@
 	                        	<c:url value="/zone/enregistrer" var ="urlEnregistrer" />
 								<f:form modelAttribute="zone" action="${urlEnregistrer }" role = "form">
 									<f:hidden path="id"/>
-									<div class="form-group">
-                                            <label><fmt:message code="common.code" /></label>
-                                        <f:input path="code" class="form-control" placeholder="Code" />
-                                    </div>
+									<f:hidden path="code"/>
 									<div class="form-group">
                                         <label><fmt:message code="common.nom" /></label>
                                         <f:input path="nom" class="form-control" placeholder="Nom" />

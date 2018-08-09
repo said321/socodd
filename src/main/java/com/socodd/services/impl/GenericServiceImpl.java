@@ -60,5 +60,5 @@ public class GenericServiceImpl<E> implements IGenericService<E> {
 	public int findCountBy(String paramName, String paramValue) {
 		return dao.findCountBy(paramName, paramValue);
 	}
-	
+
 }

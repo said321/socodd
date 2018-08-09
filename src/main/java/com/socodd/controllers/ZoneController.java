@@ -50,6 +50,8 @@ public class ZoneController {
 				zoneService.update(zone);
 			} else {
 				zoneService.save(zone);
+				zone.setCode("Z"+String.valueOf(zone.getId()));
+				zoneService.update(zone);
 			}
 		}
 		

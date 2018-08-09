@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 2 août 2018 19:58:35 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -29,7 +29,8 @@ public class TypeSac implements java.io.Serializable {
 	private int stockDernierInventaire;
 	private Date date;
 	private int stockDisponible;
-	private Set<ReceptionProduits> receptionProduitses = new HashSet<ReceptionProduits>(0);
+	private Set<Produit> produitsForSacBrousse = new HashSet<Produit>(0);
+	private Set<Produit> produitsForSacExport = new HashSet<Produit>(0);
 
 	public TypeSac() {
 	}
@@ -44,14 +45,15 @@ public class TypeSac implements java.io.Serializable {
 	}
 
 	public TypeSac(String code, String nom, float tare, int stockDernierInventaire, Date date, int stockDisponible,
-			Set<ReceptionProduits> receptionProduitses) {
+			Set<Produit> produitsForSacBrousse, Set<Produit> produitsForSacExport) {
 		this.code = code;
 		this.nom = nom;
 		this.tare = tare;
 		this.stockDernierInventaire = stockDernierInventaire;
 		this.date = date;
 		this.stockDisponible = stockDisponible;
-		this.receptionProduitses = receptionProduitses;
+		this.produitsForSacBrousse = produitsForSacBrousse;
+		this.produitsForSacExport = produitsForSacExport;
 	}
 
 	@Id
@@ -121,13 +123,22 @@ public class TypeSac implements java.io.Serializable {
 		this.stockDisponible = stockDisponible;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeSac")
-	public Set<ReceptionProduits> getReceptionProduitses() {
-		return this.receptionProduitses;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeSacBySacBrousse")
+	public Set<Produit> getProduitsForSacBrousse() {
+		return this.produitsForSacBrousse;
 	}
 
-	public void setReceptionProduitses(Set<ReceptionProduits> receptionProduitses) {
-		this.receptionProduitses = receptionProduitses;
+	public void setProduitsForSacBrousse(Set<Produit> produitsForSacBrousse) {
+		this.produitsForSacBrousse = produitsForSacBrousse;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeSacBySacExport")
+	public Set<Produit> getProduitsForSacExport() {
+		return this.produitsForSacExport;
+	}
+
+	public void setProduitsForSacExport(Set<Produit> produitsForSacExport) {
+		this.produitsForSacExport = produitsForSacExport;
 	}
 
 }

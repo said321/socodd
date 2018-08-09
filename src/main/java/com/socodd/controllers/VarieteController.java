@@ -53,9 +53,8 @@ public class VarieteController {
 	public String nouveau(Model model) {
 		
 		Variete variete = new Variete();
-		List<Produit> produits = produitService.selectAll();
 		
-		model.addAttribute("produits", produits);
+		model.addAttribute("produits", produitService.selectAll());
 		model.addAttribute("variete", variete);
 		
 		model.addAttribute("ttt", "nouveau");
@@ -71,8 +70,6 @@ public class VarieteController {
 		
 		int pid = Integer.parseInt(request.getParameter("pid"));
 		
-		System.out.println(pid);
-		
 		
 		if(variete != null) {
 			
@@ -83,6 +80,8 @@ public class VarieteController {
 			} else {
 				
 				varieteService.save(variete);
+				variete.setCode("VA"+String.valueOf(variete.getId()));
+				varieteService.update(variete);
 			}
 		}
 		
@@ -95,11 +94,9 @@ public class VarieteController {
 		if (idVariete != null) {
 			Variete variete = varieteService.getById(idVariete);
 			if (variete != null) {
+			
 				
-				
-				List<Produit> produits = produitService.selectAll();
-				
-				model.addAttribute("produits", produits);
+				model.addAttribute("produits", produitService.selectAll());
 				
 				
 				

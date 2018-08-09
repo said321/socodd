@@ -57,6 +57,8 @@ public class UniteMesureController {
 				unite_mesureService.update(unite_mesure);
 			} else {
 				unite_mesureService.save(unite_mesure);
+				unite_mesure.setCode("UM"+String.valueOf(unite_mesure.getId()));
+				unite_mesureService.update(unite_mesure);
 			}
 		}
 		

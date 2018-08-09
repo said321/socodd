@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 2 août 2018 19:28:32 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -66,10 +66,7 @@
 	                        	<c:url value="/variete/enregistrer" var ="urlEnregistrer" />
 								<f:form modelAttribute="variete" action="${urlEnregistrer }" role = "form">
 									<f:hidden path="id"/>
-									<div class="form-group">
-                                            <label><fmt:message code="common.code" /></label>
-                                        <f:input path="code" class="form-control" placeholder="Code" />
-                                    </div>
+									<f:hidden path="code"/>
 									<div class="form-group">
                                         <label><fmt:message code="common.nom" /></label>
                                         <f:input path="nom" class="form-control" placeholder="Nom" />
@@ -89,7 +86,7 @@
                                     <c:if test="${ttt=='nouveau' }">
 										<div class="col-md-4 mb-3">
 		                                    <label><fmt:message code="common.nom" /></label>
-		                                    <select name="pid" class = "form-control" id="listVariete">
+		                                    <select name="pid" class = "form-control" id="listProduits">
 		                                    	<option value = "-1"><fmt:message code="common.nom" /></option>
 		                                    	<c:forEach items = "${produits }" var = "produit">
 		                                    		<option value = "${produit.getId() }" >${produit.getNom() }</option>
@@ -103,7 +100,7 @@
 	                               <c:if test="${ttt=='modifier' }"> 
 		                               <div class="col-md-4 mb-3">
 		                                    <label><fmt:message code="common.nom" /></label>
-		                                    <select name="pid" class = "form-control" id="listVariete">
+		                                    <select name="pid" class = "form-control" id="listProduits">
 		                                    	<option value = "${variete.getProduit().getId() }">${variete.getProduit().getNom() }</option>
 		                                    	<c:forEach items = "${produits }" var = "produit">
 		                                    		<c:if test="${variete.getProduit().getId()!=produit.getId() }"> 
