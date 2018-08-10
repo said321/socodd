@@ -85,7 +85,6 @@
                                 <tbody>
                                 	<c:forEach items="${regions }" var = "region">
 	                                    <tr class="odd gradeX">
-	                                    	<td >${region.getId() }</td>
 	                                        <td >${region.getCode() }</td>
 	                                        <td>${region.getNom() }</td>
 	                                        <td>

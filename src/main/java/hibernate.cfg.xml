@@ -13,7 +13,7 @@
         <property name="hibernate.search.autoregister_listeners">true</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
         <property name="hibernate.validator.autoregister_listeners">false</property>
-        <mapping class="com.socodd.entities.Produit" />
-        <mapping class="com.socodd.entities.TypeSac" />
+        <mapping class="com.socodd.entities.Fournisseur" />
+        <mapping class="com.socodd.entities.TypeFournisseur" />
     </session-factory>
 </hibernate-configuration>

@@ -15,6 +15,34 @@
                         <li>
                             <a href="home"><i class="fa fa-dashboard fa-fw"></i> Dashboard </a>
                         </li>
+                        
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Conseil Agricole <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/zone">Zone</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/region">Region</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/prefecture">Prefecture</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/sousPrefecture">Sous-Prefecture</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/localite">Localité</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/apparielTraitement">Appariel Traitement</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
+                        
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Achats <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -37,7 +65,7 @@
                                     <a href="#">Qualité</a>
                                 </li>
                                 <li>
-                                    <a href="#">Routes</a>
+                                    <a href="<%=request.getContextPath() %>/route">Routes</a>
                                 </li>
                                 <li>
                                     <a href="<%=request.getContextPath() %>/unite_mesure">Unité de Mesure</a>
@@ -46,7 +74,7 @@
                                     <a href="<%=request.getContextPath() %>/typeFournisseur">Type Fournisseur</a>
                                 </li>
                                 <li>
-                                    <a href="#">Fournisseurs</a>
+                                    <a href="<%=request.getContextPath() %>/fournisseur">Fournisseurs</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -76,7 +104,7 @@
                                     <a href="#">Assurance</a>
                                 </li>
                                 <li>
-                                    <a href="#">Chargeur</a>
+                                    <a href="<%=request.getContextPath() %>/chargeur">Chargeur</a>
                                 </li>
                                 <li>
                                     <a href="<%=request.getContextPath() %>/port">Port</a>

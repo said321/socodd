@@ -88,6 +88,7 @@
 										<div class="form-group">
 		                                    <label>Decision</label>
 		                                    <select name="decision" class = "form-control" >
+		                                    	<option value = "-1">Select Decision</option>
 		                                    	<option value = "attente">En Attente</option>
 		                                    	<option value = "accepte">Accepté</option>
 		                                    </select>
@@ -121,10 +122,10 @@
 		                                </div>
 		                                
 		                                <div class="form-group">
-		                                <div class="col-md-4 mb-3">
-		                                	<label>Au Date</label>
-		                                	<input name="au_Date" type="date" class="form-control" required/> 
-		                                </div>
+			                                <div class="col-md-4 mb-3">
+			                                	<label>Au Date</label>
+			                                	<input name="au_Date" type="date" class="form-control" required/> 
+			                                </div>
 		                                </div> 
 		                                
 		                                <div class="form-group">

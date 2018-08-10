@@ -41,8 +41,7 @@ public class Producteur implements java.io.Serializable {
 	private Date dateEntree;
 	private int referencePiece;
 	private String photo;
-	private String sexe;
-	private Set<Route> routes = new HashSet<Route>(0);
+	private String sexe;	
 
 	public Producteur() {
 	}
@@ -89,7 +88,6 @@ public class Producteur implements java.io.Serializable {
 		this.referencePiece = referencePiece;
 		this.photo = photo;
 		this.sexe = sexe;
-		this.routes = routes;
 	}
 
 	@Id
@@ -259,15 +257,6 @@ public class Producteur implements java.io.Serializable {
 
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "producteur")
-	public Set<Route> getRoutes() {
-		return this.routes;
-	}
-
-	public void setRoutes(Set<Route> routes) {
-		this.routes = routes;
 	}
 
 }

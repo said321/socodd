@@ -1,9 +1,7 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 10 août 2018 09:27:06 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +10,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,13 +31,19 @@ public class Fournisseur implements java.io.Serializable {
 	private String fax;
 	private String email;
 	private int numCompteTiers;
-	private Set<ContratAchat> contratAchats = new HashSet<ContratAchat>(0);
+	private int numCc;
+	private int numRccm;
+	private int numAgrement;
+	private String numBic;
+	private String banque;
+	private int numBanque;
 
 	public Fournisseur() {
 	}
 
 	public Fournisseur(TypeFournisseur typeFournisseur, String code, String nom, String adresse, Date dateEntree,
-			String telephone, String fax, String email, int numCompteTiers) {
+			String telephone, String fax, String email, int numCompteTiers, int numCc, int numRccm, int numAgrement,
+			String numBic, String banque, int numBanque) {
 		this.typeFournisseur = typeFournisseur;
 		this.code = code;
 		this.nom = nom;
@@ -50,20 +53,12 @@ public class Fournisseur implements java.io.Serializable {
 		this.fax = fax;
 		this.email = email;
 		this.numCompteTiers = numCompteTiers;
-	}
-
-	public Fournisseur(TypeFournisseur typeFournisseur, String code, String nom, String adresse, Date dateEntree,
-			String telephone, String fax, String email, int numCompteTiers, Set<ContratAchat> contratAchats) {
-		this.typeFournisseur = typeFournisseur;
-		this.code = code;
-		this.nom = nom;
-		this.adresse = adresse;
-		this.dateEntree = dateEntree;
-		this.telephone = telephone;
-		this.fax = fax;
-		this.email = email;
-		this.numCompteTiers = numCompteTiers;
-		this.contratAchats = contratAchats;
+		this.numCc = numCc;
+		this.numRccm = numRccm;
+		this.numAgrement = numAgrement;
+		this.numBic = numBic;
+		this.banque = banque;
+		this.numBanque = numBanque;
 	}
 
 	@Id
@@ -161,13 +156,58 @@ public class Fournisseur implements java.io.Serializable {
 		this.numCompteTiers = numCompteTiers;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "fournisseur")
-	public Set<ContratAchat> getContratAchats() {
-		return this.contratAchats;
+	@Column(name = "num_cc", nullable = false)
+	public int getNumCc() {
+		return this.numCc;
 	}
 
-	public void setContratAchats(Set<ContratAchat> contratAchats) {
-		this.contratAchats = contratAchats;
+	public void setNumCc(int numCc) {
+		this.numCc = numCc;
+	}
+
+	@Column(name = "num_rccm", nullable = false)
+	public int getNumRccm() {
+		return this.numRccm;
+	}
+
+	public void setNumRccm(int numRccm) {
+		this.numRccm = numRccm;
+	}
+
+	@Column(name = "num_agrement", nullable = false)
+	public int getNumAgrement() {
+		return this.numAgrement;
+	}
+
+	public void setNumAgrement(int numAgrement) {
+		this.numAgrement = numAgrement;
+	}
+
+	@Column(name = "num_bic", nullable = false)
+	public String getNumBic() {
+		return this.numBic;
+	}
+
+	public void setNumBic(String numBic) {
+		this.numBic = numBic;
+	}
+
+	@Column(name = "banque", nullable = false, length = 50)
+	public String getBanque() {
+		return this.banque;
+	}
+
+	public void setBanque(String banque) {
+		this.banque = banque;
+	}
+
+	@Column(name = "num_banque", nullable = false)
+	public int getNumBanque() {
+		return this.numBanque;
+	}
+
+	public void setNumBanque(int numBanque) {
+		this.numBanque = numBanque;
 	}
 
 }

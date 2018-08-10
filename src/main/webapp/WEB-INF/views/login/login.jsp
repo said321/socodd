@@ -43,7 +43,7 @@
                         <h3 class="panel-title">Socodd</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="/app/home" method="post">
+                        <form role="form" action="<%=request.getContextPath() %>/home" method="post">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Username" name="username" type="email" autofocus>

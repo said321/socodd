@@ -28,6 +28,7 @@ public class Prefecture implements java.io.Serializable {
 	private float longitude;
 	private float latitude;
 	private Set<SousPrefecture> sousPrefectures = new HashSet<SousPrefecture>(0);
+	private Set<Route> routes = new HashSet<Route>(0);
 
 	public Prefecture() {
 	}
@@ -115,6 +116,15 @@ public class Prefecture implements java.io.Serializable {
 
 	public void setSousPrefectures(Set<SousPrefecture> sousPrefectures) {
 		this.sousPrefectures = sousPrefectures;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "prefecture")
+	public Set<Route> getRoute() {
+		return this.routes;
+	}
+
+	public void setRoute(Set<Route> routes) {
+		this.routes = routes;
 	}
 
 }

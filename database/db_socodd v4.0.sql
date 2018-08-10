@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 09, 2018 at 09:48 AM
+-- Generation Time: Aug 10, 2018 at 11:16 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -55,6 +55,13 @@ CREATE TABLE `appariel_traitement` (
   `nom` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `appariel_traitement`
+--
+
+INSERT INTO `appariel_traitement` (`id`, `code`, `nom`) VALUES
+(1, 'AP1', 'app-trait1');
+
 -- --------------------------------------------------------
 
 --
@@ -78,6 +85,14 @@ CREATE TABLE `chargeur` (
   `code` varchar(5) NOT NULL,
   `nom` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chargeur`
+--
+
+INSERT INTO `chargeur` (`id`, `code`, `nom`) VALUES
+(1, 'CG1', 'chargeur1'),
+(4, 'CG4', 'chargeur2');
 
 -- --------------------------------------------------------
 
@@ -299,15 +314,22 @@ CREATE TABLE `fournisseur` (
   `telephone` varchar(10) NOT NULL,
   `fax` varchar(10) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `num_compte_tiers` int(11) NOT NULL
+  `num_compte_tiers` int(11) NOT NULL,
+  `num_cc` int(11) NOT NULL,
+  `num_rccm` int(11) NOT NULL,
+  `num_agrement` int(11) NOT NULL,
+  `num_bic` varchar(50) NOT NULL,
+  `banque` varchar(50) NOT NULL,
+  `num_banque` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `fournisseur`
 --
 
-INSERT INTO `fournisseur` (`id`, `code`, `type_fournisseur`, `nom`, `adresse`, `date_entree`, `telephone`, `fax`, `email`, `num_compte_tiers`) VALUES
-(1, 'f1', 1, 'fournisseur1', 'aaa aaa aaa  aaaa', '2018-08-08', '8494834212', '8494834212', 'fournisseur1@gmail.com', 321);
+INSERT INTO `fournisseur` (`id`, `code`, `type_fournisseur`, `nom`, `adresse`, `date_entree`, `telephone`, `fax`, `email`, `num_compte_tiers`, `num_cc`, `num_rccm`, `num_agrement`, `num_bic`, `banque`, `num_banque`) VALUES
+(1, 'FR1', 1, 'fournisseur1', 'aaa aaa aaa  aaaa', '2018-08-10', '8494834212', '8494834212', 'fournisseur1@gmail.com', 321, 12, 23, 45, 'assujeti', 'banque1', 456765),
+(2, 'FR2', 1, 'fournisseur2', 'hgdf dkufg skhgf87 ', '2018-08-11', '1234567890', '12347890', 'fourniseeur2@gmail.com', 76, 0, 0, 0, 'exonore', 'banque2', 0);
 
 -- --------------------------------------------------------
 
@@ -339,6 +361,13 @@ CREATE TABLE `localite` (
   `longitude` float NOT NULL,
   `latitude` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `localite`
+--
+
+INSERT INTO `localite` (`id`, `code`, `nom`, `sous_prefecture`, `longitude`, `latitude`) VALUES
+(1, 'LC1', 'localite1', 1, 45.876, 67.768);
 
 -- --------------------------------------------------------
 
@@ -450,13 +479,20 @@ INSERT INTO `port` (`id`, `code`, `nom`) VALUES
 --
 
 CREATE TABLE `prefecture` (
-  `id` int(4) NOT NULL,
+  `id` int(11) NOT NULL,
   `code` varchar(5) NOT NULL,
   `nom` varchar(50) NOT NULL,
-  `region` int(4) NOT NULL,
+  `region` int(11) NOT NULL,
   `longitude` float NOT NULL,
   `latitude` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `prefecture`
+--
+
+INSERT INTO `prefecture` (`id`, `code`, `nom`, `region`, `longitude`, `latitude`) VALUES
+(1, 'P1', 'prefecture1', 1, 32.8767, 45.7657);
 
 -- --------------------------------------------------------
 
@@ -583,10 +619,18 @@ CREATE TABLE `reception_produits` (
 --
 
 CREATE TABLE `region` (
-  `id` int(3) NOT NULL,
+  `id` int(11) NOT NULL,
   `code` varchar(5) NOT NULL,
   `nom` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `region`
+--
+
+INSERT INTO `region` (`id`, `code`, `nom`) VALUES
+(1, 'RG1', 'region1'),
+(3, 'RG3', 'region3');
 
 -- --------------------------------------------------------
 
@@ -604,6 +648,13 @@ CREATE TABLE `route` (
   `port_destination` int(11) NOT NULL,
   `sous_prefecture` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `route`
+--
+
+INSERT INTO `route` (`id`, `code`, `cout_tkm`, `prefecture`, `prix_entree_usine`, `region`, `port_destination`, `sous_prefecture`) VALUES
+(1, 'RT1', 12, 1, 89, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -637,12 +688,19 @@ CREATE TABLE `societe` (
 
 CREATE TABLE `sous_prefecture` (
   `id` int(11) NOT NULL,
-  `code` varchar(5) NOT NULL,
+  `code` varchar(6) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prefecture` int(11) NOT NULL,
   `latitude` float NOT NULL,
   `longitude` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sous_prefecture`
+--
+
+INSERT INTO `sous_prefecture` (`id`, `code`, `nom`, `prefecture`, `latitude`, `longitude`) VALUES
+(1, 'P1', 'sous-prefecture1', 1, 87.989, 45.87);
 
 -- --------------------------------------------------------
 
@@ -773,7 +831,7 @@ CREATE TABLE `type_fournisseur` (
 --
 
 INSERT INTO `type_fournisseur` (`id`, `code`, `nom`) VALUES
-(1, 'tf1', 'type fourn1');
+(1, 'TF1', 'type fourn1');
 
 -- --------------------------------------------------------
 
@@ -1294,7 +1352,7 @@ ALTER TABLE `analyse`
 -- AUTO_INCREMENT for table `appariel_traitement`
 --
 ALTER TABLE `appariel_traitement`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `assurance`
 --
@@ -1304,7 +1362,7 @@ ALTER TABLE `assurance`
 -- AUTO_INCREMENT for table `chargeur`
 --
 ALTER TABLE `chargeur`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `client`
 --
@@ -1364,7 +1422,7 @@ ALTER TABLE `famille_consommables`
 -- AUTO_INCREMENT for table `fournisseur`
 --
 ALTER TABLE `fournisseur`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `items_debours`
 --
@@ -1374,7 +1432,7 @@ ALTER TABLE `items_debours`
 -- AUTO_INCREMENT for table `localite`
 --
 ALTER TABLE `localite`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `magasin`
 --
@@ -1404,7 +1462,7 @@ ALTER TABLE `port`
 -- AUTO_INCREMENT for table `prefecture`
 --
 ALTER TABLE `prefecture`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `producteur`
 --
@@ -1434,12 +1492,12 @@ ALTER TABLE `reception_produits`
 -- AUTO_INCREMENT for table `region`
 --
 ALTER TABLE `region`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `route`
 --
 ALTER TABLE `route`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `societe`
 --
@@ -1449,7 +1507,7 @@ ALTER TABLE `societe`
 -- AUTO_INCREMENT for table `sous_prefecture`
 --
 ALTER TABLE `sous_prefecture`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `superviseur`
 --
@@ -1669,7 +1727,7 @@ ALTER TABLE `route`
   ADD CONSTRAINT `FK67AB24985674125` FOREIGN KEY (`port_destination`) REFERENCES `port` (`id`),
   ADD CONSTRAINT `FK67AB2498848833D` FOREIGN KEY (`sous_prefecture`) REFERENCES `sous_prefecture` (`id`),
   ADD CONSTRAINT `route_ibfk_1` FOREIGN KEY (`region`) REFERENCES `region` (`id`),
-  ADD CONSTRAINT `route_ibfk_2` FOREIGN KEY (`prefecture`) REFERENCES `producteur` (`id`);
+  ADD CONSTRAINT `route_ibfk_2` FOREIGN KEY (`prefecture`) REFERENCES `prefecture` (`id`);
 
 --
 -- Constraints for table `sous_prefecture`

@@ -22,7 +22,7 @@ public class Route implements java.io.Serializable {
 	private Port port;
 	private Region region;
 	private SousPrefecture sousPrefecture;
-	private Producteur producteur;
+	private Prefecture prefecture;
 	private String code;
 	private float coutTkm;
 	private float prixEntreeUsine;
@@ -30,12 +30,12 @@ public class Route implements java.io.Serializable {
 	public Route() {
 	}
 
-	public Route(Port port, Region region, SousPrefecture sousPrefecture, Producteur producteur, String code,
+	public Route(Port port, Region region, SousPrefecture sousPrefecture, Prefecture prefecture, String code,
 			float coutTkm, float prixEntreeUsine) {
 		this.port = port;
 		this.region = region;
 		this.sousPrefecture = sousPrefecture;
-		this.producteur = producteur;
+		this.prefecture = prefecture;
 		this.code = code;
 		this.coutTkm = coutTkm;
 		this.prixEntreeUsine = prixEntreeUsine;
@@ -85,12 +85,12 @@ public class Route implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "prefecture", nullable = false)
-	public Producteur getProducteur() {
-		return this.producteur;
+	public Prefecture getPrefecture() {
+		return this.prefecture;
 	}
 
-	public void setProducteur(Producteur producteur) {
-		this.producteur = producteur;
+	public void setPrefecture(Prefecture prefecture) {
+		this.prefecture = prefecture;
 	}
 
 	@Column(name = "code", nullable = false, length = 8)

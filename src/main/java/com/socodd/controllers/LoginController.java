@@ -23,6 +23,13 @@ public class LoginController {
 	
 	@Autowired
 	private IZoneService zoneService;
+
+	@RequestMapping(value = "/admin/privatePage")
+	public String admin() {
+		
+		return "admin/privatePage";
+		
+	}
 	
 	@RequestMapping(value = {"/", "/login"})
 	public String login() {

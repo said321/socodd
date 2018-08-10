@@ -3,10 +3,35 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!-- 		<bean id="routeDao" class="com.socodd.dao.impl.RouteDaoImpl" />
+		<bean id="routeDao" class="com.socodd.dao.impl.RouteDaoImpl" />
 		<bean id="routeService" class="com.socodd.services.impl.RouteServiceImpl">
 			<property name="dao" ref="routeDao"></property>
-		</bean> -->
+		</bean>
+
+		<bean id="apparielTraitementDao" class="com.socodd.dao.impl.ApparielTraitementDaoImpl" />
+		<bean id="apparielTraitementService" class="com.socodd.services.impl.ApparielTraitementServiceImpl">
+			<property name="dao" ref="apparielTraitementDao"></property>
+		</bean>
+
+		<bean id="localiteDao" class="com.socodd.dao.impl.LocaliteDaoImpl" />
+		<bean id="localiteService" class="com.socodd.services.impl.LocaliteServiceImpl">
+			<property name="dao" ref="localiteDao"></property>
+		</bean>
+
+		<bean id="sousPrefectureDao" class="com.socodd.dao.impl.SousPrefectureDaoImpl" />
+		<bean id="sousPrefectureService" class="com.socodd.services.impl.SousPrefectureServiceImpl">
+			<property name="dao" ref="sousPrefectureDao"></property>
+		</bean>
+
+		<bean id="prefectureDao" class="com.socodd.dao.impl.PrefectureDaoImpl" />
+		<bean id="prefectureService" class="com.socodd.services.impl.PrefectureServiceImpl">
+			<property name="dao" ref="prefectureDao"></property>
+		</bean>
+
+		<bean id="chargeurDao" class="com.socodd.dao.impl.ChargeurDaoImpl" />
+		<bean id="chargeurService" class="com.socodd.services.impl.ChargeurServiceImpl">
+			<property name="dao" ref="chargeurDao"></property>
+		</bean>
 
 		<bean id="fournisseurDao" class="com.socodd.dao.impl.FournisseurDaoImpl" />
 		<bean id="fournisseurService" class="com.socodd.services.impl.FournisseurServiceImpl">

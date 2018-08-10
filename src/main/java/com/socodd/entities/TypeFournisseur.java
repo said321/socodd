@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 10 août 2018 09:27:06 by Hibernate Tools 3.6.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
