@@ -95,6 +95,9 @@
                                     <a href="#">Marque</a>
                                 </li>
                                 <li>
+                                    <a href="<%=request.getContextPath() %>/usine">Usine</a>
+                                </li>
+                                <li>
                                     <a href="#">Type de Contrat</a>
                                 </li>
                                 <li>
@@ -112,6 +115,23 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Logistique & Stock<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/magasin">Magasin</a>
+                                </li>
+                                <li>
+                                    <a href="#">type parc auto</a>
+                                </li>
+                                <li>
+                                    <a href="#">type de mouvement de parc</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

@@ -52,7 +52,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"><fmt:message code="common.variete" /></h1>
+                        <h1 class="page-header"><fmt:message code="common.magasin" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -60,7 +60,7 @@
                 <div class="row">
 					<div class="col-lg-12">
 						<ol class="breadcrumb">
-						  <li><a href="<c:url value="/variete/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
+						  <li><a href="<c:url value="/magasin/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
 						  <li><a href="#"><i class="fa fa-download">&nbsp;<fmt:message code="common.exporter" /></i></a></li>
 						</ol>					
 					</div>                
@@ -70,7 +70,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <fmt:message code="variete.liste" />
+                            <fmt:message code="magasin.liste" />
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -79,26 +79,22 @@
                                     <tr>
                                         <th>code</th>
                                         <th>nom</th>
-                                        <th>produit</th>
-                                        <th>abrege</th>
-                                        <th>ordre</th>
+                                        <th>localite</th>
                                         <th><fmt:message code="common.actions" /></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<c:forEach items="${varietes }" var = "variete">
+                                	<c:forEach items="${magasins }" var = "magasin">
 	                                    <tr class="odd gradeX">
-	                                        <td >${variete.getCode() }</td>
-	                                        <td>${variete.getNom() }</td>
-	                                        <td>${variete.getProduit().getNom() }</td>
-	                                        <td>${variete.getAbrege() }</td>
-	                                        <td>${variete.getOrdre() }</td>
+	                                        <td >${magasin.getCode() }</td>
+	                                        <td>${magasin.getNom() }</td>
+	                                        <td>${magasin.getLocalite().getNom() }</td>
 	                                        <td>
-	                                        	<c:url value="/variete/modifier/${variete.getId() }" var="urlModif" />
+	                                        	<c:url value="/magasin/modifier/${magasin.getId() }" var="urlModif" />
 	                                        	<a href="${urlModif }"><i class="fa fa-edit"></i></a>
 	                                        	&nbsp;|&nbsp;
-	                                        	<a href="javascript:void(0);" data-toggle="modal" data-target="#modalVariete${variete.getId() }"><i class="fa fa-trash-o"></i></a>
-	                                        	<div class="modal fade" id="modalVariete${variete.getId() }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	                                        	<a href="javascript:void(0);" data-toggle="modal" data-target="#modalMagasin${magasin.getId() }"><i class="fa fa-trash-o"></i></a>
+	                                        	<div class="modal fade" id="modalMagasin${magasin.getId() }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 													<div class="modal-dialog">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -106,11 +102,11 @@
 																<h4 class="modal-title" id="myModalLabel"><fmt:message code="common.confirm.suppression" /></h4>
 															</div>
 															<div class="modal-body">
-																<fmt:message code="variete.confirm.suppression.msg" />
+																<fmt:message code="magasin.confirm.suppression.msg" />
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message code="common.annuler" /></button>
-																<c:url value="/variete/supprimer/${variete.getId() }" var="urlSuppression" />
+																<c:url value="/magasin/supprimer/${magasin.getId() }" var="urlSuppression" />
 																<a href="${urlSuppression }" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp;<fmt:message code="common.confirmer" /></a>
 															</div>
 														</div>

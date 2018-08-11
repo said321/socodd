@@ -27,22 +27,22 @@ public class Client implements java.io.Serializable {
 	private String nom;
 	private String adresse;
 	private Date dateEntree;
-	private String email;
 	private String telephone;
 	private String fax;
-	private int banque;
-	private String importBic;
-	private int numAgrement;
-	private int numCC;
-	private int numCompte;
+	private String email;
 	private int numCompteTiers;
+	private int numCc;
 	private int numRccm;
+	private int numAgrement;
+	private String numBic;
+	private String banque;
+	private int numBanque;
 
 	public Client() {
 	}
 
 	public Client(TypeClient typeClient, String code, String nom, String adresse, Date dateEntree, String email,
-			String telephone, String fax, int banque, String importBic, int numAgrement, int numCC, int numCompte,
+			String telephone, String fax, String banque, String numBic, int numAgrement, int numCc,
 			int numCompteTiers, int numRccm) {
 		this.typeClient = typeClient;
 		this.code = code;
@@ -53,10 +53,9 @@ public class Client implements java.io.Serializable {
 		this.telephone = telephone;
 		this.fax = fax;
 		this.banque = banque;
-		this.importBic = importBic;
+		this.numBic = numBic;
 		this.numAgrement = numAgrement;
-		this.numCC = numCC;
-		this.numCompte = numCompte;
+		this.numCc = numCc;
 		this.numCompteTiers = numCompteTiers;
 		this.numRccm = numRccm;
 	}
@@ -148,21 +147,21 @@ public class Client implements java.io.Serializable {
 	}
 
 	@Column(name = "banque", nullable = false)
-	public int getBanque() {
+	public String getBanque() {
 		return this.banque;
 	}
 
-	public void setBanque(int banque) {
+	public void setBanque(String banque) {
 		this.banque = banque;
 	}
 
-	@Column(name = "import_bic", nullable = false, length = 50)
-	public String getImportBic() {
-		return this.importBic;
+	@Column(name = "num_bic", nullable = false, length = 50)
+	public String getNumBic() {
+		return this.numBic;
 	}
 
-	public void setImportBic(String importBic) {
-		this.importBic = importBic;
+	public void setNumBic(String numBic) {
+		this.numBic = numBic;
 	}
 
 	@Column(name = "num_agrement", nullable = false)
@@ -174,22 +173,13 @@ public class Client implements java.io.Serializable {
 		this.numAgrement = numAgrement;
 	}
 
-	@Column(name = "num_c_c", nullable = false)
-	public int getNumCC() {
-		return this.numCC;
+	@Column(name = "num_cc", nullable = false)
+	public int getNumCc() {
+		return this.numCc;
 	}
 
-	public void setNumCC(int numCC) {
-		this.numCC = numCC;
-	}
-
-	@Column(name = "num_compte", nullable = false)
-	public int getNumCompte() {
-		return this.numCompte;
-	}
-
-	public void setNumCompte(int numCompte) {
-		this.numCompte = numCompte;
+	public void setNumCc(int numCc) {
+		this.numCc = numCc;
 	}
 
 	@Column(name = "num_compte_tiers", nullable = false)
@@ -208,6 +198,15 @@ public class Client implements java.io.Serializable {
 
 	public void setNumRccm(int numRccm) {
 		this.numRccm = numRccm;
+	}
+	
+	@Column(name = "num_banque", nullable = false)
+	public int getNumBanque() {
+		return this.numBanque;
+	}
+
+	public void setNumBanque(int numBanque) {
+		this.numBanque = numBanque;
 	}
 
 }

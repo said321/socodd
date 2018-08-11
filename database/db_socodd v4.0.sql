@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 10, 2018 at 11:16 AM
+-- Generation Time: Aug 11, 2018 at 08:31 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -109,15 +109,22 @@ CREATE TABLE `client` (
   `email` varchar(50) NOT NULL,
   `telephone` varchar(10) NOT NULL,
   `fax` varchar(10) NOT NULL,
-  `banque` int(11) NOT NULL,
-  `import_bic` varchar(50) NOT NULL,
+  `banque` varchar(50) NOT NULL,
+  `num_bic` varchar(50) NOT NULL,
   `num_agrement` int(11) NOT NULL,
-  `num_c_c` int(11) NOT NULL,
-  `num_compte` int(11) NOT NULL,
+  `num_cc` int(11) NOT NULL,
   `num_compte_tiers` int(11) NOT NULL,
   `num_rccm` int(11) NOT NULL,
-  `type_client` int(11) NOT NULL
+  `type_client` int(11) NOT NULL,
+  `num_banque` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`id`, `code`, `nom`, `adresse`, `date_entree`, `email`, `telephone`, `fax`, `banque`, `num_bic`, `num_agrement`, `num_cc`, `num_compte_tiers`, `num_rccm`, `type_client`, `num_banque`) VALUES
+(1, 'CL1', 'client1', 'aaa jgfhb 8876 ffff', '2018-08-10', 'client1@gmail.com', '1234567890', '12347890', 'banque1', 'exonore', 786876, 875324, 98776571, 86876, 1, 876278362);
 
 -- --------------------------------------------------------
 
@@ -378,9 +385,16 @@ INSERT INTO `localite` (`id`, `code`, `nom`, `sous_prefecture`, `longitude`, `la
 CREATE TABLE `magasin` (
   `id` int(3) NOT NULL,
   `code` varchar(5) NOT NULL,
-  `nom` int(50) NOT NULL,
+  `nom` varchar(50) NOT NULL,
   `localite` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `magasin`
+--
+
+INSERT INTO `magasin` (`id`, `code`, `nom`, `localite`) VALUES
+(1, 'VA1', 'magasin1', 1);
 
 -- --------------------------------------------------------
 
@@ -789,6 +803,13 @@ CREATE TABLE `type_client` (
   `nom` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `type_client`
+--
+
+INSERT INTO `type_client` (`id`, `code`, `nom`) VALUES
+(1, 'TCL', 'type_client1');
+
 -- --------------------------------------------------------
 
 --
@@ -919,12 +940,19 @@ INSERT INTO `unite_mesure` (`id`, `code`, `nom`) VALUES
 
 CREATE TABLE `usine` (
   `id` int(3) NOT NULL,
-  `code` int(5) NOT NULL,
-  `nom` int(50) NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `nom` varchar(50) NOT NULL,
   `localite` int(6) NOT NULL,
   `longitude` float NOT NULL,
   `latitude` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `usine`
+--
+
+INSERT INTO `usine` (`id`, `code`, `nom`, `localite`, `longitude`, `latitude`) VALUES
+(1, 'US1', 'usine1', 1, 89.986, 56.524);
 
 -- --------------------------------------------------------
 
@@ -1367,7 +1395,7 @@ ALTER TABLE `chargeur`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `compagnie_maritime`
 --
@@ -1437,7 +1465,7 @@ ALTER TABLE `localite`
 -- AUTO_INCREMENT for table `magasin`
 --
 ALTER TABLE `magasin`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `marque`
 --
@@ -1532,7 +1560,7 @@ ALTER TABLE `type_calcule`
 -- AUTO_INCREMENT for table `type_client`
 --
 ALTER TABLE `type_client`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `type_contrat`
 --
@@ -1577,7 +1605,7 @@ ALTER TABLE `unite_mesure`
 -- AUTO_INCREMENT for table `usine`
 --
 ALTER TABLE `usine`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `utilisateur`
 --

@@ -24,19 +24,19 @@ public class Magasin implements java.io.Serializable {
 	private Integer id;
 	private Localite localite;
 	private String code;
-	private int nom;
+	private String nom;
 	private Set<FabricationLots> fabricationLotses = new HashSet<FabricationLots>(0);
 
 	public Magasin() {
 	}
 
-	public Magasin(Localite localite, String code, int nom) {
+	public Magasin(Localite localite, String code, String nom) {
 		this.localite = localite;
 		this.code = code;
 		this.nom = nom;
 	}
 
-	public Magasin(Localite localite, String code, int nom, Set<FabricationLots> fabricationLotses) {
+	public Magasin(Localite localite, String code, String nom, Set<FabricationLots> fabricationLotses) {
 		this.localite = localite;
 		this.code = code;
 		this.nom = nom;
@@ -75,11 +75,11 @@ public class Magasin implements java.io.Serializable {
 	}
 
 	@Column(name = "nom", nullable = false)
-	public int getNom() {
+	public String getNom() {
 		return this.nom;
 	}
 
-	public void setNom(int nom) {
+	public void setNom(String nom) {
 		this.nom = nom;
 	}
 

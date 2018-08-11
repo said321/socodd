@@ -50,7 +50,7 @@ public class TypeClientController {
 				typeClientService.update(typeClient);
 			} else {
 				typeClientService.save(typeClient);
-				typeClient.setCode("TC"+String.valueOf(typeClient.getId()));
+				typeClient.setCode("TCL"+String.valueOf(typeClient.getId()));
 				typeClientService.update(typeClient);
 			}
 		}

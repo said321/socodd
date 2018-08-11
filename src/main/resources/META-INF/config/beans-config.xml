@@ -3,9 +3,29 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+		<bean id="clientDao" class="com.socodd.dao.impl.ClientDaoImpl" />
+		<bean id="clientService" class="com.socodd.services.impl.ClientServiceImpl">
+			<property name="dao" ref="clientDao"></property>
+		</bean>
+
+		<bean id="employeeDao" class="com.socodd.dao.impl.EmployeeDaoImpl" />
+		<bean id="employeeService" class="com.socodd.services.impl.EmployeeServiceImpl">
+			<property name="dao" ref="employeeDao"></property>
+		</bean>
+
+		<bean id="equipeDao" class="com.socodd.dao.impl.EquipeDaoImpl" />
+		<bean id="equipeService" class="com.socodd.services.impl.EquipeServiceImpl">
+			<property name="dao" ref="equipeDao"></property>
+		</bean>
+
 		<bean id="routeDao" class="com.socodd.dao.impl.RouteDaoImpl" />
 		<bean id="routeService" class="com.socodd.services.impl.RouteServiceImpl">
 			<property name="dao" ref="routeDao"></property>
+		</bean>
+
+		<bean id="magasinDao" class="com.socodd.dao.impl.MagasinDaoImpl" />
+		<bean id="magasinService" class="com.socodd.services.impl.MagasinServiceImpl">
+			<property name="dao" ref="magasinDao"></property>
 		</bean>
 
 		<bean id="apparielTraitementDao" class="com.socodd.dao.impl.ApparielTraitementDaoImpl" />

@@ -52,7 +52,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"><fmt:message code="common.variete" /></h1>
+                        <h1 class="page-header"><fmt:message code="common.usine" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -60,7 +60,7 @@
                 <div class="row">
 					<div class="col-lg-12">
 						<ol class="breadcrumb">
-						  <li><a href="<c:url value="/variete/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
+						  <li><a href="<c:url value="/usine/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
 						  <li><a href="#"><i class="fa fa-download">&nbsp;<fmt:message code="common.exporter" /></i></a></li>
 						</ol>					
 					</div>                
@@ -70,35 +70,35 @@
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <fmt:message code="variete.liste" />
+                            <fmt:message code="usine.liste" />
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>code</th>
-                                        <th>nom</th>
-                                        <th>produit</th>
-                                        <th>abrege</th>
-                                        <th>ordre</th>
+                                        <th><fmt:message code="common.code" /></th>
+                                        <th><fmt:message code="common.nom" /></th>
+                                        <th>Localite</th>
+                                        <th>GPS X</th>
+                                        <th>GPS Y</th>
                                         <th><fmt:message code="common.actions" /></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<c:forEach items="${varietes }" var = "variete">
+                                	<c:forEach items="${usines }" var = "usine">
 	                                    <tr class="odd gradeX">
-	                                        <td >${variete.getCode() }</td>
-	                                        <td>${variete.getNom() }</td>
-	                                        <td>${variete.getProduit().getNom() }</td>
-	                                        <td>${variete.getAbrege() }</td>
-	                                        <td>${variete.getOrdre() }</td>
+	                                        <td >${usine.getCode() }</td>
+	                                        <td>${usine.getNom() }</td>
+	                                        <td>${usine.getLocalite().getNom() }</td>
+	                                        <td>${usine.getLongitude() }</td>
+	                                        <td>${usine.getLatitude() }</td>
 	                                        <td>
-	                                        	<c:url value="/variete/modifier/${variete.getId() }" var="urlModif" />
+	                                        	<c:url value="/usine/modifier/${usine.getId() }" var="urlModif" />
 	                                        	<a href="${urlModif }"><i class="fa fa-edit"></i></a>
 	                                        	&nbsp;|&nbsp;
-	                                        	<a href="javascript:void(0);" data-toggle="modal" data-target="#modalVariete${variete.getId() }"><i class="fa fa-trash-o"></i></a>
-	                                        	<div class="modal fade" id="modalVariete${variete.getId() }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	                                        	<a href="javascript:void(0);" data-toggle="modal" data-target="#modalUsine${usine.getId() }"><i class="fa fa-trash-o"></i></a>
+	                                        	<div class="modal fade" id="modalUsine${usine.getId() }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 													<div class="modal-dialog">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -106,11 +106,11 @@
 																<h4 class="modal-title" id="myModalLabel"><fmt:message code="common.confirm.suppression" /></h4>
 															</div>
 															<div class="modal-body">
-																<fmt:message code="variete.confirm.suppression.msg" />
+																<fmt:message code="usine.confirm.suppression.msg" />
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message code="common.annuler" /></button>
-																<c:url value="/variete/supprimer/${variete.getId() }" var="urlSuppression" />
+																<c:url value="/usine/supprimer/${usine.getId() }" var="urlSuppression" />
 																<a href="${urlSuppression }" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp;<fmt:message code="common.confirmer" /></a>
 															</div>
 														</div>
@@ -162,6 +162,10 @@
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true
+            //"paging" : false,
+            //"ordering" : false,
+            //"info"  : false,
+            //"searching" : false            
         });
     });
     </script>

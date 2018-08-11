@@ -23,8 +23,8 @@ public class Usine implements java.io.Serializable {
 
 	private Integer id;
 	private Localite localite;
-	private int code;
-	private int nom;
+	private String code;
+	private String nom;
 	private float longitude;
 	private float latitude;
 	private Set<ReceptionProduits> receptionProduitses = new HashSet<ReceptionProduits>(0);
@@ -33,7 +33,7 @@ public class Usine implements java.io.Serializable {
 	public Usine() {
 	}
 
-	public Usine(Localite localite, int code, int nom, float longitude, float latitude) {
+	public Usine(Localite localite, String code, String nom, float longitude, float latitude) {
 		this.localite = localite;
 		this.code = code;
 		this.nom = nom;
@@ -41,7 +41,7 @@ public class Usine implements java.io.Serializable {
 		this.latitude = latitude;
 	}
 
-	public Usine(Localite localite, int code, int nom, float longitude, float latitude,
+	public Usine(Localite localite, String code, String nom, float longitude, float latitude,
 			Set<ReceptionProduits> receptionProduitses, Set<FabricationLots> fabricationLotses) {
 		this.localite = localite;
 		this.code = code;
@@ -75,20 +75,20 @@ public class Usine implements java.io.Serializable {
 	}
 
 	@Column(name = "code", nullable = false)
-	public int getCode() {
+	public String getCode() {
 		return this.code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
 	@Column(name = "nom", nullable = false)
-	public int getNom() {
+	public String getNom() {
 		return this.nom;
 	}
 
-	public void setNom(int nom) {
+	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
