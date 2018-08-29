@@ -63,23 +63,33 @@
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
-	                        	<c:url value="/magasin/enregistrer" var ="urlEnregistrer" />
-								<f:form modelAttribute="magasin" action="${urlEnregistrer }" role = "form">
+	                        	<c:url value="/employee/enregistrer" var ="urlEnregistrer" />
+								<f:form modelAttribute="employee" action="${urlEnregistrer }" role = "form">
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
 									<div class="form-group">
                                         <label><fmt:message code="common.nom" /></label>
                                         <f:input path="nom" class="form-control" placeholder="Nom" />
                                     </div>
-                                    
+									<div class="form-group">
+                                        <label><fmt:message code="common.nom" /></label>
+                                        <f:input path="matricule" class="form-control" placeholder="Nom" />
+                                    </div>
+									<div class="form-group">
+                                        <label><fmt:message code="common.nom" /></label>
+                                        <f:input path="ordre" class="form-control" placeholder="Nom" />
+                                    </div>
+
+
+
                                     
                                     <c:if test="${ttt=='nouveau' }">
-										<div class="form-group">
-		                                    <label>Localité</label>
-		                                    <select name="loc_id" class = "form-control" id="listLocalites">
-		                                    	<option value = "-1">Select Localité</option>
-		                                    	<c:forEach items = "${localites }" var = "localite">
-		                                    		<option value = "${localite.getId() }" >${localite.getNom() }</option>
+										<div class="col-md-4 mb-3">
+		                                    <label><fmt:message code="common.nom" /></label>
+		                                    <select name="pid" class = "form-control" id="listProduits">
+		                                    	<option value = "-1"><fmt:message code="common.nom" /></option>
+		                                    	<c:forEach items = "${produits }" var = "produit">
+		                                    		<option value = "${produit.getId() }" >${produit.getNom() }</option>
 		                                    	</c:forEach>
 		                                    </select>
 		                                </div>
@@ -88,13 +98,13 @@
 	                                
 	                                
 	                               <c:if test="${ttt=='modifier' }"> 
-		                               <div class="form-group">
-		                                    <label>Localité</label>
-		                                    <select name="loc_id" class = "form-control" id="listLocalites">
-		                                    	<option value = "${magasin.getLocalite().getId() }">${magasin.getLocalite().getNom() }</option>
-		                                    	<c:forEach items = "${localites }" var = "localite">
-		                                    		<c:if test="${magasin.getLocalite().getId()!=localite.getId() }"> 
-		                                    			<option value = "${localite.getId() }">${localite.getNom() }</option>
+		                               <div class="col-md-4 mb-3">
+		                                    <label><fmt:message code="common.nom" /></label>
+		                                    <select name="pid" class = "form-control" id="listProduits">
+		                                    	<option value = "${employee.getProduit().getId() }">${employee.getProduit().getNom() }</option>
+		                                    	<c:forEach items = "${produits }" var = "produit">
+		                                    		<c:if test="${employee.getProduit().getId()!=produit.getId() }"> 
+		                                    			<option value = "${produit.getId() }">${produit.getNom() }</option>
 		                                    		</c:if>
 		                                    	</c:forEach>
 		                                    </select>
@@ -105,7 +115,7 @@
                                     
 	                                <div class="panel-footer">
                                     	<button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;<fmt:message code="common.enregister" /></i></button>
-                                    	<a href="<c:url value="/magasin/" />" class="btn btn-danger"> <i class="fa fa-arrow-left">&nbsp;<fmt:message code="common.annuler" /></i></a>
+                                    	<a href="<c:url value="/employee/" />" class="btn btn-danger"> <i class="fa fa-arrow-left">&nbsp;<fmt:message code="common.annuler" /></i></a>
                                     </div>
 								</f:form>	                        
 	                        </div>

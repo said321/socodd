@@ -1,9 +1,7 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +10,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,7 +38,7 @@ public class Producteur implements java.io.Serializable {
 	private Date dateEntree;
 	private int referencePiece;
 	private String photo;
-	private String sexe;	
+	private String sexe;
 
 	public Producteur() {
 	}
@@ -49,28 +46,6 @@ public class Producteur implements java.io.Serializable {
 	public Producteur(Nationalite nationalite, String code, String nom, String adresse, String telephone, String fax,
 			String email, Date dateNaissance, Date lieuNaissance, String pere, String mere, int nbEnfants, int nbFemme,
 			Date dateEntree, int referencePiece, String photo, String sexe) {
-		this.nationalite = nationalite;
-		this.code = code;
-		this.nom = nom;
-		this.adresse = adresse;
-		this.telephone = telephone;
-		this.fax = fax;
-		this.email = email;
-		this.dateNaissance = dateNaissance;
-		this.lieuNaissance = lieuNaissance;
-		this.pere = pere;
-		this.mere = mere;
-		this.nbEnfants = nbEnfants;
-		this.nbFemme = nbFemme;
-		this.dateEntree = dateEntree;
-		this.referencePiece = referencePiece;
-		this.photo = photo;
-		this.sexe = sexe;
-	}
-
-	public Producteur(Nationalite nationalite, String code, String nom, String adresse, String telephone, String fax,
-			String email, Date dateNaissance, Date lieuNaissance, String pere, String mere, int nbEnfants, int nbFemme,
-			Date dateEntree, int referencePiece, String photo, String sexe, Set<Route> routes) {
 		this.nationalite = nationalite;
 		this.code = code;
 		this.nom = nom;

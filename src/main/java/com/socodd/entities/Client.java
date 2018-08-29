@@ -1,7 +1,9 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,23 +30,24 @@ public class Client implements java.io.Serializable {
 	private String nom;
 	private String adresse;
 	private Date dateEntree;
+	private String email;
 	private String telephone;
 	private String fax;
-	private String email;
-	private int numCompteTiers;
-	private int numCc;
-	private int numRccm;
-	private int numAgrement;
+	private int banque;
 	private String numBic;
-	private String banque;
+	private int numAgrement;
+	private int numCc;
+	private int numCompteTiers;
+	private int numRccm;
 	private int numBanque;
+	private Set<ContratVente> contratVentes = new HashSet<ContratVente>(0);
 
 	public Client() {
 	}
 
 	public Client(TypeClient typeClient, String code, String nom, String adresse, Date dateEntree, String email,
-			String telephone, String fax, String banque, String numBic, int numAgrement, int numCc,
-			int numCompteTiers, int numRccm) {
+			String telephone, String fax, int banque, String numBic, int numAgrement, int numCc, int numCompteTiers,
+			int numRccm, int numBanque) {
 		this.typeClient = typeClient;
 		this.code = code;
 		this.nom = nom;
@@ -58,6 +62,28 @@ public class Client implements java.io.Serializable {
 		this.numCc = numCc;
 		this.numCompteTiers = numCompteTiers;
 		this.numRccm = numRccm;
+		this.numBanque = numBanque;
+	}
+
+	public Client(TypeClient typeClient, String code, String nom, String adresse, Date dateEntree, String email,
+			String telephone, String fax, int banque, String numBic, int numAgrement, int numCc, int numCompteTiers,
+			int numRccm, int numBanque, Set<ContratVente> contratVentes) {
+		this.typeClient = typeClient;
+		this.code = code;
+		this.nom = nom;
+		this.adresse = adresse;
+		this.dateEntree = dateEntree;
+		this.email = email;
+		this.telephone = telephone;
+		this.fax = fax;
+		this.banque = banque;
+		this.numBic = numBic;
+		this.numAgrement = numAgrement;
+		this.numCc = numCc;
+		this.numCompteTiers = numCompteTiers;
+		this.numRccm = numRccm;
+		this.numBanque = numBanque;
+		this.contratVentes = contratVentes;
 	}
 
 	@Id
@@ -147,11 +173,11 @@ public class Client implements java.io.Serializable {
 	}
 
 	@Column(name = "banque", nullable = false)
-	public String getBanque() {
+	public int getBanque() {
 		return this.banque;
 	}
 
-	public void setBanque(String banque) {
+	public void setBanque(int banque) {
 		this.banque = banque;
 	}
 
@@ -199,7 +225,7 @@ public class Client implements java.io.Serializable {
 	public void setNumRccm(int numRccm) {
 		this.numRccm = numRccm;
 	}
-	
+
 	@Column(name = "num_banque", nullable = false)
 	public int getNumBanque() {
 		return this.numBanque;
@@ -207,6 +233,15 @@ public class Client implements java.io.Serializable {
 
 	public void setNumBanque(int numBanque) {
 		this.numBanque = numBanque;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+	public Set<ContratVente> getContratVentes() {
+		return this.contratVentes;
+	}
+
+	public void setContratVentes(Set<ContratVente> contratVentes) {
+		this.contratVentes = contratVentes;
 	}
 
 }

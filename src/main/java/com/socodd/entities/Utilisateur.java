@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,32 +20,32 @@ public class Utilisateur implements java.io.Serializable {
 
 	private Integer id;
 	private ProfileUtilisateur profileUtilisateur;
-	private String cel;
 	private String code;
+	private String nom;
+	private String prenom;
+	private String telephone;
+	private String cel;
 	private String email;
 	private String fonction;
 	private String matricule;
 	private String motPasse;
-	private String nom;
-	private String prenom;
-	private String telephone;
 	private boolean active;
 
 	public Utilisateur() {
 	}
 
-	public Utilisateur(ProfileUtilisateur profileUtilisateur, String cel, String code, String email, String fonction,
-			String matricule, String motPasse, String nom, String prenom, String telephone, boolean active) {
+	public Utilisateur(ProfileUtilisateur profileUtilisateur, String code, String nom, String prenom, String telephone,
+			String cel, String email, String fonction, String matricule, String motPasse, boolean active) {
 		this.profileUtilisateur = profileUtilisateur;
-		this.cel = cel;
 		this.code = code;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.telephone = telephone;
+		this.cel = cel;
 		this.email = email;
 		this.fonction = fonction;
 		this.matricule = matricule;
 		this.motPasse = motPasse;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.telephone = telephone;
 		this.active = active;
 	}
 
@@ -71,15 +71,6 @@ public class Utilisateur implements java.io.Serializable {
 		this.profileUtilisateur = profileUtilisateur;
 	}
 
-	@Column(name = "cel", nullable = false, length = 10)
-	public String getCel() {
-		return this.cel;
-	}
-
-	public void setCel(String cel) {
-		this.cel = cel;
-	}
-
 	@Column(name = "code", nullable = false, length = 50)
 	public String getCode() {
 		return this.code;
@@ -87,6 +78,42 @@ public class Utilisateur implements java.io.Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	@Column(name = "nom", nullable = false, length = 50)
+	public String getNom() {
+		return this.nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	@Column(name = "prenom", nullable = false, length = 50)
+	public String getPrenom() {
+		return this.prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	@Column(name = "telephone", nullable = false, length = 10)
+	public String getTelephone() {
+		return this.telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	@Column(name = "cel", nullable = false, length = 10)
+	public String getCel() {
+		return this.cel;
+	}
+
+	public void setCel(String cel) {
+		this.cel = cel;
 	}
 
 	@Column(name = "email", nullable = false, length = 50)
@@ -123,33 +150,6 @@ public class Utilisateur implements java.io.Serializable {
 
 	public void setMotPasse(String motPasse) {
 		this.motPasse = motPasse;
-	}
-
-	@Column(name = "nom", nullable = false, length = 50)
-	public String getNom() {
-		return this.nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	@Column(name = "prenom", nullable = false, length = 50)
-	public String getPrenom() {
-		return this.prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	@Column(name = "telephone", nullable = false, length = 10)
-	public String getTelephone() {
-		return this.telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
 	}
 
 	@Column(name = "active", nullable = false)

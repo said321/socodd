@@ -105,9 +105,9 @@ import com.socodd.dao.IGenericDao;
 	@Override
 	public int findCountBy(String paramName, String paramValue) {
 	
-		Query query = em.createQuery("select t from " + type.getSimpleName() + " t where " + paramName + " = :x");
-		query.setParameter(paramName, paramValue);
-		return query.getResultList().size() > 0 ? ((Long) query.getSingleResult()).intValue() : 0;
+		Query query = em.createQuery("select t.code from " + type.getSimpleName() + " t where " + paramName + " = :x");
+		query.setParameter("x", paramValue);
+		return query.getResultList().size() > 0 ? query.getResultList().size() : 0;
 	}
 	
 }

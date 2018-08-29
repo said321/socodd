@@ -1,6 +1,8 @@
 package com.socodd.entities;
-// Generated 2 août 2018 19:58:35 by Hibernate Tools 3.6.0.Final
+// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,29 +27,42 @@ public class Produit implements java.io.Serializable {
 	private String code;
 	private String nom;
 	private String titreCompagne;
-	private int prefNumBE;
-	private int prochainAchatNum;
-	private int cpteAchat;
-	private float tauxAchatBic;
-	private int prefNumBS;
-	private int prochainVenteNum;
-	private int cpteVte;
-	private int cpteVenteBic;
-	private float prixAchatIndicatif;
-	private float prixVenteIndicatif;
-	private float fraisTransport;
-	private int mntDeboursTransit;
-	private float tauxDeboursTransit;
-	private int prefixeNumCdc;
-	private int poidsTherorique;
+	private Integer prefNumBE;
+	private Integer prochainAchatNum;
+	private Integer cpteAchat;
+	private Float tauxAchatBic;
+	private Integer prefNumBS;
+	private Integer prochainVenteNum;
+	private Integer cpteVte;
+	private Integer cpteVenteBic;
+	private Float prixAchatIndicatif;
+	private Float prixVenteIndicatif;
+	private Float fraisTransport;
+	private Integer mntDeboursTransit;
+	private Float tauxDeboursTransit;
+	private Integer prefixeNumCdc;
+	private Integer poidsTheorique;
+	private Set<ContratAchat> contratAchats = new HashSet<ContratAchat>(0);
+	private Set<Analyse> analyses = new HashSet<Analyse>(0);
+	private Set<ReceptionProduits> receptionProduitses = new HashSet<ReceptionProduits>(0);
+	private Set<ContratVente> contratVentes = new HashSet<ContratVente>(0);
+	private Set<Variete> varietes = new HashSet<Variete>(0);
+	private Set<Marque> marques = new HashSet<Marque>(0);
+	private Set<Qualite> qualites = new HashSet<Qualite>(0);
+	private Set<ItemsDebours> itemsDebourses = new HashSet<ItemsDebours>(0);
+	private Set<FabricationLots> fabricationLotses = new HashSet<FabricationLots>(0);
 
 	public Produit() {
 	}
 
-	public Produit(TypeSac typeSacBySacBrousse, TypeSac typeSacBySacExport, String code, String nom, String titreCompagne,
-			int prefNumBE, int prochainAchatNum, int cpteAchat, float tauxAchatBic, int prefNumBS, int prochainVenteNum,
-			int cpteVte, int cpteVenteBic, float prixAchatIndicatif, float prixVenteIndicatif, float fraisTransport,
-			int mntDeboursTransit, float tauxDeboursTransit, int prefixeNumCdc, int poidsTherorique) {
+	public Produit(TypeSac typeSacBySacBrousse, TypeSac typeSacBySacExport, String code, String nom,
+			String titreCompagne, Integer prefNumBE, Integer prochainAchatNum, Integer cpteAchat, Float tauxAchatBic,
+			Integer prefNumBS, Integer prochainVenteNum, Integer cpteVte, Integer cpteVenteBic,
+			Float prixAchatIndicatif, Float prixVenteIndicatif, Float fraisTransport, Integer mntDeboursTransit,
+			Float tauxDeboursTransit, Integer prefixeNumCdc, Integer poidsTheorique, Set<ContratAchat> contratAchats,
+			Set<Analyse> analyses, Set<ReceptionProduits> receptionProduitses, Set<ContratVente> contratVentes,
+			Set<Variete> varietes, Set<Marque> marques, Set<Qualite> qualites, Set<ItemsDebours> itemsDebourses,
+			Set<FabricationLots> fabricationLotses) {
 		this.typeSacBySacBrousse = typeSacBySacBrousse;
 		this.typeSacBySacExport = typeSacBySacExport;
 		this.code = code;
@@ -66,7 +82,16 @@ public class Produit implements java.io.Serializable {
 		this.mntDeboursTransit = mntDeboursTransit;
 		this.tauxDeboursTransit = tauxDeboursTransit;
 		this.prefixeNumCdc = prefixeNumCdc;
-		this.poidsTherorique = poidsTherorique;
+		this.poidsTheorique = poidsTheorique;
+		this.contratAchats = contratAchats;
+		this.analyses = analyses;
+		this.receptionProduitses = receptionProduitses;
+		this.contratVentes = contratVentes;
+		this.varietes = varietes;
+		this.marques = marques;
+		this.qualites = qualites;
+		this.itemsDebourses = itemsDebourses;
+		this.fabricationLotses = fabricationLotses;
 	}
 
 	@Id
@@ -82,7 +107,7 @@ public class Produit implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "sac_brousse", nullable = false)
+	@JoinColumn(name = "sac_brousse")
 	public TypeSac getTypeSacBySacBrousse() {
 		return this.typeSacBySacBrousse;
 	}
@@ -92,7 +117,7 @@ public class Produit implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "sac_export", nullable = false)
+	@JoinColumn(name = "sac_export")
 	public TypeSac getTypeSacBySacExport() {
 		return this.typeSacBySacExport;
 	}
@@ -101,7 +126,7 @@ public class Produit implements java.io.Serializable {
 		this.typeSacBySacExport = typeSacBySacExport;
 	}
 
-	@Column(name = "code", nullable = false, length = 5)
+	@Column(name = "code", length = 5)
 	public String getCode() {
 		return this.code;
 	}
@@ -110,7 +135,7 @@ public class Produit implements java.io.Serializable {
 		this.code = code;
 	}
 
-	@Column(name = "nom", nullable = false, length = 50)
+	@Column(name = "nom", length = 50)
 	public String getNom() {
 		return this.nom;
 	}
@@ -119,7 +144,7 @@ public class Produit implements java.io.Serializable {
 		this.nom = nom;
 	}
 
-	@Column(name = "titre_compagne", nullable = false)
+	@Column(name = "titre_compagne", length = 50)
 	public String getTitreCompagne() {
 		return this.titreCompagne;
 	}
@@ -128,139 +153,220 @@ public class Produit implements java.io.Serializable {
 		this.titreCompagne = titreCompagne;
 	}
 
-	@Column(name = "pref_num_b_e", nullable = false)
-	public int getPrefNumBE() {
+	@Column(name = "pref_num_b_e")
+	public Integer getPrefNumBE() {
 		return this.prefNumBE;
 	}
 
-	public void setPrefNumBE(int prefNumBE) {
+	public void setPrefNumBE(Integer prefNumBE) {
 		this.prefNumBE = prefNumBE;
 	}
 
-	@Column(name = "prochain_achat_num", nullable = false)
-	public int getProchainAchatNum() {
+	@Column(name = "prochain_achat_num")
+	public Integer getProchainAchatNum() {
 		return this.prochainAchatNum;
 	}
 
-	public void setProchainAchatNum(int prochainAchatNum) {
+	public void setProchainAchatNum(Integer prochainAchatNum) {
 		this.prochainAchatNum = prochainAchatNum;
 	}
 
-	@Column(name = "cpte_achat", nullable = false)
-	public int getCpteAchat() {
+	@Column(name = "cpte_achat")
+	public Integer getCpteAchat() {
 		return this.cpteAchat;
 	}
 
-	public void setCpteAchat(int cpteAchat) {
+	public void setCpteAchat(Integer cpteAchat) {
 		this.cpteAchat = cpteAchat;
 	}
 
-	@Column(name = "taux_achat_bic", nullable = false, precision = 12, scale = 0)
-	public float getTauxAchatBic() {
+	@Column(name = "taux_achat_bic", precision = 12, scale = 0)
+	public Float getTauxAchatBic() {
 		return this.tauxAchatBic;
 	}
 
-	public void setTauxAchatBic(float tauxAchatBic) {
+	public void setTauxAchatBic(Float tauxAchatBic) {
 		this.tauxAchatBic = tauxAchatBic;
 	}
 
-	@Column(name = "pref_num_b_s", nullable = false)
-	public int getPrefNumBS() {
+	@Column(name = "pref_num_b_s")
+	public Integer getPrefNumBS() {
 		return this.prefNumBS;
 	}
 
-	public void setPrefNumBS(int prefNumBS) {
+	public void setPrefNumBS(Integer prefNumBS) {
 		this.prefNumBS = prefNumBS;
 	}
 
-	@Column(name = "prochain_vente_num", nullable = false)
-	public int getProchainVenteNum() {
+	@Column(name = "prochain_vente_num")
+	public Integer getProchainVenteNum() {
 		return this.prochainVenteNum;
 	}
 
-	public void setProchainVenteNum(int prochainVenteNum) {
+	public void setProchainVenteNum(Integer prochainVenteNum) {
 		this.prochainVenteNum = prochainVenteNum;
 	}
 
-	@Column(name = "cpte_vte", nullable = false)
-	public int getCpteVte() {
+	@Column(name = "cpte_vte")
+	public Integer getCpteVte() {
 		return this.cpteVte;
 	}
 
-	public void setCpteVte(int cpteVte) {
+	public void setCpteVte(Integer cpteVte) {
 		this.cpteVte = cpteVte;
 	}
 
-	@Column(name = "cpte_vente_bic", nullable = false)
-	public int getCpteVenteBic() {
+	@Column(name = "cpte_vente_bic")
+	public Integer getCpteVenteBic() {
 		return this.cpteVenteBic;
 	}
 
-	public void setCpteVenteBic(int cpteVenteBic) {
+	public void setCpteVenteBic(Integer cpteVenteBic) {
 		this.cpteVenteBic = cpteVenteBic;
 	}
 
-	@Column(name = "prix_achat_indicatif", nullable = false, precision = 12, scale = 0)
-	public float getPrixAchatIndicatif() {
+	@Column(name = "prix_achat_indicatif", precision = 12, scale = 0)
+	public Float getPrixAchatIndicatif() {
 		return this.prixAchatIndicatif;
 	}
 
-	public void setPrixAchatIndicatif(float prixAchatIndicatif) {
+	public void setPrixAchatIndicatif(Float prixAchatIndicatif) {
 		this.prixAchatIndicatif = prixAchatIndicatif;
 	}
 
-	@Column(name = "prix_vente_indicatif", nullable = false, precision = 12, scale = 0)
-	public float getPrixVenteIndicatif() {
+	@Column(name = "prix_vente_indicatif", precision = 12, scale = 0)
+	public Float getPrixVenteIndicatif() {
 		return this.prixVenteIndicatif;
 	}
 
-	public void setPrixVenteIndicatif(float prixVenteIndicatif) {
+	public void setPrixVenteIndicatif(Float prixVenteIndicatif) {
 		this.prixVenteIndicatif = prixVenteIndicatif;
 	}
 
-	@Column(name = "frais_transport", nullable = false, precision = 12, scale = 0)
-	public float getFraisTransport() {
+	@Column(name = "frais_transport", precision = 12, scale = 0)
+	public Float getFraisTransport() {
 		return this.fraisTransport;
 	}
 
-	public void setFraisTransport(float fraisTransport) {
+	public void setFraisTransport(Float fraisTransport) {
 		this.fraisTransport = fraisTransport;
 	}
 
-	@Column(name = "mnt_debours_transit", nullable = false)
-	public int getMntDeboursTransit() {
+	@Column(name = "mnt_debours_transit")
+	public Integer getMntDeboursTransit() {
 		return this.mntDeboursTransit;
 	}
 
-	public void setMntDeboursTransit(int mntDeboursTransit) {
+	public void setMntDeboursTransit(Integer mntDeboursTransit) {
 		this.mntDeboursTransit = mntDeboursTransit;
 	}
 
-	@Column(name = "taux_debours_transit", nullable = false, precision = 12, scale = 0)
-	public float getTauxDeboursTransit() {
+	@Column(name = "taux_debours_transit", precision = 12, scale = 0)
+	public Float getTauxDeboursTransit() {
 		return this.tauxDeboursTransit;
 	}
 
-	public void setTauxDeboursTransit(float tauxDeboursTransit) {
+	public void setTauxDeboursTransit(Float tauxDeboursTransit) {
 		this.tauxDeboursTransit = tauxDeboursTransit;
 	}
 
-	@Column(name = "prefixe_num_cdc", nullable = false)
-	public int getPrefixeNumCdc() {
+	@Column(name = "prefixe_num_cdc")
+	public Integer getPrefixeNumCdc() {
 		return this.prefixeNumCdc;
 	}
 
-	public void setPrefixeNumCdc(int prefixeNumCdc) {
+	public void setPrefixeNumCdc(Integer prefixeNumCdc) {
 		this.prefixeNumCdc = prefixeNumCdc;
 	}
 
-	@Column(name = "poids_therorique", nullable = false)
-	public int getPoidsTherorique() {
-		return this.poidsTherorique;
+	@Column(name = "poids_theorique")
+	public Integer getPoidsTheorique() {
+		return this.poidsTheorique;
 	}
 
-	public void setPoidsTherorique(int poidsTherorique) {
-		this.poidsTherorique = poidsTherorique;
+	public void setPoidsTheorique(Integer poidsTheorique) {
+		this.poidsTheorique = poidsTheorique;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
+	public Set<ContratAchat> getContratAchats() {
+		return this.contratAchats;
+	}
+
+	public void setContratAchats(Set<ContratAchat> contratAchats) {
+		this.contratAchats = contratAchats;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
+	public Set<Analyse> getAnalyses() {
+		return this.analyses;
+	}
+
+	public void setAnalyses(Set<Analyse> analyses) {
+		this.analyses = analyses;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
+	public Set<ReceptionProduits> getReceptionProduitses() {
+		return this.receptionProduitses;
+	}
+
+	public void setReceptionProduitses(Set<ReceptionProduits> receptionProduitses) {
+		this.receptionProduitses = receptionProduitses;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
+	public Set<ContratVente> getContratVentes() {
+		return this.contratVentes;
+	}
+
+	public void setContratVentes(Set<ContratVente> contratVentes) {
+		this.contratVentes = contratVentes;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
+	public Set<Variete> getVarietes() {
+		return this.varietes;
+	}
+
+	public void setVarietes(Set<Variete> varietes) {
+		this.varietes = varietes;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
+	public Set<Marque> getMarques() {
+		return this.marques;
+	}
+
+	public void setMarques(Set<Marque> marques) {
+		this.marques = marques;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
+	public Set<Qualite> getQualites() {
+		return this.qualites;
+	}
+
+	public void setQualites(Set<Qualite> qualites) {
+		this.qualites = qualites;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
+	public Set<ItemsDebours> getItemsDebourses() {
+		return this.itemsDebourses;
+	}
+
+	public void setItemsDebourses(Set<ItemsDebours> itemsDebourses) {
+		this.itemsDebourses = itemsDebourses;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
+	public Set<FabricationLots> getFabricationLotses() {
+		return this.fabricationLotses;
+	}
+
+	public void setFabricationLotses(Set<FabricationLots> fabricationLotses) {
+		this.fabricationLotses = fabricationLotses;
 	}
 
 }

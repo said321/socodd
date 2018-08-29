@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -42,13 +42,14 @@ public class Prefecture implements java.io.Serializable {
 	}
 
 	public Prefecture(Region region, String code, String nom, float longitude, float latitude,
-			Set<SousPrefecture> sousPrefectures) {
+			Set<SousPrefecture> sousPrefectures, Set<Route> routes) {
 		this.region = region;
 		this.code = code;
 		this.nom = nom;
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.sousPrefectures = sousPrefectures;
+		this.routes = routes;
 	}
 
 	@Id
@@ -117,13 +118,13 @@ public class Prefecture implements java.io.Serializable {
 	public void setSousPrefectures(Set<SousPrefecture> sousPrefectures) {
 		this.sousPrefectures = sousPrefectures;
 	}
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "prefecture")
-	public Set<Route> getRoute() {
+	public Set<Route> getRoutes() {
 		return this.routes;
 	}
 
-	public void setRoute(Set<Route> routes) {
+	public void setRoutes(Set<Route> routes) {
 		this.routes = routes;
 	}
 

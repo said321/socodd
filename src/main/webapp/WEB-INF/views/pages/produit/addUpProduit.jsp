@@ -142,7 +142,7 @@
 
 									<div class="form-group">
                                         <label>poids</label>
-                                        <f:input path="poidsTherorique" class="form-control" placeholder="Nom" />
+                                        <f:input path="poidsTheorique" class="form-control" placeholder="Nom" />
                                     </div>
                                                               
 	                                <div class="panel-footer">

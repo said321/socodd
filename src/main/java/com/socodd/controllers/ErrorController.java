@@ -15,7 +15,7 @@ public class ErrorController {
          
         ModelAndView errorPage = new ModelAndView("error/errorPage");
         String errorMsg = "";
-        int httpErrorCode = 400; //getErrorCode(httpRequest);
+        int httpErrorCode = getErrorCode(httpRequest);
  
         switch (httpErrorCode) {
             case 400: {

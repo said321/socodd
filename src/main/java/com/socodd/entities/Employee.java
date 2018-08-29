@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -28,7 +28,8 @@ public class Employee implements java.io.Serializable {
 	private Departement departement;
 	private Equipe equipe;
 	private Nationalite nationalite;
-	private int code;
+	private Banque banque;
+	private String code;
 	private String matricule;
 	private String nom;
 	private Date dateNaissance;
@@ -38,19 +39,18 @@ public class Employee implements java.io.Serializable {
 	private String telephone;
 	private String email;
 	private String fonctionOccupee;
-	private String banque;
 	private int numCompte;
 	private Set<Equipe> equipes = new HashSet<Equipe>(0);
 
 	public Employee() {
 	}
 
-	public Employee(Departement departement, Equipe equipe, Nationalite nationalite, int code, String matricule,
+	public Employee(Departement departement, Nationalite nationalite, Banque banque, String code, String matricule,
 			String nom, Date dateNaissance, String adresse, Date dateEntree, int numCompteTier, String telephone,
-			String email, String fonctionOccupee, String banque, int numCompte) {
+			String email, String fonctionOccupee, int numCompte) {
 		this.departement = departement;
-		this.equipe = equipe;
 		this.nationalite = nationalite;
+		this.banque = banque;
 		this.code = code;
 		this.matricule = matricule;
 		this.nom = nom;
@@ -61,16 +61,16 @@ public class Employee implements java.io.Serializable {
 		this.telephone = telephone;
 		this.email = email;
 		this.fonctionOccupee = fonctionOccupee;
-		this.banque = banque;
 		this.numCompte = numCompte;
 	}
 
-	public Employee(Departement departement, Equipe equipe, Nationalite nationalite, int code, String matricule,
-			String nom, Date dateNaissance, String adresse, Date dateEntree, int numCompteTier, String telephone,
-			String email, String fonctionOccupee, String banque, int numCompte, Set<Equipe> equipes) {
+	public Employee(Departement departement, Equipe equipe, Nationalite nationalite, Banque banque, String code,
+			String matricule, String nom, Date dateNaissance, String adresse, Date dateEntree, int numCompteTier,
+			String telephone, String email, String fonctionOccupee, int numCompte, Set<Equipe> equipes) {
 		this.departement = departement;
 		this.equipe = equipe;
 		this.nationalite = nationalite;
+		this.banque = banque;
 		this.code = code;
 		this.matricule = matricule;
 		this.nom = nom;
@@ -81,7 +81,6 @@ public class Employee implements java.io.Serializable {
 		this.telephone = telephone;
 		this.email = email;
 		this.fonctionOccupee = fonctionOccupee;
-		this.banque = banque;
 		this.numCompte = numCompte;
 		this.equipes = equipes;
 	}
@@ -109,7 +108,7 @@ public class Employee implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "equipe", nullable = false)
+	@JoinColumn(name = "equipe")
 	public Equipe getEquipe() {
 		return this.equipe;
 	}
@@ -128,12 +127,22 @@ public class Employee implements java.io.Serializable {
 		this.nationalite = nationalite;
 	}
 
-	@Column(name = "code", nullable = false)
-	public int getCode() {
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "banque", nullable = false)
+	public Banque getBanque() {
+		return this.banque;
+	}
+
+	public void setBanque(Banque banque) {
+		this.banque = banque;
+	}
+
+	@Column(name = "code", nullable = false, length = 7)
+	public String getCode() {
 		return this.code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
@@ -218,15 +227,6 @@ public class Employee implements java.io.Serializable {
 
 	public void setFonctionOccupee(String fonctionOccupee) {
 		this.fonctionOccupee = fonctionOccupee;
-	}
-
-	@Column(name = "banque", nullable = false, length = 50)
-	public String getBanque() {
-		return this.banque;
-	}
-
-	public void setBanque(String banque) {
-		this.banque = banque;
 	}
 
 	@Column(name = "num_compte", nullable = false)

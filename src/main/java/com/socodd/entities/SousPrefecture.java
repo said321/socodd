@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -74,7 +74,7 @@ public class SousPrefecture implements java.io.Serializable {
 		this.prefecture = prefecture;
 	}
 
-	@Column(name = "code", nullable = false, length = 5)
+	@Column(name = "code", nullable = false, length = 6)
 	public String getCode() {
 		return this.code;
 	}

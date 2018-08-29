@@ -52,7 +52,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"><fmt:message code="common.magasin" /></h1>
+                        <h1 class="page-header"><fmt:message code="common.contratVente" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -60,7 +60,7 @@
                 <div class="row">
 					<div class="col-lg-12">
 						<ol class="breadcrumb">
-						  <li><a href="<c:url value="/magasin/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
+						  <li><a href="<c:url value="/contratVente/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
 						  <li><a href="#"><i class="fa fa-download">&nbsp;<fmt:message code="common.exporter" /></i></a></li>
 						</ol>					
 					</div>                
@@ -70,31 +70,35 @@
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <fmt:message code="magasin.liste" />
+                            <fmt:message code="contratVente.liste" />
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>code</th>
-                                        <th>nom</th>
-                                        <th>localite</th>
+                                        <th><fmt:message code="common.code" /></th>
+                                        <th>Référence</th>
+                                        <th>Date de vente</th>
+                                        <th>Client</th>
+                                        <th>Produit</th>
                                         <th><fmt:message code="common.actions" /></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<c:forEach items="${magasins }" var = "magasin">
+                                	<c:forEach items="${contratVentes }" var = "contratVente">
 	                                    <tr class="odd gradeX">
-	                                        <td >${magasin.getCode() }</td>
-	                                        <td>${magasin.getNom() }</td>
-	                                        <td>${magasin.getLocalite().getNom() }</td>
+	                                        <td>${contratVente.getCode() }</td>
+	                                        <td>${contratVente.getReference() }</td>
+	                                        <td>${contratVente.getDateVente() }</td>
+	                                        <td>${contratVente.getClient().getNom() }</td>
+	                                        <td>${contratVente.getProduit().getNom() }</td>
 	                                        <td>
-	                                        	<c:url value="/magasin/modifier/${magasin.getId() }" var="urlModif" />
+	                                        	<c:url value="/contratVente/modifier/${contratVente.getId() }" var="urlModif" />
 	                                        	<a href="${urlModif }"><i class="fa fa-edit"></i></a>
 	                                        	&nbsp;|&nbsp;
-	                                        	<a href="javascript:void(0);" data-toggle="modal" data-target="#modalMagasin${magasin.getId() }"><i class="fa fa-trash-o"></i></a>
-	                                        	<div class="modal fade" id="modalMagasin${magasin.getId() }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	                                        	<a href="javascript:void(0);" data-toggle="modal" data-target="#modalContratVente${contratVente.getId() }"><i class="fa fa-trash-o"></i></a>
+	                                        	<div class="modal fade" id="modalContratVente${contratVente.getId() }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 													<div class="modal-dialog">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -102,11 +106,11 @@
 																<h4 class="modal-title" id="myModalLabel"><fmt:message code="common.confirm.suppression" /></h4>
 															</div>
 															<div class="modal-body">
-																<fmt:message code="magasin.confirm.suppression.msg" />
+																<fmt:message code="contratVente.confirm.suppression.msg" />
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message code="common.annuler" /></button>
-																<c:url value="/magasin/supprimer/${magasin.getId() }" var="urlSuppression" />
+																<c:url value="/contratVente/supprimer/${contratVente.getId() }" var="urlSuppression" />
 																<a href="${urlSuppression }" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp;<fmt:message code="common.confirmer" /></a>
 															</div>
 														</div>
@@ -158,6 +162,10 @@
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true
+            //"paging" : false,
+            //"ordering" : false,
+            //"info"  : false,
+            //"searching" : false            
         });
     });
     </script>

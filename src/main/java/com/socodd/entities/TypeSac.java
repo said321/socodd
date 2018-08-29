@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 2 août 2018 19:58:35 by Hibernate Tools 3.6.0.Final
+// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -29,6 +29,7 @@ public class TypeSac implements java.io.Serializable {
 	private int stockDernierInventaire;
 	private Date date;
 	private int stockDisponible;
+	private Set<ReceptionProduits> receptionProduitses = new HashSet<ReceptionProduits>(0);
 	private Set<Produit> produitsForSacBrousse = new HashSet<Produit>(0);
 	private Set<Produit> produitsForSacExport = new HashSet<Produit>(0);
 
@@ -45,13 +46,15 @@ public class TypeSac implements java.io.Serializable {
 	}
 
 	public TypeSac(String code, String nom, float tare, int stockDernierInventaire, Date date, int stockDisponible,
-			Set<Produit> produitsForSacBrousse, Set<Produit> produitsForSacExport) {
+			Set<ReceptionProduits> receptionProduitses, Set<Produit> produitsForSacBrousse,
+			Set<Produit> produitsForSacExport) {
 		this.code = code;
 		this.nom = nom;
 		this.tare = tare;
 		this.stockDernierInventaire = stockDernierInventaire;
 		this.date = date;
 		this.stockDisponible = stockDisponible;
+		this.receptionProduitses = receptionProduitses;
 		this.produitsForSacBrousse = produitsForSacBrousse;
 		this.produitsForSacExport = produitsForSacExport;
 	}
@@ -121,6 +124,15 @@ public class TypeSac implements java.io.Serializable {
 
 	public void setStockDisponible(int stockDisponible) {
 		this.stockDisponible = stockDisponible;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeSac")
+	public Set<ReceptionProduits> getReceptionProduitses() {
+		return this.receptionProduitses;
+	}
+
+	public void setReceptionProduitses(Set<ReceptionProduits> receptionProduitses) {
+		this.receptionProduitses = receptionProduitses;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeSacBySacBrousse")

@@ -77,6 +77,7 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
+                                    	<th>DTS</th>
                                         <th><fmt:message code="common.code" /></th>
                                         <th><fmt:message code="common.nom" /></th>
                                         <th>Titre Compagne</th>
@@ -91,6 +92,7 @@
                                 <tbody>
                                 	<c:forEach items="${produits }" var = "produit">
 	                                    <tr class="odd gradeX">
+	                                    	<td id="details-control"></td>
 	                                        <td>${produit.getCode() }</td>
 	                                        <td>${produit.getNom() }</td>
 	                                        <td>${produit.getTitreCompagne() }</td>
@@ -98,7 +100,7 @@
 	                                        <td>${produit.getTypeSacBySacExport().getNom() }</td>
 	                                        <td>${produit.getPrixAchatIndicatif() }</td>
 	                                        <td>${produit.getPrixVenteIndicatif() }</td>
-	                                        <td>${produit.getPoidsTherorique() }</td>
+	                                        <td>${produit.getPoidsTheorique() }</td>
 	                                        <td>
 	                                        	<c:url value="/produit/modifier/${produit.getId() }" var="urlModif" />
 	                                        	<a href="${urlModif }"><i class="fa fa-edit"></i></a>
@@ -165,7 +167,29 @@
     
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
+    
+    function format (d) {
+        // `d` is the original data object for the row
+        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+            '<tr>'+
+                '<td>Full name:</td>'+
+                '<td>'+ d[1] +'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>Extension number:</td>'+
+                '<td>'+ d[2] +'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<c:forEach items="${produits }" var = "produit"><c:if test="1==1">'+
+	                '<td>${produit.getPoidsTheorique()}</td>'+
+	                '<td>And any further details here (images etc)...</td>'+
+                '</c:if></c:forEach>'+
+            '</tr>'+
+        '</table>';
+    }
+    
     $(document).ready(function() {
+    	
         $('#dataTables-example').DataTable({
             responsive: true
             //"paging" : false,
@@ -175,7 +199,38 @@
             //"scrollX": true
             
         });
+        
+        // Add event listener for opening and closing details
+        $('#dataTables-example tbody').on('click', '#details-control', function () {
+        	var tr = $(this).closest('tr');
+        	var table = $('#dataTables-example').DataTable()
+            var row = table.row(tr);
+     
+            if ( row.child.isShown() ) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                row.child( format(row.data()) ).show();
+                tr.addClass('shown');
+            } 
+            
+            
+        } );
+        
     });
+    
+    
+    function toTab(x, tab){
+    	for (var i = 0; i < tab.length; i++) {
+			if(x == tab[i][0])
+				return tab[i];
+		}
+    }
+    
+    
     </script>
 
 </body>

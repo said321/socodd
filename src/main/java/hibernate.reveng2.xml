@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="db_socodd" match-name="analyse"/>
+  <table-filter match-catalog="db_socodd" match-name="appariel_traitement"/>
+  <table-filter match-catalog="db_socodd" match-name="assurance"/>
+  <table-filter match-catalog="db_socodd" match-name="chargeur"/>
+  <table-filter match-catalog="db_socodd" match-name="client"/>
+  <table-filter match-catalog="db_socodd" match-name="compagnie_maritime"/>
+  <table-filter match-catalog="db_socodd" match-name="consommables_pieces"/>
+  <table-filter match-catalog="db_socodd" match-name="contrat_achat"/>
+  <table-filter match-catalog="db_socodd" match-name="contrat_vente"/>
+  <table-filter match-catalog="db_socodd" match-name="departement"/>
+  <table-filter match-catalog="db_socodd" match-name="devise"/>
+  <table-filter match-catalog="db_socodd" match-name="documents_joindre"/>
+  <table-filter match-catalog="db_socodd" match-name="employee"/>
+  <table-filter match-catalog="db_socodd" match-name="equipe"/>
+  <table-filter match-catalog="db_socodd" match-name="fabrication_lots"/>
+  <table-filter match-catalog="db_socodd" match-name="famille_consommables"/>
+  <table-filter match-catalog="db_socodd" match-name="fournisseur"/>
+  <table-filter match-catalog="db_socodd" match-name="items_debours"/>
+  <table-filter match-catalog="db_socodd" match-name="localite"/>
+  <table-filter match-catalog="db_socodd" match-name="magasin"/>
+  <table-filter match-catalog="db_socodd" match-name="marque"/>
+  <table-filter match-catalog="db_socodd" match-name="nationalite"/>
+  <table-filter match-catalog="db_socodd" match-name="parc_auto"/>
+  <table-filter match-catalog="db_socodd" match-name="periode_embarquement"/>
+  <table-filter match-catalog="db_socodd" match-name="port"/>
+  <table-filter match-catalog="db_socodd" match-name="prefecture"/>
+  <table-filter match-catalog="db_socodd" match-name="producteur"/>
+  <table-filter match-catalog="db_socodd" match-name="produit"/>
+  <table-filter match-catalog="db_socodd" match-name="profile_utilisateur"/>
+  <table-filter match-catalog="db_socodd" match-name="qualite"/>
+  <table-filter match-catalog="db_socodd" match-name="reception_produits"/>
+  <table-filter match-catalog="db_socodd" match-name="region"/>
+  <table-filter match-catalog="db_socodd" match-name="route"/>
+  <table-filter match-catalog="db_socodd" match-name="societe"/>
+  <table-filter match-catalog="db_socodd" match-name="sous_prefecture"/>
+  <table-filter match-catalog="db_socodd" match-name="superviseur"/>
+  <table-filter match-catalog="db_socodd" match-name="transitaire"/>
+  <table-filter match-catalog="db_socodd" match-name="transporteur"/>
+  <table-filter match-catalog="db_socodd" match-name="type_calcule"/>
+  <table-filter match-catalog="db_socodd" match-name="type_client"/>
+  <table-filter match-catalog="db_socodd" match-name="type_contrat"/>
+  <table-filter match-catalog="db_socodd" match-name="type_format"/>
+  <table-filter match-catalog="db_socodd" match-name="type_fournisseur"/>
+  <table-filter match-catalog="db_socodd" match-name="type_mvmt_parc_auto"/>
+  <table-filter match-catalog="db_socodd" match-name="type_mvmt_stock"/>
+  <table-filter match-catalog="db_socodd" match-name="type_parc_auto"/>
+  <table-filter match-catalog="db_socodd" match-name="type_sac"/>
+  <table-filter match-catalog="db_socodd" match-name="unite_mesure"/>
+  <table-filter match-catalog="db_socodd" match-name="usine"/>
+  <table-filter match-catalog="db_socodd" match-name="utilisateur"/>
+  <table-filter match-catalog="db_socodd" match-name="variete"/>
+  <table-filter match-catalog="db_socodd" match-name="zone"/>
+</hibernate-reverse-engineering>

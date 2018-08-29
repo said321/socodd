@@ -24,8 +24,8 @@ public class EquipeController {
 	private IEquipeService equipeService;
 	
 	@Autowired
-	private IEmployeeService localiteService;
-	
+	private IEmployeeService employeeService;
+	 
 	@RequestMapping(value = {"", "/"})
 	public String all(Model model) {
 		
@@ -37,7 +37,7 @@ public class EquipeController {
 		
 		for(int i=0 ; i<equipes.size(); i++) {
 			
-			equipes.get(i).setEmployee(localiteService.getById(equipes.get(i).getEmployee().getId()));
+			equipes.get(i).setEmployee(employeeService.getById(equipes.get(i).getEmployee().getId()));
 			
 		}
 		
@@ -52,7 +52,7 @@ public class EquipeController {
 		
 		Equipe equipe = new Equipe();
 		
-		model.addAttribute("localites", localiteService.selectAll());
+		model.addAttribute("employees", employeeService.selectAll());
 		model.addAttribute("equipe", equipe);
 		
 		model.addAttribute("ttt", "nouveau");
@@ -71,7 +71,7 @@ public class EquipeController {
 		
 		if(equipe != null) {
 			
-			equipe.setEmployee(localiteService.getById(emp_id));
+			equipe.setEmployee(employeeService.getById(emp_id));
 			
 			if (equipe.getId() != null) {
 				equipeService.update(equipe);
@@ -94,11 +94,11 @@ public class EquipeController {
 			if (equipe != null) {
 			
 				
-				model.addAttribute("localites", localiteService.selectAll());
+				model.addAttribute("employees", employeeService.selectAll());
 				
 				
 				
-				equipe.setEmployee(localiteService.getById(equipe.getEmployee().getId()));
+				equipe.setEmployee(employeeService.getById(equipe.getEmployee().getId()));
 				
 				
 				model.addAttribute("ttt", "modifier");

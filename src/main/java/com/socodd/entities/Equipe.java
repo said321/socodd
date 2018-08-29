@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,8 +30,7 @@ public class Equipe implements java.io.Serializable {
 	public Equipe() {
 	}
 
-	public Equipe(Employee employee, String code, String nom) {
-		this.employee = employee;
+	public Equipe(String code, String nom) {
 		this.code = code;
 		this.nom = nom;
 	}
@@ -56,7 +55,7 @@ public class Equipe implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "superviseur", nullable = false)
+	@JoinColumn(name = "employee")
 	public Employee getEmployee() {
 		return this.employee;
 	}

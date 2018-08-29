@@ -1,7 +1,9 @@
 package com.socodd.entities;
-// Generated 10 août 2018 09:27:06 by Hibernate Tools 3.6.0.Final
+// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,6 +26,7 @@ public class Fournisseur implements java.io.Serializable {
 
 	private Integer id;
 	private TypeFournisseur typeFournisseur;
+	private Banque banque;
 	private String code;
 	private String nom;
 	private String adresse;
@@ -35,16 +39,17 @@ public class Fournisseur implements java.io.Serializable {
 	private int numRccm;
 	private int numAgrement;
 	private String numBic;
-	private String banque;
 	private int numBanque;
+	private Set<ContratAchat> contratAchats = new HashSet<ContratAchat>(0);
 
 	public Fournisseur() {
 	}
 
-	public Fournisseur(TypeFournisseur typeFournisseur, String code, String nom, String adresse, Date dateEntree,
-			String telephone, String fax, String email, int numCompteTiers, int numCc, int numRccm, int numAgrement,
-			String numBic, String banque, int numBanque) {
+	public Fournisseur(TypeFournisseur typeFournisseur, Banque banque, String code, String nom, String adresse,
+			Date dateEntree, String telephone, String fax, String email, int numCompteTiers, int numCc, int numRccm,
+			int numAgrement, String numBic, int numBanque) {
 		this.typeFournisseur = typeFournisseur;
+		this.banque = banque;
 		this.code = code;
 		this.nom = nom;
 		this.adresse = adresse;
@@ -57,8 +62,28 @@ public class Fournisseur implements java.io.Serializable {
 		this.numRccm = numRccm;
 		this.numAgrement = numAgrement;
 		this.numBic = numBic;
-		this.banque = banque;
 		this.numBanque = numBanque;
+	}
+
+	public Fournisseur(TypeFournisseur typeFournisseur, Banque banque, String code, String nom, String adresse,
+			Date dateEntree, String telephone, String fax, String email, int numCompteTiers, int numCc, int numRccm,
+			int numAgrement, String numBic, int numBanque, Set<ContratAchat> contratAchats) {
+		this.typeFournisseur = typeFournisseur;
+		this.banque = banque;
+		this.code = code;
+		this.nom = nom;
+		this.adresse = adresse;
+		this.dateEntree = dateEntree;
+		this.telephone = telephone;
+		this.fax = fax;
+		this.email = email;
+		this.numCompteTiers = numCompteTiers;
+		this.numCc = numCc;
+		this.numRccm = numRccm;
+		this.numAgrement = numAgrement;
+		this.numBic = numBic;
+		this.numBanque = numBanque;
+		this.contratAchats = contratAchats;
 	}
 
 	@Id
@@ -81,6 +106,16 @@ public class Fournisseur implements java.io.Serializable {
 
 	public void setTypeFournisseur(TypeFournisseur typeFournisseur) {
 		this.typeFournisseur = typeFournisseur;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "banque", nullable = false)
+	public Banque getBanque() {
+		return this.banque;
+	}
+
+	public void setBanque(Banque banque) {
+		this.banque = banque;
 	}
 
 	@Column(name = "code", nullable = false, length = 5)
@@ -183,22 +218,13 @@ public class Fournisseur implements java.io.Serializable {
 		this.numAgrement = numAgrement;
 	}
 
-	@Column(name = "num_bic", nullable = false)
+	@Column(name = "num_bic", nullable = false, length = 50)
 	public String getNumBic() {
 		return this.numBic;
 	}
 
 	public void setNumBic(String numBic) {
 		this.numBic = numBic;
-	}
-
-	@Column(name = "banque", nullable = false, length = 50)
-	public String getBanque() {
-		return this.banque;
-	}
-
-	public void setBanque(String banque) {
-		this.banque = banque;
 	}
 
 	@Column(name = "num_banque", nullable = false)
@@ -208,6 +234,15 @@ public class Fournisseur implements java.io.Serializable {
 
 	public void setNumBanque(int numBanque) {
 		this.numBanque = numBanque;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "fournisseur")
+	public Set<ContratAchat> getContratAchats() {
+		return this.contratAchats;
+	}
+
+	public void setContratAchats(Set<ContratAchat> contratAchats) {
+		this.contratAchats = contratAchats;
 	}
 
 }

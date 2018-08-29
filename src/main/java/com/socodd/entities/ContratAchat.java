@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 30 juil. 2018 14:57:08 by Hibernate Tools 3.6.0.Final
+// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -34,36 +34,18 @@ public class ContratAchat implements java.io.Serializable {
 	private String decision;
 	private Date duDate;
 	private Date auDate;
-	private float quantite;
-	private float prixUIndicatif;
-	private float quantiteLivree;
-	private float resteLivrer;
+	private Float quantite;
+	private Float prixUIndicatif;
+	private Float quantiteLivree;
+	private Float resteLivrer;
 	private Set<ReceptionProduits> receptionProduitses = new HashSet<ReceptionProduits>(0);
 
 	public ContratAchat() {
 	}
 
 	public ContratAchat(Fournisseur fournisseur, UniteMesure uniteMesure, Produit produit, String code,
-			String reference, Date dateAchat, String decision, Date duDate, Date auDate, float quantite,
-			float prixUIndicatif, float quantiteLivree, float resteLivrer) {
-		this.fournisseur = fournisseur;
-		this.uniteMesure = uniteMesure;
-		this.produit = produit;
-		this.code = code;
-		this.reference = reference;
-		this.dateAchat = dateAchat;
-		this.decision = decision;
-		this.duDate = duDate;
-		this.auDate = auDate;
-		this.quantite = quantite;
-		this.prixUIndicatif = prixUIndicatif;
-		this.quantiteLivree = quantiteLivree;
-		this.resteLivrer = resteLivrer;
-	}
-
-	public ContratAchat(Fournisseur fournisseur, UniteMesure uniteMesure, Produit produit, String code,
-			String reference, Date dateAchat, String decision, Date duDate, Date auDate, float quantite,
-			float prixUIndicatif, float quantiteLivree, float resteLivrer, Set<ReceptionProduits> receptionProduitses) {
+			String reference, Date dateAchat, String decision, Date duDate, Date auDate, Float quantite,
+			Float prixUIndicatif, Float quantiteLivree, Float resteLivrer, Set<ReceptionProduits> receptionProduitses) {
 		this.fournisseur = fournisseur;
 		this.uniteMesure = uniteMesure;
 		this.produit = produit;
@@ -93,7 +75,7 @@ public class ContratAchat implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fournisseur", nullable = false)
+	@JoinColumn(name = "fournisseur")
 	public Fournisseur getFournisseur() {
 		return this.fournisseur;
 	}
@@ -103,7 +85,7 @@ public class ContratAchat implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "unite_mesure", nullable = false)
+	@JoinColumn(name = "unite_mesure")
 	public UniteMesure getUniteMesure() {
 		return this.uniteMesure;
 	}
@@ -113,7 +95,7 @@ public class ContratAchat implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "produit", nullable = false)
+	@JoinColumn(name = "produit")
 	public Produit getProduit() {
 		return this.produit;
 	}
@@ -122,7 +104,7 @@ public class ContratAchat implements java.io.Serializable {
 		this.produit = produit;
 	}
 
-	@Column(name = "code", nullable = false, length = 10)
+	@Column(name = "code", length = 10)
 	public String getCode() {
 		return this.code;
 	}
@@ -131,7 +113,7 @@ public class ContratAchat implements java.io.Serializable {
 		this.code = code;
 	}
 
-	@Column(name = "reference", nullable = false, length = 50)
+	@Column(name = "reference", length = 50)
 	public String getReference() {
 		return this.reference;
 	}
@@ -141,7 +123,7 @@ public class ContratAchat implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "date_achat", nullable = false, length = 10)
+	@Column(name = "date_achat", length = 10)
 	public Date getDateAchat() {
 		return this.dateAchat;
 	}
@@ -150,7 +132,7 @@ public class ContratAchat implements java.io.Serializable {
 		this.dateAchat = dateAchat;
 	}
 
-	@Column(name = "decision", nullable = false, length = 50)
+	@Column(name = "decision", length = 50)
 	public String getDecision() {
 		return this.decision;
 	}
@@ -160,7 +142,7 @@ public class ContratAchat implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "du_date", nullable = false, length = 10)
+	@Column(name = "du_date", length = 10)
 	public Date getDuDate() {
 		return this.duDate;
 	}
@@ -170,7 +152,7 @@ public class ContratAchat implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "au_date", nullable = false, length = 10)
+	@Column(name = "au_date", length = 10)
 	public Date getAuDate() {
 		return this.auDate;
 	}
@@ -179,39 +161,39 @@ public class ContratAchat implements java.io.Serializable {
 		this.auDate = auDate;
 	}
 
-	@Column(name = "quantite", nullable = false, precision = 12, scale = 0)
-	public float getQuantite() {
+	@Column(name = "quantite", precision = 12, scale = 0)
+	public Float getQuantite() {
 		return this.quantite;
 	}
 
-	public void setQuantite(float quantite) {
+	public void setQuantite(Float quantite) {
 		this.quantite = quantite;
 	}
 
-	@Column(name = "prix_u_indicatif", nullable = false, precision = 12, scale = 0)
-	public float getPrixUIndicatif() {
+	@Column(name = "prix_u_indicatif", precision = 12, scale = 0)
+	public Float getPrixUIndicatif() {
 		return this.prixUIndicatif;
 	}
 
-	public void setPrixUIndicatif(float prixUIndicatif) {
+	public void setPrixUIndicatif(Float prixUIndicatif) {
 		this.prixUIndicatif = prixUIndicatif;
 	}
 
-	@Column(name = "quantite_livree", nullable = false, precision = 12, scale = 0)
-	public float getQuantiteLivree() {
+	@Column(name = "quantite_livree", precision = 12, scale = 0)
+	public Float getQuantiteLivree() {
 		return this.quantiteLivree;
 	}
 
-	public void setQuantiteLivree(float quantiteLivree) {
+	public void setQuantiteLivree(Float quantiteLivree) {
 		this.quantiteLivree = quantiteLivree;
 	}
 
-	@Column(name = "reste_livrer", nullable = false, precision = 12, scale = 0)
-	public float getResteLivrer() {
+	@Column(name = "reste_livrer", precision = 12, scale = 0)
+	public Float getResteLivrer() {
 		return this.resteLivrer;
 	}
 
-	public void setResteLivrer(float resteLivrer) {
+	public void setResteLivrer(Float resteLivrer) {
 		this.resteLivrer = resteLivrer;
 	}
 

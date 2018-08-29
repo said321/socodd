@@ -5,11 +5,13 @@
   <table-filter match-catalog="db_socodd" match-name="analyse"/>
   <table-filter match-catalog="db_socodd" match-name="appariel_traitement"/>
   <table-filter match-catalog="db_socodd" match-name="assurance"/>
+  <table-filter match-catalog="db_socodd" match-name="banque"/>
   <table-filter match-catalog="db_socodd" match-name="chargeur"/>
   <table-filter match-catalog="db_socodd" match-name="client"/>
   <table-filter match-catalog="db_socodd" match-name="compagnie_maritime"/>
   <table-filter match-catalog="db_socodd" match-name="consommables_pieces"/>
   <table-filter match-catalog="db_socodd" match-name="contrat_achat"/>
+  <table-filter match-catalog="db_socodd" match-name="contrat_vente"/>
   <table-filter match-catalog="db_socodd" match-name="departement"/>
   <table-filter match-catalog="db_socodd" match-name="devise"/>
   <table-filter match-catalog="db_socodd" match-name="documents_joindre"/>
