@@ -44,6 +44,7 @@ public class ProduitController {
 		
 		
 		model.addAttribute("produits", produits);
+		
 		return "pages/produit/produitPage";
 		
 	}

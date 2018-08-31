@@ -170,26 +170,26 @@
     
     function format (d) {
         // `d` is the original data object for the row
-        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-            '<tr>'+
-                '<td>Full name:</td>'+
-                '<td>'+ d[1] +'</td>'+
-            '</tr>'+
-            '<tr>'+
-                '<td>Extension number:</td>'+
-                '<td>'+ d[2] +'</td>'+
-            '</tr>'+
-            '<tr>'+
-                '<c:forEach items="${produits }" var = "produit"><c:if test="1==1">'+
-	                '<td>${produit.getPoidsTheorique()}</td>'+
-	                '<td>And any further details here (images etc)...</td>'+
-                '</c:if></c:forEach>'+
-            '</tr>'+
+        
+        var prod = ${zones};
+        
+        alert(prod[1].code);
+        
+        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'
+        
+        
+        
+       
+			'<tr><td> </td></tr>' +
+			'<tr><td> </td></tr>' +
+		
+        
+        
         '</table>';
     }
     
     $(document).ready(function() {
-    	
+    
         $('#dataTables-example').DataTable({
             responsive: true
             //"paging" : false,

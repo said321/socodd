@@ -13,7 +13,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="home"><i class="fa fa-dashboard fa-fw"></i> Dashboard </a>
+                            <a href="<%=request.getContextPath() %>/home"><i class="fa fa-dashboard fa-fw"></i> Dashboard </a>
                         </li>
                         
                         
@@ -86,7 +86,7 @@
                                     <a href="<%=request.getContextPath() %>/typeClient">Type Client</a>
                                 </li>
                                 <li>
-                                    <a href="#">Client</a>
+                                    <a href="<%=request.getContextPath() %>/client">Client</a>
                                 </li>
                                 <li>
                                     <a href="#">Transitaire</a>
@@ -162,6 +162,23 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Outils <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/utilisateur">Utilisateur</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/societe">Parametre Sciété</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath() %>/listeConnectes">liste des Utilisateurs Connectés</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
