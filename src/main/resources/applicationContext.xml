@@ -11,6 +11,6 @@
 	
 	<import resource="classpath:META-INF/config/internationalisation-config.xml"/>
 	
-	<!-- <import resource="classpath:META-INF/config/webSecurityConfig.xml"/> -->	
+	<import resource="classpath:META-INF/config/webSecurityConfig.xml"/>	
 	
 </beans>
