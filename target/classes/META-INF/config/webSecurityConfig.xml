@@ -5,19 +5,25 @@
   xmlns:sec="http://www.springframework.org/schema/security"
   xsi:schemaLocation="
     http://www.springframework.org/schema/security
-    http://www.springframework.org/schema/security/spring-security-3.1.xsd
+    http://www.springframework.org/schema/security/spring-security-3.2.xsd
     http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
-	<http auto-config="true">
-		<intercept-url pattern="/admin**" access="ROLE_USER" />
+	<http auto-config="true" use-expressions="true">
+	
+		<intercept-url pattern="/utilisateur/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/societe/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_USER')" />
+		
+		<!-- access denied page -->
+		<access-denied-handler error-page="/403" />
 		
 		<form-login 
-		    login-page="/login/login" 
-		    default-target-url="/login" 
+		    login-page="/login" 
+		    default-target-url="/home" 
 			authentication-failure-url="/login?error" 
 			username-parameter="username"
-			password-parameter="password" />
+			password-parameter="password"/>
 		<logout logout-success-url="/login?logout" />
 		<!-- enable csrf protection -->
 		<csrf/>
@@ -26,9 +32,17 @@
 
 	<authentication-manager>
 	  <authentication-provider>
-	    <user-service>
+<!--  	<user-service>
 		<user name="admin" password="admin" authorities="ROLE_USER" />
-	    </user-service>
+	    </user-service>  -->
+	    
+			   <password-encoder hash="md5"></password-encoder>
+	    
+	    	   <jdbc-user-service data-source-ref="dataSource" 
+	    		users-by-username-query= "select nom as username, mot_passe as password, active from utilisateur where nom=?"	      		
+	      		authorities-by-username-query= "select u.nom as username, pu.nom as role from profile_utilisateur pu, utilisateur u where u.nom=? and u.profile=pu.id" />  
+
+	      
 	  </authentication-provider>
 	</authentication-manager>
 

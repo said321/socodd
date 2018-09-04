@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.socodd.entities.Fournisseur;
 import com.socodd.services.ITypeFournisseurService;
 import com.socodd.utils.FormatingDate;
+import com.socodd.services.IBanqueService;
 import com.socodd.services.IFournisseurService;
 
 
@@ -28,6 +29,9 @@ public class FournisseurController {
 	@Autowired
 	private ITypeFournisseurService typeFournisseurService;
 	
+	@Autowired
+	private IBanqueService banqueService;
+	
 	@RequestMapping(value = {"", "/"})
 	public String all(Model model) {
 		
@@ -40,6 +44,7 @@ public class FournisseurController {
 		for(int i=0 ; i<fournisseurs.size(); i++) {
 			
 			fournisseurs.get(i).setTypeFournisseur(typeFournisseurService.getById(fournisseurs.get(i).getTypeFournisseur().getId()));
+			fournisseurs.get(i).setBanque(banqueService.getById(fournisseurs.get(i).getBanque().getId()));
 			
 		}
 		
@@ -55,11 +60,12 @@ public class FournisseurController {
 		Fournisseur fournisseur = new Fournisseur();
 		
 		model.addAttribute("typeFournisseurs", typeFournisseurService.selectAll());
+		model.addAttribute("banques", banqueService.selectAll());
 		model.addAttribute("fournisseur", fournisseur);
 		
 		model.addAttribute("ttt", "nouveau");
 		
-		return "pages/fournisseur/addUpFournisseur";
+		return "pages/fournisseur/addFournisseur";
 		
 	}
 	
@@ -69,6 +75,7 @@ public class FournisseurController {
 		
 		
 		int t_four_id = Integer.parseInt(request.getParameter("t_four_id"));
+		int banque_id = Integer.parseInt(request.getParameter("banque_id"));
 		Date dateEntree = FormatingDate.stringToDate(request.getParameter("date_entree"), "yyyy-MM-dd");
 		String import_bic = request.getParameter("import_bic");	
 		
@@ -78,6 +85,7 @@ public class FournisseurController {
 			fournisseur.setTypeFournisseur(typeFournisseurService.getById(t_four_id));
 			fournisseur.setDateEntree(dateEntree);
 			fournisseur.setNumBic(import_bic);
+			fournisseur.setBanque(banqueService.getById(banque_id));
 			
 			if (fournisseur.getId() != null) {
 				fournisseurService.update(fournisseur);
@@ -101,18 +109,16 @@ public class FournisseurController {
 			
 				
 				model.addAttribute("typeFournisseurs", typeFournisseurService.selectAll());
-				
-				
-				
+
 				fournisseur.setTypeFournisseur(typeFournisseurService.getById(fournisseur.getTypeFournisseur().getId()));
-				
+				fournisseur.setBanque(banqueService.getById(fournisseur.getBanque().getId()));
 				
 				model.addAttribute("ttt", "modifier");
 				
 				model.addAttribute("fournisseur", fournisseur);
 			}
 		}
-		return "pages/fournisseur/addUpFournisseur";
+		return "pages/fournisseur/upFournisseur";
 	}
 	
 	@RequestMapping(value = "/supprimer/{idFournisseur}")

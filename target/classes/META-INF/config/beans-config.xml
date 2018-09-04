@@ -3,7 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
 		<bean id="profileUtilisateurDao" class="com.socodd.dao.impl.ProfileUtilisateurDaoImpl" />
 		<bean id="profileUtilisateurService" class="com.socodd.services.impl.ProfileUtilisateurServiceImpl">
 			<property name="dao" ref="profileUtilisateurDao"></property>

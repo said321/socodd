@@ -38,6 +38,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
+            
+                <div class="panel-body"> 
+                
+	                <c:if test="${not empty error}">
+						<div class="alert alert-danger">${error}</div>
+					</c:if>
+					<c:if test="${not empty msg}">
+						<div class="alert alert-success">${msg}</div>
+					</c:if>
+				
+				</div>
+            
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Socodd</h3>
@@ -46,10 +58,10 @@
                         <form role="form" action="<c:url value='j_spring_security_check' />" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Username" name="username" type="email" autofocus>
+                                    <input class="form-control" placeholder="Username" name="username" autofocus required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="password" type="password" value="" required>
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -59,6 +71,9 @@
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value="Login" />
                             </fieldset>
+                            
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            
                         </form>
                     </div>
                 </div>

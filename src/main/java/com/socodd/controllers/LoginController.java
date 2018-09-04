@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.socodd.entities.ContratAchat;
@@ -30,7 +31,16 @@ public class LoginController {
 	private IClientService clientService;
 	
 	@RequestMapping(value = {"/", "/login"})
-	public String login() {
+	public String login(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout, Model model) {
+		
+		if (error != null) {
+			model.addAttribute("error", "Invalid username and password!");
+		}
+
+		if (logout != null) {
+			model.addAttribute("msg", "You've been logged out successfully.");
+		}
 		
 		return "login/login";
 		
@@ -73,18 +83,18 @@ public class LoginController {
 		
 	}
 	
-	
+	@RequestMapping(value = "/admin")
+	public String admin() {
+		
+		return "admin";
+		
+	}	
 	
 	
 	
 	// this part just for test
 	
-//	@RequestMapping(value = "/admin")
-//	public String admin() {
-//		
-//		return "blank/admin";
-//		
-//	}
+
 //	
 //	@RequestMapping(value = "/chart")
 //	public String chart(Model model) throws JsonGenerationException, JsonMappingException, IOException {

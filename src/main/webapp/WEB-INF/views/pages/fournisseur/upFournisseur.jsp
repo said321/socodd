@@ -89,38 +89,6 @@
                                     </div>
 
 
-
-                                    
-                                    <c:if test="${ttt=='nouveau' }">
-										<div class="form-group">
-		                                    <label><fmt:message code="common.nom" /></label>
-		                                    <select name="t_four_id" class = "form-control" id="listTypeFournisseurs">
-		                                    	<option value = "-1">Type fournisseur</option>
-		                                    	<c:forEach items = "${typeFournisseurs }" var = "typeFournisseur">
-		                                    		<option value = "${typeFournisseur.getId() }" >${typeFournisseur.getNom() }</option>
-		                                    	</c:forEach>
-		                                    </select>
-		                                </div>
-			                                
-			                            <div class="form-group">
-				                            <label>Date Entrée</label>
-			                               	<input name="date_entree" type="date" class="form-control" required/>
-			                            </div>
-			                            
-										<div class="form-group">
-		                                    <label>Import B.I.C</label>
-		                                    <select name="import_bic" class = "form-control" >
-		                                    	<option value = "-1">Select Import B.I.C</option>
-		                                    	<option value = "exonore">Exonoré</option>
-		                                    	<option value = "assujeti">Assujeti</option>
-		                                    </select>
-		                                </div>
-		                            
-	                                </c:if>
-	                                
-	                                
-	                                
-	                               <c:if test="${ttt=='modifier' }"> 
 		                                <div class="form-group"> 
 		                                    <label><fmt:message code="common.nom" /></label>
 		                                    <select name="t_four_id" class = "form-control" id="listTypeFournisseurs">
@@ -151,9 +119,7 @@
 		                                    	</c:if>
 		                                    </select>
 		                                </div>
-			                           
-		                                
-	                                </c:if>
+
 	                                
                                     
 									<div class="form-group">
@@ -176,10 +142,17 @@
                                         <f:input path="numAgrement" class="form-control" placeholder="" />
                                     </div>
                                     
-									<div class="form-group">
-                                        <label>Banque</label>
-                                        <f:input path="banque" class="form-control" placeholder="" />
-                                    </div>
+		                                <div class="form-group"> 
+		                                    <label><fmt:message code="common.nom" /></label>
+		                                    <select name="t_four_id" class = "form-control" id="listTypeFournisseurs">
+		                                    	<option value = "${banque.getId() }">${banque.getNom() }</option>
+		                                    	<c:forEach items = "${banques }" var = "banque">
+		                                    		<c:if test="${banque.getId()!=banque.getId() }"> 
+		                                    			<option value = "${banque.getId() }">${banque.getNom() }</option>
+		                                    		</c:if>
+		                                    	</c:forEach>
+		                                    </select>
+		                                </div>
                                     
 									<div class="form-group">
                                         <label>N° Banque</label>
