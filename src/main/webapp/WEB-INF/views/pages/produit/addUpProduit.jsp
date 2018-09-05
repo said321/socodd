@@ -70,18 +70,18 @@
 									<div class="form-group row">
                                     <div class="col-xs-6">
                                         <label>Nom</label>
-                                        <f:input path="nom" class="form-control" placeholder="Nom" />
+                                        <f:input path="nom" class="form-control" placeholder="Nom" required="true"/>
                                     </div>
                                     </div>
 									<div class="form-group">
                                         <label>Titre Compagne</label>
-                                        <f:input path="titreCompagne" class="form-control" placeholder="Titre Compagne" />
+                                        <f:input path="titreCompagne" class="form-control" placeholder="Titre Compagne" required="true"/>
                                     </div>
                                     
                                     <c:if test="${ttt=='nouveau' }">
 										<div class="form-group">
 		                                    <label>Sac Brousse</label>
-		                                    <select name="sac_br" class = "form-control" id="listVariete">
+		                                    <select name="sac_br" class = "form-control" id="listVariete" required="true">
 		                                    	<option value = "-1">Select Sac brousse</option>
 		                                    	<c:forEach items = "${typeSac }" var = "ts">
 		                                    		<option value = "${ts.getId() }" >${ts.getNom() }</option>

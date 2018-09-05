@@ -77,7 +77,6 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                    	<th>DTS</th>
                                         <th><fmt:message code="common.code" /></th>
                                         <th><fmt:message code="common.nom" /></th>
                                         <th>Titre Compagne</th>
@@ -92,7 +91,6 @@
                                 <tbody>
                                 	<c:forEach items="${produits }" var = "produit">
 	                                    <tr class="odd gradeX">
-	                                    	<td id="details-control"></td>
 	                                        <td>${produit.getCode() }</td>
 	                                        <td>${produit.getNom() }</td>
 	                                        <td>${produit.getTitreCompagne() }</td>
@@ -126,6 +124,8 @@
 													</div>
 													<!-- /.modal-dialog -->
 												</div>
+												&nbsp;|&nbsp;
+												<a href="javascript:void(0);"><i id="details-control" class="fa fa-info-circle"></i></a>
 	                                        </td>
 	                                    </tr>
                                 	</c:forEach>
@@ -171,17 +171,13 @@
     function format (d) {
         // `d` is the original data object for the row
         
-        var prod = ${zones};
-        
-        alert(prod[1].code);
-        
         return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'
         
         
         
        
-			'<tr><td> </td></tr>' +
-			'<tr><td> </td></tr>' +
+			'<tr><td>salam</td></tr>' +
+			'<tr><td> said </td></tr>' +
 		
         
         
@@ -222,15 +218,7 @@
         
     });
     
-    
-    function toTab(x, tab){
-    	for (var i = 0; i < tab.length; i++) {
-			if(x == tab[i][0])
-				return tab[i];
-		}
-    }
-    
-    
+
     </script>
 
 </body>

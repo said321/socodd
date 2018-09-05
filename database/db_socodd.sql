@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 11, 2018 at 08:31 AM
+-- Generation Time: Sep 05, 2018 at 10:41 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -77,6 +77,25 @@ CREATE TABLE `assurance` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `banque`
+--
+
+CREATE TABLE `banque` (
+  `id` int(3) NOT NULL,
+  `code` varchar(5) NOT NULL,
+  `nom` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `banque`
+--
+
+INSERT INTO `banque` (`id`, `code`, `nom`) VALUES
+(1, 'Z1', 'banque1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `chargeur`
 --
 
@@ -109,13 +128,13 @@ CREATE TABLE `client` (
   `email` varchar(50) NOT NULL,
   `telephone` varchar(10) NOT NULL,
   `fax` varchar(10) NOT NULL,
-  `banque` varchar(50) NOT NULL,
+  `banque` int(3) NOT NULL,
   `num_bic` varchar(50) NOT NULL,
   `num_agrement` int(11) NOT NULL,
   `num_cc` int(11) NOT NULL,
   `num_compte_tiers` int(11) NOT NULL,
   `num_rccm` int(11) NOT NULL,
-  `type_client` int(11) NOT NULL,
+  `type_client` int(3) NOT NULL,
   `num_banque` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -124,7 +143,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `code`, `nom`, `adresse`, `date_entree`, `email`, `telephone`, `fax`, `banque`, `num_bic`, `num_agrement`, `num_cc`, `num_compte_tiers`, `num_rccm`, `type_client`, `num_banque`) VALUES
-(1, 'CL1', 'client1', 'aaa jgfhb 8876 ffff', '2018-08-10', 'client1@gmail.com', '1234567890', '12347890', 'banque1', 'exonore', 786876, 875324, 98776571, 86876, 1, 876278362);
+(1, 'CL1', 'client1', 'aaa jgfhb 8876 ffff', '2018-08-10', 'client1@gmail.com', '1234567890', '12347890', 0, 'exonore', 786876, 875324, 98776571, 86876, 1, 876278362);
 
 -- --------------------------------------------------------
 
@@ -187,7 +206,37 @@ CREATE TABLE `contrat_achat` (
 INSERT INTO `contrat_achat` (`id`, `code`, `reference`, `fournisseur`, `date_achat`, `decision`, `produit`, `unite_mesure`, `du_date`, `au_date`, `quantite`, `prix_u_indicatif`, `quantite_livree`, `reste_livrer`) VALUES
 (1, 'CP1', 'ref1', 1, '2018-09-01', 'attente', 1, 1, '2018-08-09', '2018-08-08', 300, 20, 0, 300),
 (2, 'CP2', 'ref2', 1, '2018-09-08', 'accepte', 1, 1, '2018-08-17', '2018-08-15', 300, 30, 0, 300),
-(3, 'CP3', 'ref3', 1, '2018-08-09', 'accepte', 2, 1, '2018-08-12', '2018-08-10', 20, 12, 0, 0);
+(3, 'CP3', 'ref3', 1, '2018-08-09', 'accepte', 2, 1, '2018-08-12', '2018-08-10', 20, 12, 0, 0),
+(4, 'CP4', 'ref4', 1, '2018-08-30', 'attente', 1, 1, '2018-09-05', '2018-08-31', 23, 2333, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contrat_vente`
+--
+
+CREATE TABLE `contrat_vente` (
+  `id` int(8) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `reference` varchar(50) NOT NULL,
+  `client` int(7) NOT NULL,
+  `devise` int(3) NOT NULL,
+  `poids` float NOT NULL,
+  `prix_fixe` float NOT NULL,
+  `valeur` float NOT NULL,
+  `date_vente` date NOT NULL,
+  `produit` int(3) NOT NULL,
+  `parite` float NOT NULL,
+  `decision` varchar(50) NOT NULL,
+  `reste` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `contrat_vente`
+--
+
+INSERT INTO `contrat_vente` (`id`, `code`, `reference`, `client`, `devise`, `poids`, `prix_fixe`, `valeur`, `date_vente`, `produit`, `parite`, `decision`, `reste`) VALUES
+(1, 'CP1', 'ref2', 1, 1, 11, 20, 0, '2018-08-14', 2, 3, 'en_cours', 0);
 
 -- --------------------------------------------------------
 
@@ -248,7 +297,7 @@ CREATE TABLE `documents_joindre` (
 
 CREATE TABLE `employee` (
   `id` int(5) NOT NULL,
-  `code` int(7) NOT NULL,
+  `code` varchar(7) NOT NULL,
   `matricule` varchar(10) NOT NULL,
   `nom` varchar(30) NOT NULL,
   `date_naissance` date NOT NULL,
@@ -260,10 +309,18 @@ CREATE TABLE `employee` (
   `email` varchar(30) NOT NULL,
   `departement` int(3) NOT NULL,
   `fonction_occupee` varchar(10) NOT NULL,
-  `equipe` int(3) NOT NULL,
-  `banque` varchar(50) NOT NULL,
+  `equipe` int(3) DEFAULT NULL,
+  `banque` int(3) NOT NULL,
   `num_compte` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`id`, `code`, `matricule`, `nom`, `date_naissance`, `adresse`, `date_entree`, `num_compte_tier`, `nationalite`, `telephone`, `email`, `departement`, `fonction_occupee`, `equipe`, `banque`, `num_compte`) VALUES
+(1, 'EP1', 'YTFZD', 'said', '2018-08-15', 'jhbfg kjdfg 8765', '2018-08-07', 25435, 11, '2423452354', 'said@gmail.com', 1, 'lskdfsfg', 1, 1, 86868768),
+(2, 'EP2', 'LKH876', 'employee2', '2017-07-24', 'kjhgb dkfhgdfg', '2017-06-27', 87677, 11, '98798798', 'employee@gmail.com', 1, 'f_occup', 1, 1, 87687);
 
 -- --------------------------------------------------------
 
@@ -275,8 +332,15 @@ CREATE TABLE `equipe` (
   `id` int(3) NOT NULL,
   `code` varchar(5) NOT NULL,
   `nom` varchar(50) NOT NULL,
-  `superviseur` int(5) NOT NULL
+  `employee` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `equipe`
+--
+
+INSERT INTO `equipe` (`id`, `code`, `nom`, `employee`) VALUES
+(1, 'EQ1', 'equipe1', 1);
 
 -- --------------------------------------------------------
 
@@ -326,7 +390,7 @@ CREATE TABLE `fournisseur` (
   `num_rccm` int(11) NOT NULL,
   `num_agrement` int(11) NOT NULL,
   `num_bic` varchar(50) NOT NULL,
-  `banque` varchar(50) NOT NULL,
+  `banque` int(3) NOT NULL,
   `num_banque` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -335,8 +399,7 @@ CREATE TABLE `fournisseur` (
 --
 
 INSERT INTO `fournisseur` (`id`, `code`, `type_fournisseur`, `nom`, `adresse`, `date_entree`, `telephone`, `fax`, `email`, `num_compte_tiers`, `num_cc`, `num_rccm`, `num_agrement`, `num_bic`, `banque`, `num_banque`) VALUES
-(1, 'FR1', 1, 'fournisseur1', 'aaa aaa aaa  aaaa', '2018-08-10', '8494834212', '8494834212', 'fournisseur1@gmail.com', 321, 12, 23, 45, 'assujeti', 'banque1', 456765),
-(2, 'FR2', 1, 'fournisseur2', 'hgdf dkufg skhgf87 ', '2018-08-11', '1234567890', '12347890', 'fourniseeur2@gmail.com', 76, 0, 0, 0, 'exonore', 'banque2', 0);
+(1, 'FR1', 1, 'fournisseur1', 'jfdnv sdlifjg lisjdf', '2017-08-01', '098979878', '089898982', 'fournisseur@gmail.com', 123, 1431, 51431, 6541, 'exonore', 1, 4132);
 
 -- --------------------------------------------------------
 
@@ -562,14 +625,14 @@ CREATE TABLE `produit` (
   `mnt_debours_transit` int(10) DEFAULT NULL,
   `taux_debours_transit` float DEFAULT NULL,
   `prefixe_num_cdc` int(10) DEFAULT NULL,
-  `poids_therorique` int(10) DEFAULT NULL
+  `poids_theorique` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produit`
 --
 
-INSERT INTO `produit` (`id`, `code`, `nom`, `titre_compagne`, `sac_brousse`, `sac_export`, `pref_num_b_e`, `prochain_achat_num`, `cpte_achat`, `taux_achat_bic`, `pref_num_b_s`, `prochain_vente_num`, `cpte_vte`, `cpte_vente_bic`, `prix_achat_indicatif`, `prix_vente_indicatif`, `frais_transport`, `mnt_debours_transit`, `taux_debours_transit`, `prefixe_num_cdc`, `poids_therorique`) VALUES
+INSERT INTO `produit` (`id`, `code`, `nom`, `titre_compagne`, `sac_brousse`, `sac_export`, `pref_num_b_e`, `prochain_achat_num`, `cpte_achat`, `taux_achat_bic`, `pref_num_b_s`, `prochain_vente_num`, `cpte_vte`, `cpte_vente_bic`, `prix_achat_indicatif`, `prix_vente_indicatif`, `frais_transport`, `mnt_debours_transit`, `taux_debours_transit`, `prefixe_num_cdc`, `poids_theorique`) VALUES
 (1, 'PR1', 'cacoa', 'ti com1', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 7, 87, 0, 0, 0, 0, 79),
 (2, 'PR2', 'cafe', 'ti com2', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 23, 33, 0, 0, 0, 0, 12);
 
@@ -580,10 +643,19 @@ INSERT INTO `produit` (`id`, `code`, `nom`, `titre_compagne`, `sac_brousse`, `sa
 --
 
 CREATE TABLE `profile_utilisateur` (
-  `id` int(11) NOT NULL,
+  `id` int(3) NOT NULL,
   `code` varchar(5) NOT NULL,
+  `role` varchar(50) NOT NULL,
   `nom` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `profile_utilisateur`
+--
+
+INSERT INTO `profile_utilisateur` (`id`, `code`, `role`, `nom`) VALUES
+(1, 'PU', 'ROLE_ADMIN', ''),
+(2, 'PU', 'ROLE_USER', '');
 
 -- --------------------------------------------------------
 
@@ -677,7 +749,7 @@ INSERT INTO `route` (`id`, `code`, `cout_tkm`, `prefecture`, `prix_entree_usine`
 --
 
 CREATE TABLE `societe` (
-  `id` int(11) NOT NULL,
+  `id` int(3) NOT NULL,
   `code` varchar(5) NOT NULL,
   `activite` varchar(50) NOT NULL,
   `adresse` longtext NOT NULL,
@@ -961,19 +1033,30 @@ INSERT INTO `usine` (`id`, `code`, `nom`, `localite`, `longitude`, `latitude`) V
 --
 
 CREATE TABLE `utilisateur` (
-  `id` int(11) NOT NULL,
-  `cel` varchar(10) NOT NULL,
-  `code` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `fonction` varchar(50) NOT NULL,
-  `matricule` varchar(50) NOT NULL,
-  `mot_passe` varchar(50) NOT NULL,
+  `id` int(3) NOT NULL,
+  `code` varchar(5) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `telephone` varchar(10) NOT NULL,
-  `profile` int(11) NOT NULL,
-  `active` tinyint(1) NOT NULL
+  `fax` varchar(10) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `fonction` varchar(50) NOT NULL,
+  `matricule` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `mot_passe` varchar(50) NOT NULL,
+  `profile` int(3) NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  `cel` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `code`, `nom`, `prenom`, `telephone`, `fax`, `email`, `fonction`, `matricule`, `username`, `mot_passe`, `profile`, `active`, `enabled`, `cel`) VALUES
+(1, 'US1', 'choukrane', 'said', '0892829822', '', 'said@gmail.com', 'fonction1', 'BK652', 'said', 'b7b791e873f143d5318310e59022175d', 1, 0, 1, ''),
+(2, 'US2', 'adil', 'adil', '0989824534', '', 'adil@gmail.com', 'fonction2', 'bk982', 'adil', '5c3bea5d394835b2af9d2cfd632147f8', 2, 0, 1, '');
 
 -- --------------------------------------------------------
 
@@ -1036,6 +1119,12 @@ ALTER TABLE `assurance`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `banque`
+--
+ALTER TABLE `banque`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `chargeur`
 --
 ALTER TABLE `chargeur`
@@ -1072,6 +1161,15 @@ ALTER TABLE `contrat_achat`
   ADD KEY `fournisseur` (`fournisseur`);
 
 --
+-- Indexes for table `contrat_vente`
+--
+ALTER TABLE `contrat_vente`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `client` (`client`),
+  ADD KEY `devise` (`devise`),
+  ADD KEY `produit` (`produit`);
+
+--
 -- Indexes for table `departement`
 --
 ALTER TABLE `departement`
@@ -1097,14 +1195,15 @@ ALTER TABLE `employee`
   ADD KEY `departement` (`departement`),
   ADD KEY `nationalite` (`nationalite`),
   ADD KEY `employe_ibfk_2` (`equipe`),
-  ADD KEY `FK4722E6AE5412D7C` (`nationalite`);
+  ADD KEY `FK4722E6AE5412D7C` (`nationalite`),
+  ADD KEY `banque` (`banque`);
 
 --
 -- Indexes for table `equipe`
 --
 ALTER TABLE `equipe`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `equipe_ibfk_1` (`superviseur`);
+  ADD KEY `equipe_ibfk_1` (`employee`);
 
 --
 -- Indexes for table `fabrication_lots`
@@ -1126,7 +1225,8 @@ ALTER TABLE `famille_consommables`
 --
 ALTER TABLE `fournisseur`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `type_fournisseur` (`type_fournisseur`);
+  ADD KEY `type_fournisseur` (`type_fournisseur`),
+  ADD KEY `banque` (`banque`);
 
 --
 -- Indexes for table `items_debours`
@@ -1229,7 +1329,8 @@ ALTER TABLE `reception_produits`
   ADD KEY `variete` (`variete`),
   ADD KEY `produit` (`produit`),
   ADD KEY `contrat_achat` (`contrat_achat`),
-  ADD KEY `type_sac` (`type_sac`);
+  ADD KEY `type_sac` (`type_sac`),
+  ADD KEY `fournisseur` (`fournisseur`);
 
 --
 -- Indexes for table `region`
@@ -1387,6 +1488,11 @@ ALTER TABLE `appariel_traitement`
 ALTER TABLE `assurance`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `banque`
+--
+ALTER TABLE `banque`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `chargeur`
 --
 ALTER TABLE `chargeur`
@@ -1410,7 +1516,12 @@ ALTER TABLE `consommables_pieces`
 -- AUTO_INCREMENT for table `contrat_achat`
 --
 ALTER TABLE `contrat_achat`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `contrat_vente`
+--
+ALTER TABLE `contrat_vente`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `departement`
 --
@@ -1430,12 +1541,12 @@ ALTER TABLE `documents_joindre`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `equipe`
 --
 ALTER TABLE `equipe`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `fabrication_lots`
 --
@@ -1450,7 +1561,7 @@ ALTER TABLE `famille_consommables`
 -- AUTO_INCREMENT for table `fournisseur`
 --
 ALTER TABLE `fournisseur`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `items_debours`
 --
@@ -1500,12 +1611,12 @@ ALTER TABLE `producteur`
 -- AUTO_INCREMENT for table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `profile_utilisateur`
 --
 ALTER TABLE `profile_utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `qualite`
 --
@@ -1530,7 +1641,7 @@ ALTER TABLE `route`
 -- AUTO_INCREMENT for table `societe`
 --
 ALTER TABLE `societe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sous_prefecture`
 --
@@ -1610,7 +1721,7 @@ ALTER TABLE `usine`
 -- AUTO_INCREMENT for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `variete`
 --
@@ -1653,18 +1764,27 @@ ALTER TABLE `contrat_achat`
   ADD CONSTRAINT `contrat_achat_ibfk_3` FOREIGN KEY (`fournisseur`) REFERENCES `fournisseur` (`id`);
 
 --
+-- Constraints for table `contrat_vente`
+--
+ALTER TABLE `contrat_vente`
+  ADD CONSTRAINT `contrat_vente_ibfk_1` FOREIGN KEY (`client`) REFERENCES `client` (`id`),
+  ADD CONSTRAINT `contrat_vente_ibfk_2` FOREIGN KEY (`devise`) REFERENCES `devise` (`id`),
+  ADD CONSTRAINT `contrat_vente_ibfk_3` FOREIGN KEY (`produit`) REFERENCES `produit` (`id`);
+
+--
 -- Constraints for table `employee`
 --
 ALTER TABLE `employee`
   ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`departement`) REFERENCES `departement` (`id`),
-  ADD CONSTRAINT `employee_ibfk_2` FOREIGN KEY (`equipe`) REFERENCES `equipe` (`id`),
-  ADD CONSTRAINT `employee_ibfk_3` FOREIGN KEY (`nationalite`) REFERENCES `nationalite` (`id`);
+  ADD CONSTRAINT `employee_ibfk_3` FOREIGN KEY (`nationalite`) REFERENCES `nationalite` (`id`),
+  ADD CONSTRAINT `employee_ibfk_4` FOREIGN KEY (`banque`) REFERENCES `banque` (`id`),
+  ADD CONSTRAINT `employee_ibfk_5` FOREIGN KEY (`equipe`) REFERENCES `equipe` (`id`);
 
 --
 -- Constraints for table `equipe`
 --
 ALTER TABLE `equipe`
-  ADD CONSTRAINT `equipe_ibfk_1` FOREIGN KEY (`superviseur`) REFERENCES `employee` (`id`);
+  ADD CONSTRAINT `equipe_ibfk_1` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`);
 
 --
 -- Constraints for table `fabrication_lots`
@@ -1678,7 +1798,8 @@ ALTER TABLE `fabrication_lots`
 -- Constraints for table `fournisseur`
 --
 ALTER TABLE `fournisseur`
-  ADD CONSTRAINT `fournisseur_ibfk_1` FOREIGN KEY (`type_fournisseur`) REFERENCES `type_fournisseur` (`id`);
+  ADD CONSTRAINT `fournisseur_ibfk_1` FOREIGN KEY (`type_fournisseur`) REFERENCES `type_fournisseur` (`id`),
+  ADD CONSTRAINT `fournisseur_ibfk_2` FOREIGN KEY (`banque`) REFERENCES `banque` (`id`);
 
 --
 -- Constraints for table `items_debours`
@@ -1746,7 +1867,8 @@ ALTER TABLE `reception_produits`
   ADD CONSTRAINT `reception_produits_ibfk_4` FOREIGN KEY (`variete`) REFERENCES `variete` (`id`),
   ADD CONSTRAINT `reception_produits_ibfk_5` FOREIGN KEY (`produit`) REFERENCES `produit` (`id`),
   ADD CONSTRAINT `reception_produits_ibfk_6` FOREIGN KEY (`contrat_achat`) REFERENCES `contrat_achat` (`id`),
-  ADD CONSTRAINT `reception_produits_ibfk_7` FOREIGN KEY (`type_sac`) REFERENCES `type_sac` (`id`);
+  ADD CONSTRAINT `reception_produits_ibfk_7` FOREIGN KEY (`type_sac`) REFERENCES `type_sac` (`id`),
+  ADD CONSTRAINT `reception_produits_ibfk_8` FOREIGN KEY (`fournisseur`) REFERENCES `fournisseur` (`id`);
 
 --
 -- Constraints for table `route`

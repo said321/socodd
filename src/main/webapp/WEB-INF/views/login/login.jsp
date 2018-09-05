@@ -40,14 +40,9 @@
             <div class="col-md-4 col-md-offset-4">
             
                 <div class="panel-body"> 
-                
-	                <c:if test="${not empty error}">
-						<div class="alert alert-danger">${error}</div>
-					</c:if>
 					<c:if test="${not empty msg}">
 						<div class="alert alert-success">${msg}</div>
-					</c:if>
-				
+					</c:if>				
 				</div>
             
                 <div class="login-panel panel panel-default">
@@ -57,16 +52,16 @@
                     <div class="panel-body">
                         <form role="form" action="<c:url value='j_spring_security_check' />" method="post">
                             <fieldset>
+			                    <div class="form-group">        
+					                <c:if test="${not empty error}">
+										<div class="alert alert-danger">${error}</div>
+									</c:if>
+								</div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Username" name="username" autofocus required>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="" required>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value="Login" />

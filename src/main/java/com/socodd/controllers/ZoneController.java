@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.socodd.entities.Zone;
 import com.socodd.services.IZoneService;
@@ -80,5 +82,19 @@ public class ZoneController {
 		}
 		return "redirect:/zone";
 	}
+	
+	
+	@RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
+	public ModelAndView exportExcel() {
+		
+		List<Zone> zones = zoneService.selectAll();
+		ModelAndView model = new ModelAndView("XListExcel");
+		model.addObject("xlist", zones);
+		model.addObject("name", "Zones");
+		return model;
+		
+	}
+
+	
 
 }
