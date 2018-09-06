@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-<!-- 		<bean id="XListExcel"
+ 		<bean id="XListExcel"
 		   	class="com.socodd.utils.XListExcelView">
-		</bean> -->
+		</bean>
 
 		<bean id="profileUtilisateurDao" class="com.socodd.dao.impl.ProfileUtilisateurDaoImpl" />
 		<bean id="profileUtilisateurService" class="com.socodd.services.impl.ProfileUtilisateurServiceImpl">

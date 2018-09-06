@@ -72,9 +72,7 @@
                                         <f:input path="reference" class="form-control" placeholder="Nom" />
                                     </div>
                                     
-                                    
-                                    
-                                    <c:if test="${ttt=='nouveau' }">
+
 										<div class="form-group">
 		                                    <label>client</label>
 		                                    <select name="cid" class = "form-control" id="listClients">
@@ -119,72 +117,6 @@
 			                                	<input name="date_vente" type="date" class="form-control"/>
 		                                </div>
 		                                
-	                                </c:if>
-                                       
-                                    
-                                    <c:if test="${ttt=='modifier' }">
-										<div class="form-group">
-		                                    <label>client</label>
-		                                    <select name="cid" class = "form-control" id="listClients">
-		                                    	<option value = "${contratVente.getClient().getId() }">${contratVente.getClient().getNom() }</option>
-		                                    	<c:forEach items = "${clients }" var = "client">
-		                                    		<c:if test="${contratVente.getClient().getId() != client.getId() }">
-		                                    			<option value = "${client.getId() }" >${client.getNom() }</option>
-		                                    		</c:if>
-		                                    		
-		                                    	</c:forEach>
-		                                    </select>
-		                                </div>
-
-										<div class="form-group">
-		                                    <label>Decision</label>
-		                                    <select name="decision" class = "form-control" >
-		                                    	<c:if test="${contratVente.getDecision() == 'en_cours' }">
-		                                    		<option value = "${contratVente.getDecision() }">En cours</option>
-		                                    		<option value = "accepte">Exécuté</option>
-		                                    	</c:if>
-		                                    	<c:if test="${contratVente.getDecision() == 'execute' }">
-		                                    		<option value = "${contratVente.getDecision() }">Exécuté</option>
-		                                    		<option value = "attente">En cours</option>
-		                                    	</c:if>
-		                                    </select>
-		                                </div>
-
-										<div class="form-group">
-		                                    <label><fmt:message code="common.produit" /></label>
-		                                    <select name="pid" class = "form-control" id="listProduits">
-		                                    	<option value = "${contratVente.getProduit().getId() }">${contratVente.getProduit().getNom() }</option>
-		                                    	<c:forEach items = "${produits }" var = "produit">
-		                                    		<c:if test="${contratVente.getClient().getId() != produit.getId() }">
-		                                    			<option value = "${produit.getId() }" >${produit.getNom() }</option>
-		                                    		</c:if>
-		                                    	</c:forEach>
-		                                    </select>
-		                                </div>
-
-										<div class="form-group">
-		                                    <label>Devise</label>
-		                                    <select name="devid" class = "form-control" id="listDevise">
-		                                    	<option value = "${contratVente.getDevise().getId() }">${contratVente.getDevise().getNom() }</option>
-		                                    	<c:forEach items = "${devise }" var = "dv">
-		                                    		<c:if test="${contratVente.getDevise().getId() != dv.getId() }">
-		                                    			<option value = "${dv.getId() }" >${dv.getNom() }</option>
-		                                    		</c:if>
-		                                    	</c:forEach>
-		                                    </select>
-		                                </div>
-		                                
-		                              	<div class="form-group">
-			                                	<label>Date De vente</label>
-			                                	<input name="date_vente" value="${contratVente.getDateVente() }" type="date" class="form-control"/>
-		                                </div> 
-                        
-		                                
-	                                </c:if>
-                                    
-
-
-
 		                                
 									<div class="form-group">
                                         <label>Poids</label>

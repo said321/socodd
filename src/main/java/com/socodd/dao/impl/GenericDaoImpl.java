@@ -26,8 +26,7 @@ import com.socodd.dao.IGenericDao;
 		public  GenericDaoImpl() {
 	 		Type t = getClass().getGenericSuperclass();
 			ParameterizedType pt = (ParameterizedType) t;
-			type = (Class<E>) pt.getActualTypeArguments()[0];
-			
+			type = (Class<E>) pt.getActualTypeArguments()[0];		
 		}
 	 	
 	@Override

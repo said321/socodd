@@ -65,9 +65,7 @@ public class ContratAchatController {
 		model.addAttribute("fournisseurs", fournisseurService.selectAll());
 		model.addAttribute("uniteMesure", uniteMesureService.selectAll());
 		
-		model.addAttribute("ttt","nouveau");
-		
-		return "pages/contratAchat/addUpContratAchat";
+		return "pages/contratAchat/addContratAchat";
 		
 	}
 	
@@ -128,10 +126,8 @@ public class ContratAchatController {
 				model.addAttribute("produits", produitService.selectAll());
 				model.addAttribute("fournisseurs", fournisseurService.selectAll());
 				model.addAttribute("uniteMesure", uniteMesureService.selectAll());
-			
-				model.addAttribute("ttt", "modifier");
 				
-				return "pages/contratAchat/addUpContratAchat";
+				return "pages/contratAchat/upContratAchat";
 				
 			}
 		}

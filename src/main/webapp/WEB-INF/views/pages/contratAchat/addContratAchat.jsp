@@ -63,91 +63,96 @@
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
-	                        	<c:url value="/produit/enregistrer" var ="urlEnregistrer" />
-								<f:form modelAttribute="produit" action="${urlEnregistrer }" role = "form">
+	                        	<c:url value="/contratAchat/enregistrer" var ="urlEnregistrer" />
+								<f:form modelAttribute="contratAchat" action="${urlEnregistrer }" role = "form">
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
-									<div class="form-group row">
-                                    <div class="col-xs-6">
-                                        <label>Nom</label>
-                                        <f:input path="nom" class="form-control" placeholder="Nom" required="true"/>
-                                    </div>
-                                    </div>
 									<div class="form-group">
-                                        <label>Titre Compagne</label>
-                                        <f:input path="titreCompagne" class="form-control" placeholder="Titre Compagne" required="true"/>
+                                        <label>reference</label>
+                                        <f:input path="reference" class="form-control" placeholder="Nom" />
                                     </div>
                                     
-                                    <c:if test="${ttt=='nouveau' }">
-										<div class="form-group">
-		                                    <label>Sac Brousse</label>
-		                                    <select name="sac_br" class = "form-control" id="listVariete" required="true">
-		                                    	<option value = "-1">Select Sac brousse</option>
-		                                    	<c:forEach items = "${typeSac }" var = "ts">
-		                                    		<option value = "${ts.getId() }" >${ts.getNom() }</option>
-		                                    	</c:forEach>
-		                                    </select>
-		                                </div>
-		                                
-										<div class="form-group">
-		                                    <label>Sac Export</label>
-		                                    <select name="sac_ex" class = "form-control">
-		                                    	<option value = "-1">Select Sac export</option>
-		                                    	<c:forEach items = "${typeSac }" var = "ts">
-		                                    		<option value = "${ts.getId() }" >${ts.getNom() }</option>
-		                                    	</c:forEach>
-		                                    </select>
-		                                </div>
-		                                
-	                                </c:if>
-	                                
-	                                
-	                                
-	                               <c:if test="${ttt=='modifier' }"> 
-		                               <div class="form-group">
-		                                    <label>Sac Brousse</label>
-		                                    <select name="sac_br" class = "form-control">
-		                                    	<option value = "${produit.getTypeSacBySacBrousse().getId() }">${produit.getTypeSacBySacBrousse().getNom() }</option>
-		                                    	<c:forEach items = "${typeSac }" var = "ts">
-		                                    		<c:if test="${ts.getId()!=produit.getTypeSacBySacBrousse().getId() }"> 
-		                                    			<option value = "${ts.getId() }">${ts.getNom() }</option>
-		                                    		</c:if>
-		                                    	</c:forEach>
-		                                    </select>
-		                               </div>
-		                               
-		                               <div class="form-group">
-		                                    <label>Sac Export</label>
-		                                    <select name="sac_ex" class = "form-control" id="listVariete">
-		                                    	<option value = "${produit.getTypeSacBySacExport().getId() }">${produit.getTypeSacBySacExport().getNom() }</option>
-		                                    	<c:forEach items = "${typeSac }" var = "ts">
-		                                    		<c:if test="${ts.getId()!=produit.getTypeSacBySacExport().getId() }"> 
-		                                    			<option value = "${ts.getId() }">${ts.getNom() }</option>
-		                                    		</c:if>
-		                                    	</c:forEach>
-		                                    </select>
-		                               </div>
-		                               
-	                               </c:if>
-	                                
-									<div class="form-group">
-                                        <label>Prix d'achat</label>
-                                        <f:input path="prixAchatIndicatif" class="form-control" placeholder="Nom" />
-                                    </div>   
-                                    
-									<div class="form-group">
-                                        <label>Prix de vente</label>
-                                        <f:input path="prixVenteIndicatif" class="form-control" placeholder="Nom" />
-                                    </div>
 
+										<div class="form-group">
+		                                    <label>fournisseur</label>
+		                                    <select name="fid" class = "form-control" id="listFournisseurs">
+		                                    	<option value = "-1">select fournisseur</option>
+		                                    	<c:forEach items = "${fournisseurs }" var = "fournisseur">
+		                                    		<option value = "${fournisseur.getId() }" >${fournisseur.getNom() }</option>
+		                                    	</c:forEach>
+		                                    </select>
+		                                </div>
+
+										<div class="form-group">
+		                                    <label>Decision</label>
+		                                    <select name="decision" class = "form-control" >
+		                                    	<option value = "-1">Select Decision</option>
+		                                    	<option value = "attente">En Attente</option>
+		                                    	<option value = "accepte">Accepté</option>
+		                                    </select>
+		                                </div>
+
+										<div class="form-group">
+		                                    <label><fmt:message code="common.produit" /></label>
+		                                    <select name="pid" class = "form-control" id="listProduits">
+		                                    	<option value = "-1">Select Produit</option>
+		                                    	<c:forEach items = "${produits }" var = "produit">
+		                                    		<option value = "${produit.getId() }" >${produit.getNom() }</option>
+		                                    	</c:forEach>
+		                                    </select>
+		                                </div>
+
+										<div class="form-group">
+		                                    <label>Unite Mesure</label>
+		                                    <select name="umid" class = "form-control" id="listUniteMesure">
+		                                    	<option value = "-1">Select Unite Mesure</option>
+		                                    	<c:forEach items = "${uniteMesure }" var = "um">
+		                                    		<option value = "${um.getId() }" >${um.getNom() }</option>
+		                                    	</c:forEach>
+		                                    </select>
+		                                </div>
+		                                
+		                                <div class="form-group">
+			                                <div class="col-md-4 mb-3">
+			                                	<label>Date Achat</label>
+			                                	<input name="date_achat" type="date" class="form-control"/>
+			                                </div>
+		                                </div>
+		                                
+		                                <div class="form-group">
+			                                <div class="col-md-4 mb-3">
+			                                	<label>Au Date</label>
+			                                	<input name="au_Date" type="date" class="form-control" required/> 
+			                                </div>
+		                                </div> 
+		                                
+		                                <div class="form-group">
+			                                <div class="col-md-4 mb-3">
+			                                	<label>Du Date</label>
+			                                	<input name="du_Date" type="date" class="form-control" required/> 
+			                                </div> 
+		                                </div>
+		                                
+		                                
 									<div class="form-group">
-                                        <label>poids</label>
-                                        <f:input path="poidsTheorique" class="form-control" placeholder="Nom" />
+                                        <label>Quantite</label>
+                                        <f:input path="quantite" class="form-control" placeholder="Nom" />
                                     </div>
-                                                              
+		                                
+		                                
+									<div class="form-group">
+                                        <label>Prix Unitaire Indicatif</label>
+                                        <f:input path="prixUIndicatif" class="form-control" placeholder="Nom" />
+                                    </div>
+		                                
+	                      
+                                    
+                                    
+                                    
+                                    
 	                                <div class="panel-footer">
                                     	<button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;<fmt:message code="common.enregister" /></i></button>
-                                    	<a href="<c:url value="/produit/" />" class="btn btn-danger"> <i class="fa fa-arrow-left">&nbsp;<fmt:message code="common.annuler" /></i></a>
+                                    	<a href="<c:url value="/contratAchat/" />" class="btn btn-danger"> <i class="fa fa-arrow-left">&nbsp;<fmt:message code="common.annuler" /></i></a>
                                     </div>
 								</f:form>	                        
 	                        </div>

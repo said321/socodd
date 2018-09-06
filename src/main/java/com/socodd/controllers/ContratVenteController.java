@@ -65,9 +65,7 @@ public class ContratVenteController {
 		model.addAttribute("clients", clientService.selectAll());
 		model.addAttribute("devise", deviseService.selectAll());
 		
-		model.addAttribute("ttt","nouveau");
-		
-		return "pages/contratVente/addUpContratVente";
+		return "pages/contratVente/addContratVente";
 		
 	}
 	
@@ -124,10 +122,8 @@ public class ContratVenteController {
 				model.addAttribute("produits", produitService.selectAll());
 				model.addAttribute("clients", clientService.selectAll());
 				model.addAttribute("devise", deviseService.selectAll());
-			
-				model.addAttribute("ttt", "modifier");
 				
-				return "pages/contratVente/addUpContratVente";
+				return "pages/contratVente/upContratVente";
 				
 			}
 		}

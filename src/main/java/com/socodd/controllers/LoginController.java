@@ -9,6 +9,10 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jackson.map.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,12 +39,13 @@ public class LoginController {
 			@RequestParam(value = "logout", required = false) String logout, Model model) {
 		
 		if (error != null) {
-			model.addAttribute("error", "Invalid username and password!");
+			model.addAttribute("error", "Invalid Username or Password!");
 		}
 
 		if (logout != null) {
 			model.addAttribute("msg", "You've been logged out successfully.");
 		}
+
 		
 		return "login/login";
 		

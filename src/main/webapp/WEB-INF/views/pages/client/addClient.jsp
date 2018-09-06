@@ -89,9 +89,6 @@
                                     </div>
 
 
-
-                                    
-                                    <c:if test="${ttt=='nouveau' }">
 										<div class="form-group">
 		                                    <label><fmt:message code="common.nom" /></label>
 		                                    <select name="t_client_id" class = "form-control" id="listTypeClients">
@@ -115,46 +112,7 @@
 		                                    	<option value = "assujeti">Assujeti</option>
 		                                    </select>
 		                                </div>
-		                            
-	                                </c:if>
-	                                
-	                                
-	                                
-	                               <c:if test="${ttt=='modifier' }"> 
-		                                <div class="form-group"> 
-		                                    <label><fmt:message code="common.nom" /></label>
-		                                    <select name="t_client_id" class = "form-control" id="listTypeClients">
-		                                    	<option value = "${client.getTypeClient().getId() }">${client.getTypeClient().getNom() }</option>
-		                                    	<c:forEach items = "${typeClients }" var = "typeClient">
-		                                    		<c:if test="${client.getTypeClient().getId()!=typeClient.getId() }"> 
-		                                    			<option value = "${typeClient.getId() }">${typeClient.getNom() }</option>
-		                                    		</c:if>
-		                                    	</c:forEach>
-		                                    </select>
-		                                </div>
-		                                
-			                            <div class="form-group">
-				                            <label>Date Entrée</label>
-			                               	<input name="date_entree" value="${client.getDateEntree() }" type="date" class="form-control" required/> 
-			                            </div>
-			                            
-										<div class="form-group">
-		                                    <label>Import B.I.C</label>
-		                                    <select name="import_bic" class = "form-control" >
-		                                    	<c:if test="${client.getNumBic() == 'assujeti' }">
-		                                    		<option value = "${client.getNumBic() }">Assujeti</option>
-		                                    		<option value = "exonore">Exonoré</option>
-		                                    	</c:if>
-		                                    	<c:if test="${client.getNumBic() == 'exonore' }">
-		                                    		<option value = "${client.getNumBic() }">Exonoré</option>
-		                                    		<option value = "assujeti">Assujeti</option>
-		                                    	</c:if>
-		                                    </select>
-		                                </div>
-			                           
-		                                
-	                                </c:if>
-	                                
+
                                     
 									<div class="form-group">
                                         <label>N° Compte Tiers</label>

@@ -72,85 +72,7 @@
                                         <f:input path="reference" class="form-control" placeholder="Nom" />
                                     </div>
                                     
-                                    
-                                    
-                                    <c:if test="${ttt=='nouveau' }">
-										<div class="form-group">
-		                                    <label>fournisseur</label>
-		                                    <select name="fid" class = "form-control" id="listFournisseurs">
-		                                    	<option value = "-1">select fournisseur</option>
-		                                    	<c:forEach items = "${fournisseurs }" var = "fournisseur">
-		                                    		<option value = "${fournisseur.getId() }" >${fournisseur.getNom() }</option>
-		                                    	</c:forEach>
-		                                    </select>
-		                                </div>
 
-										<div class="form-group">
-		                                    <label>Decision</label>
-		                                    <select name="decision" class = "form-control" >
-		                                    	<option value = "-1">Select Decision</option>
-		                                    	<option value = "attente">En Attente</option>
-		                                    	<option value = "accepte">Accepté</option>
-		                                    </select>
-		                                </div>
-
-										<div class="form-group">
-		                                    <label><fmt:message code="common.produit" /></label>
-		                                    <select name="pid" class = "form-control" id="listProduits">
-		                                    	<option value = "-1">Select Produit</option>
-		                                    	<c:forEach items = "${produits }" var = "produit">
-		                                    		<option value = "${produit.getId() }" >${produit.getNom() }</option>
-		                                    	</c:forEach>
-		                                    </select>
-		                                </div>
-
-										<div class="form-group">
-		                                    <label>Unite Mesure</label>
-		                                    <select name="umid" class = "form-control" id="listUniteMesure">
-		                                    	<option value = "-1">Select Unite Mesure</option>
-		                                    	<c:forEach items = "${uniteMesure }" var = "um">
-		                                    		<option value = "${um.getId() }" >${um.getNom() }</option>
-		                                    	</c:forEach>
-		                                    </select>
-		                                </div>
-		                                
-		                                <div class="form-group">
-			                                <div class="col-md-4 mb-3">
-			                                	<label>Date Achat</label>
-			                                	<input name="date_achat" type="date" class="form-control"/>
-			                                </div>
-		                                </div>
-		                                
-		                                <div class="form-group">
-			                                <div class="col-md-4 mb-3">
-			                                	<label>Au Date</label>
-			                                	<input name="au_Date" type="date" class="form-control" required/> 
-			                                </div>
-		                                </div> 
-		                                
-		                                <div class="form-group">
-			                                <div class="col-md-4 mb-3">
-			                                	<label>Du Date</label>
-			                                	<input name="du_Date" type="date" class="form-control" required/> 
-			                                </div> 
-		                                </div>
-		                                
-		                                
-									<div class="form-group">
-                                        <label>Quantite</label>
-                                        <f:input path="quantite" class="form-control" placeholder="Nom" />
-                                    </div>
-		                                
-		                                
-									<div class="form-group">
-                                        <label>Prix Unitaire Indicatif</label>
-                                        <f:input path="prixUIndicatif" class="form-control" placeholder="Nom" />
-                                    </div>
-		                                
-	                                </c:if>
-                                       
-                                    
-                                    <c:if test="${ttt=='modifier' }">
 										<div class="form-group">
 		                                    <label>fournisseur</label>
 		                                    <select name="fid" class = "form-control" id="listFournisseurs">
@@ -250,9 +172,7 @@
                                         <label>Reste à Livrer</label>
                                         <f:input path="resteLivrer" class="form-control" placeholder="Nom" />
                                     </div>                         
-		                                
-	                                </c:if>
-                                    
+
                                     
                                     
                                     

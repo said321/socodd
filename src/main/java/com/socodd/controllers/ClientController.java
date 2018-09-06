@@ -57,9 +57,7 @@ public class ClientController {
 		model.addAttribute("typeClients", typeClientService.selectAll());
 		model.addAttribute("client", client);
 		
-		model.addAttribute("ttt", "nouveau");
-		
-		return "pages/client/addUpClient";
+		return "pages/client/addClient";
 		
 	}
 	
@@ -105,14 +103,12 @@ public class ClientController {
 				
 				
 				client.setTypeClient(typeClientService.getById(client.getTypeClient().getId()));
-				
-				
-				model.addAttribute("ttt", "modifier");
+
 				
 				model.addAttribute("client", client);
 			}
 		}
-		return "pages/client/addUpClient";
+		return "pages/client/upClient";
 	}
 	
 	@RequestMapping(value = "/supprimer/{idClient}")

@@ -58,9 +58,8 @@ public class ProduitController {
 		List<TypeSac> typeSac  = typeSacService.selectAll();
 		
 		model.addAttribute("typeSac", typeSac);
-		model.addAttribute("ttt", "nouveau");
 		
-		return "pages/produit/addUpProduit";
+		return "pages/produit/addProduit";
 		
 	}
 	
@@ -101,12 +100,10 @@ public class ProduitController {
 				List<TypeSac> typeSac  = typeSacService.selectAll();
 				
 				model.addAttribute("typeSac", typeSac);
-				
-				model.addAttribute("ttt", "modifier");
 				model.addAttribute("produit", produit);
 			}
 		}
-		return "pages/produit/addUpProduit";
+		return "pages/produit/upProduit";
 	}
 	
 	@RequestMapping(value = "/supprimer/{idProduit}")
