@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
+// Generated 7 sept. 2018 13:04:21 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,29 +24,36 @@ public class Utilisateur implements java.io.Serializable {
 	private String nom;
 	private String prenom;
 	private String telephone;
-	private String cel;
+	private String fax;
 	private String email;
 	private String fonction;
 	private String matricule;
+	private String username;
 	private String motPasse;
 	private boolean active;
+	private boolean enabled;
+	private String cel;
 
 	public Utilisateur() {
 	}
 
 	public Utilisateur(ProfileUtilisateur profileUtilisateur, String code, String nom, String prenom, String telephone,
-			String cel, String email, String fonction, String matricule, String motPasse, boolean active) {
+			String fax, String email, String fonction, String matricule, String username, String motPasse,
+			boolean active, boolean enabled, String cel) {
 		this.profileUtilisateur = profileUtilisateur;
 		this.code = code;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.telephone = telephone;
-		this.cel = cel;
+		this.fax = fax;
 		this.email = email;
 		this.fonction = fonction;
 		this.matricule = matricule;
+		this.username = username;
 		this.motPasse = motPasse;
 		this.active = active;
+		this.enabled = enabled;
+		this.cel = cel;
 	}
 
 	@Id
@@ -71,7 +78,7 @@ public class Utilisateur implements java.io.Serializable {
 		this.profileUtilisateur = profileUtilisateur;
 	}
 
-	@Column(name = "code", nullable = false, length = 50)
+	@Column(name = "code", nullable = false, length = 5)
 	public String getCode() {
 		return this.code;
 	}
@@ -107,13 +114,13 @@ public class Utilisateur implements java.io.Serializable {
 		this.telephone = telephone;
 	}
 
-	@Column(name = "cel", nullable = false, length = 10)
-	public String getCel() {
-		return this.cel;
+	@Column(name = "fax", nullable = false, length = 10)
+	public String getFax() {
+		return this.fax;
 	}
 
-	public void setCel(String cel) {
-		this.cel = cel;
+	public void setFax(String fax) {
+		this.fax = fax;
 	}
 
 	@Column(name = "email", nullable = false, length = 50)
@@ -143,6 +150,15 @@ public class Utilisateur implements java.io.Serializable {
 		this.matricule = matricule;
 	}
 
+	@Column(name = "username", nullable = false, length = 50)
+	public String getUsername() {
+		return this.username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	@Column(name = "mot_passe", nullable = false, length = 50)
 	public String getMotPasse() {
 		return this.motPasse;
@@ -159,6 +175,24 @@ public class Utilisateur implements java.io.Serializable {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	@Column(name = "enabled", nullable = false)
+	public boolean isEnabled() {
+		return this.enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	@Column(name = "cel", nullable = false, length = 10)
+	public String getCel() {
+		return this.cel;
+	}
+
+	public void setCel(String cel) {
+		this.cel = cel;
 	}
 
 }

@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
+// Generated 7 sept. 2018 13:04:21 by Hibernate Tools 3.6.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,19 +21,22 @@ public class ProfileUtilisateur implements java.io.Serializable {
 
 	private Integer id;
 	private String code;
+	private String role;
 	private String nom;
 	private Set<Utilisateur> utilisateurs = new HashSet<Utilisateur>(0);
 
 	public ProfileUtilisateur() {
 	}
 
-	public ProfileUtilisateur(String code, String nom) {
+	public ProfileUtilisateur(String code, String role, String nom) {
 		this.code = code;
+		this.role = role;
 		this.nom = nom;
 	}
 
-	public ProfileUtilisateur(String code, String nom, Set<Utilisateur> utilisateurs) {
+	public ProfileUtilisateur(String code, String role, String nom, Set<Utilisateur> utilisateurs) {
 		this.code = code;
+		this.role = role;
 		this.nom = nom;
 		this.utilisateurs = utilisateurs;
 	}
@@ -57,6 +60,15 @@ public class ProfileUtilisateur implements java.io.Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	@Column(name = "role", nullable = false, length = 50)
+	public String getRole() {
+		return this.role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	@Column(name = "nom", nullable = false, length = 50)

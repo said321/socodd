@@ -25,5 +25,13 @@
 	
 	<context:component-scan base-package="com.socodd.controllers" />
 	
+<!-- 	<beans:bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+
+	<beans:bean class="org.springframework.web.servlet.view.XmlViewResolver">
+		<beans:property name="location">
+			<beans:value>/WEB-INF/spring-excel-views.xml</beans:value>
+		</beans:property>
+	</beans:bean> -->
+	
 </beans:beans>
 

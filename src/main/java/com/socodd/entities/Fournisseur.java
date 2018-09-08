@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
+// Generated 7 sept. 2018 13:04:21 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -40,6 +40,7 @@ public class Fournisseur implements java.io.Serializable {
 	private int numAgrement;
 	private String numBic;
 	private int numBanque;
+	private Set<ReceptionProduits> receptionProduitses = new HashSet<ReceptionProduits>(0);
 	private Set<ContratAchat> contratAchats = new HashSet<ContratAchat>(0);
 
 	public Fournisseur() {
@@ -67,7 +68,8 @@ public class Fournisseur implements java.io.Serializable {
 
 	public Fournisseur(TypeFournisseur typeFournisseur, Banque banque, String code, String nom, String adresse,
 			Date dateEntree, String telephone, String fax, String email, int numCompteTiers, int numCc, int numRccm,
-			int numAgrement, String numBic, int numBanque, Set<ContratAchat> contratAchats) {
+			int numAgrement, String numBic, int numBanque, Set<ReceptionProduits> receptionProduitses,
+			Set<ContratAchat> contratAchats) {
 		this.typeFournisseur = typeFournisseur;
 		this.banque = banque;
 		this.code = code;
@@ -83,6 +85,7 @@ public class Fournisseur implements java.io.Serializable {
 		this.numAgrement = numAgrement;
 		this.numBic = numBic;
 		this.numBanque = numBanque;
+		this.receptionProduitses = receptionProduitses;
 		this.contratAchats = contratAchats;
 	}
 
@@ -234,6 +237,15 @@ public class Fournisseur implements java.io.Serializable {
 
 	public void setNumBanque(int numBanque) {
 		this.numBanque = numBanque;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "fournisseur")
+	public Set<ReceptionProduits> getReceptionProduitses() {
+		return this.receptionProduitses;
+	}
+
+	public void setReceptionProduitses(Set<ReceptionProduits> receptionProduitses) {
+		this.receptionProduitses = receptionProduitses;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "fournisseur")

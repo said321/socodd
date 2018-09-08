@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
+                        <h1 class="page-header"> <fmt:message code="common.utilisateur.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.ajouter" />
+	                            <fmt:message code="common.utilisateur.soustitre1" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
@@ -68,36 +68,36 @@
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="nom" class="form-control" placeholder="Nom" />
+                                        <label>Nom</label>
+                                        <f:input path="nom" class="form-control" placeholder="Nom" required="true"/>
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="prenom" class="form-control" placeholder="Prenom" />
+                                        <label>Prenom</label>
+                                        <f:input path="prenom" class="form-control" placeholder="Prenom" required="true"/>
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="telephone" class="form-control" placeholder="Telephone" />
+                                        <label>Telephone</label>
+                                        <f:input path="telephone" class="form-control" placeholder="Telephone"/>
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="cel" class="form-control" placeholder="Cel" />
+                                        <label>Fax</label>
+                                        <f:input path="cel" class="form-control" placeholder="Fax" />
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
+                                        <label>E-mail</label>
                                         <f:input path="email" class="form-control" placeholder="email" />
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
+                                        <label>Fonction</label>
                                         <f:input path="fonction" class="form-control" placeholder="fonction" />
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="matricule" class="form-control" placeholder="Matricule" />
+                                        <label>Matricule</label>
+                                        <f:input path="matricule" class="form-control" placeholder="Matricule" required="true" />
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="motPasse" class="form-control" placeholder="motPasse" />
+                                        <label>Mot de Passe</label>
+                                        <f:input path="motPasse" class="form-control" placeholder="Mot de Passe" required="true"/>
                                     </div>
 
 
@@ -105,9 +105,9 @@
                                     
                                     <c:if test="${ttt=='nouveau' }">
 										<div class="form-group">
-		                                    <label><fmt:message code="common.nom" /></label>
+		                                    <label>Profile d'Utilisateur</label>
 		                                    <select name="pid" class = "form-control" id="listProfileUtilisateurs">
-		                                    	<option value = "-1"><fmt:message code="common.nom" /></option>
+		                                    	<option value = "1">Select Profile Utilisateur</option>
 		                                    	<c:forEach items = "${profileUtilisateurs }" var = "profileUtilisateur">
 		                                    		<option value = "${profileUtilisateur.getId() }" >${profileUtilisateur.getNom() }</option>
 		                                    	</c:forEach>
@@ -119,7 +119,7 @@
 	                                
 	                               <c:if test="${ttt=='modifier' }"> 
 		                               <div class="form-group">
-		                                    <label><fmt:message code="common.nom" /></label>
+		                                    <label>Profile d'Utilisateur</label>
 		                                    <select name="pid" class = "form-control" id="listProfileUtilisateurs">
 		                                    	<option value = "${utilisateur.getProfileUtilisateur().getId() }">${utilisateur.getProfileUtilisateur().getNom() }</option>
 		                                    	<c:forEach items = "${profileUtilisateurs }" var = "profileUtilisateur">

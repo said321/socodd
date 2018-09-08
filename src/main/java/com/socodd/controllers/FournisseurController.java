@@ -63,8 +63,6 @@ public class FournisseurController {
 		model.addAttribute("banques", banqueService.selectAll());
 		model.addAttribute("fournisseur", fournisseur);
 		
-		model.addAttribute("ttt", "nouveau");
-		
 		return "pages/fournisseur/addFournisseur";
 		
 	}
@@ -113,7 +111,7 @@ public class FournisseurController {
 				fournisseur.setTypeFournisseur(typeFournisseurService.getById(fournisseur.getTypeFournisseur().getId()));
 				fournisseur.setBanque(banqueService.getById(fournisseur.getBanque().getId()));
 				
-				model.addAttribute("ttt", "modifier");
+				model.addAttribute("banques", banqueService.selectAll());
 				
 				model.addAttribute("fournisseur", fournisseur);
 			}

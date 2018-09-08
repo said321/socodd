@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
+                        <h1 class="page-header"> <fmt:message code="common.employee.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.ajouter" />
+	                            <fmt:message code="common.employee.soustitre3" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
@@ -68,51 +68,105 @@
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="nom" class="form-control" placeholder="Nom" />
+                                        <label>Nom</label>
+                                        <f:input path="nom" class="form-control" placeholder="Nom" required="true"/>
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="matricule" class="form-control" placeholder="Nom" />
+                                        <label>Matricule></label>
+                                        <f:input path="matricule" class="form-control" placeholder="Matricule" required="true"/>
                                     </div>
+
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="ordre" class="form-control" placeholder="Nom" />
+                                        <label>Adresse</label>
+                                        <f:input path="adresse" class="form-control" placeholder="Addresse" required="true"/>
                                     </div>
 
-
-
-                                    
-                                    <c:if test="${ttt=='nouveau' }">
-										<div class="col-md-4 mb-3">
-		                                    <label><fmt:message code="common.nom" /></label>
-		                                    <select name="pid" class = "form-control" id="listProduits">
-		                                    	<option value = "-1"><fmt:message code="common.nom" /></option>
-		                                    	<c:forEach items = "${produits }" var = "produit">
-		                                    		<option value = "${produit.getId() }" >${produit.getNom() }</option>
-		                                    	</c:forEach>
-		                                    </select>
-		                                </div>
-	                                </c:if>
-	                                
-	                                
-	                                
-	                               <c:if test="${ttt=='modifier' }"> 
-		                               <div class="col-md-4 mb-3">
-		                                    <label><fmt:message code="common.nom" /></label>
-		                                    <select name="pid" class = "form-control" id="listProduits">
-		                                    	<option value = "${employee.getProduit().getId() }">${employee.getProduit().getNom() }</option>
-		                                    	<c:forEach items = "${produits }" var = "produit">
-		                                    		<c:if test="${employee.getProduit().getId()!=produit.getId() }"> 
-		                                    			<option value = "${produit.getId() }">${produit.getNom() }</option>
+			                            <div class="form-group">
+				                            <label>Date Naissance</label>
+			                               	<input name="date_naissance" type="date" class="form-control" required/> 
+			                            </div>
+			                            
+										<div class="form-group"> 
+		                                    <label>Nationalité</label>
+		                                    <select name="nationalite_id" class = "form-control" >
+		                                    	<option value = "${employee.getNationalite().getId() }">${employee.getNationalite().getNom() }</option>
+		                                    	<c:forEach items = "${nationalites }" var = "nationalite">
+		                                    		<c:if test="${employee.getNationalite().getId()!=nationalite.getId() }"> 
+		                                    			<option value = "${nationalite.getId() }">${nationalite.getNom() }</option>
 		                                    		</c:if>
 		                                    	</c:forEach>
 		                                    </select>
 		                                </div>
-	                                </c:if>
-	                                
-	                                
                                     
+                                    
+										<div class="form-group"> 
+		                                    <label>Equipe</label>
+		                                    <select name="equipe_id" class = "form-control" >
+		                                    	<option value = "${employee.getEquipe().getId() }">${employee.getEquipe().getNom() }</option>
+		                                    	<c:forEach items = "${equipes }" var = "equipe">
+		                                    		<c:if test="${employee.getEquipe().getId()!=Equipet.getId() }"> 
+		                                    			<option value = "${equipe.getId() }">${equipe.getNom() }</option>
+		                                    		</c:if>
+		                                    	</c:forEach>
+		                                    </select>
+		                                </div>
+
+										<div class="form-group"> 
+		                                    <label>Departement</label>
+		                                    <select name="departement_id" class = "form-control" >
+		                                    	<option value = "${employee.getDepartement().getId() }">${employee.getDepartement().getNom() }</option>
+		                                    	<c:forEach items = "${departements }" var = "departement">
+		                                    		<c:if test="${employee.getDepartement().getId()!=departement.getId() }"> 
+		                                    			<option value = "${departement.getId() }">${departement.getNom() }</option>
+		                                    		</c:if>
+		                                    	</c:forEach>
+		                                    </select>
+		                                </div>
+		                                
+										<div class="form-group"> 
+		                                    <label>Banque</label>
+		                                    <select name="banque_id" class = "form-control" >
+		                                    	<option value = "${employee.getBanque().getId() }">${employee.getBanque().getNom() }</option>
+		                                    	<c:forEach items = "${banques }" var = "banque">
+		                                    		<c:if test="${employee.getBanque().getId()!=banque.getId() }"> 
+		                                    			<option value = "${banque.getId() }">${banque.getNom() }</option>
+		                                    		</c:if>
+		                                    	</c:forEach>
+		                                    </select>
+		                                </div>
+
+                                    
+			                            <div class="form-group">
+				                            <label>Date Entrée</label>
+			                               	<input name="date_entree" type="date" class="form-control" required/> 
+			                            </div>
+			                            
+			                            
+									<div class="form-group">
+                                        <label>Téléphone</label>
+                                        <f:input path="telephone" class="form-control" placeholder="Telephone" required="true"/>
+                                    </div>
+
+									<div class="form-group">
+                                        <label>E-mail</label>
+                                        <f:input path="email" class="form-control" placeholder="E-mail" required="true"/>
+                                    </div>
+                                    
+									<div class="form-group">
+                                        <label>Fonction Occupée</label>
+                                        <f:input path="fonctionOccupee" class="form-control" placeholder="Fonction" required="true"/>
+                                    </div>
+                                    
+									<div class="form-group">
+                                        <label>N° Compte</label>
+                                        <f:input path="numCompte" class="form-control" placeholder="123..." required="true"/>
+                                    </div>
+                                    
+									<div class="form-group">
+                                        <label>N° CompteTier</label>
+                                        <f:input path="numCompteTier" class="form-control" placeholder="123..." required="true"/>
+                                    </div>
+	                                
 	                                <div class="panel-footer">
                                     	<button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;<fmt:message code="common.enregister" /></i></button>
                                     	<a href="<c:url value="/employee/" />" class="btn btn-danger"> <i class="fa fa-arrow-left">&nbsp;<fmt:message code="common.annuler" /></i></a>

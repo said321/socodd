@@ -88,10 +88,12 @@ public class ZoneController {
 	public ModelAndView exportExcel() {
 		
 		List<Zone> zones = zoneService.selectAll();
-		ModelAndView model = new ModelAndView("XListExcel");
-		model.addObject("xlist", zones);
-		model.addObject("name", "Zones");
-		return model;
+//		ModelAndView model = new ModelAndView("XListExcel");
+//		model.addObject("xlist", zones);
+//		model.addObject("name", "Zones");
+		
+		
+		return new ModelAndView("XListExcel", "xlist", zones);
 		
 	}
 

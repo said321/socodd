@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
+// Generated 7 sept. 2018 13:04:21 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -23,6 +23,7 @@ public class ReceptionProduits implements java.io.Serializable {
 
 	private Integer id;
 	private Variete variete;
+	private Fournisseur fournisseur;
 	private ContratAchat contratAchat;
 	private ParcAuto parcAuto;
 	private Transporteur transporteur;
@@ -31,7 +32,6 @@ public class ReceptionProduits implements java.io.Serializable {
 	private Produit produit;
 	private int numBon;
 	private String reference;
-	private int fournisseur;
 	private int chauffeur;
 	private Date dateReception;
 	private int numConnaissement;
@@ -39,10 +39,11 @@ public class ReceptionProduits implements java.io.Serializable {
 	public ReceptionProduits() {
 	}
 
-	public ReceptionProduits(Variete variete, ContratAchat contratAchat, ParcAuto parcAuto, Transporteur transporteur,
-			TypeSac typeSac, Usine usine, Produit produit, int numBon, String reference, int fournisseur, int chauffeur,
-			Date dateReception, int numConnaissement) {
+	public ReceptionProduits(Variete variete, Fournisseur fournisseur, ContratAchat contratAchat, ParcAuto parcAuto,
+			Transporteur transporteur, TypeSac typeSac, Usine usine, Produit produit, int numBon, String reference,
+			int chauffeur, Date dateReception, int numConnaissement) {
 		this.variete = variete;
+		this.fournisseur = fournisseur;
 		this.contratAchat = contratAchat;
 		this.parcAuto = parcAuto;
 		this.transporteur = transporteur;
@@ -51,7 +52,6 @@ public class ReceptionProduits implements java.io.Serializable {
 		this.produit = produit;
 		this.numBon = numBon;
 		this.reference = reference;
-		this.fournisseur = fournisseur;
 		this.chauffeur = chauffeur;
 		this.dateReception = dateReception;
 		this.numConnaissement = numConnaissement;
@@ -77,6 +77,16 @@ public class ReceptionProduits implements java.io.Serializable {
 
 	public void setVariete(Variete variete) {
 		this.variete = variete;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fournisseur", nullable = false)
+	public Fournisseur getFournisseur() {
+		return this.fournisseur;
+	}
+
+	public void setFournisseur(Fournisseur fournisseur) {
+		this.fournisseur = fournisseur;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -155,15 +165,6 @@ public class ReceptionProduits implements java.io.Serializable {
 
 	public void setReference(String reference) {
 		this.reference = reference;
-	}
-
-	@Column(name = "fournisseur", nullable = false)
-	public int getFournisseur() {
-		return this.fournisseur;
-	}
-
-	public void setFournisseur(int fournisseur) {
-		this.fournisseur = fournisseur;
 	}
 
 	@Column(name = "chauffeur", nullable = false)

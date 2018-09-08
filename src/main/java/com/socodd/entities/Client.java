@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
+// Generated 7 sept. 2018 13:04:21 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -26,6 +26,7 @@ public class Client implements java.io.Serializable {
 
 	private Integer id;
 	private TypeClient typeClient;
+	private Banque banque;
 	private String code;
 	private String nom;
 	private String adresse;
@@ -33,7 +34,6 @@ public class Client implements java.io.Serializable {
 	private String email;
 	private String telephone;
 	private String fax;
-	private int banque;
 	private String numBic;
 	private int numAgrement;
 	private int numCc;
@@ -45,10 +45,11 @@ public class Client implements java.io.Serializable {
 	public Client() {
 	}
 
-	public Client(TypeClient typeClient, String code, String nom, String adresse, Date dateEntree, String email,
-			String telephone, String fax, int banque, String numBic, int numAgrement, int numCc, int numCompteTiers,
+	public Client(TypeClient typeClient, Banque banque, String code, String nom, String adresse, Date dateEntree,
+			String email, String telephone, String fax, String numBic, int numAgrement, int numCc, int numCompteTiers,
 			int numRccm, int numBanque) {
 		this.typeClient = typeClient;
+		this.banque = banque;
 		this.code = code;
 		this.nom = nom;
 		this.adresse = adresse;
@@ -56,7 +57,6 @@ public class Client implements java.io.Serializable {
 		this.email = email;
 		this.telephone = telephone;
 		this.fax = fax;
-		this.banque = banque;
 		this.numBic = numBic;
 		this.numAgrement = numAgrement;
 		this.numCc = numCc;
@@ -65,10 +65,11 @@ public class Client implements java.io.Serializable {
 		this.numBanque = numBanque;
 	}
 
-	public Client(TypeClient typeClient, String code, String nom, String adresse, Date dateEntree, String email,
-			String telephone, String fax, int banque, String numBic, int numAgrement, int numCc, int numCompteTiers,
+	public Client(TypeClient typeClient, Banque banque, String code, String nom, String adresse, Date dateEntree,
+			String email, String telephone, String fax, String numBic, int numAgrement, int numCc, int numCompteTiers,
 			int numRccm, int numBanque, Set<ContratVente> contratVentes) {
 		this.typeClient = typeClient;
+		this.banque = banque;
 		this.code = code;
 		this.nom = nom;
 		this.adresse = adresse;
@@ -76,7 +77,6 @@ public class Client implements java.io.Serializable {
 		this.email = email;
 		this.telephone = telephone;
 		this.fax = fax;
-		this.banque = banque;
 		this.numBic = numBic;
 		this.numAgrement = numAgrement;
 		this.numCc = numCc;
@@ -106,6 +106,16 @@ public class Client implements java.io.Serializable {
 
 	public void setTypeClient(TypeClient typeClient) {
 		this.typeClient = typeClient;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "banque", nullable = false)
+	public Banque getBanque() {
+		return this.banque;
+	}
+
+	public void setBanque(Banque banque) {
+		this.banque = banque;
 	}
 
 	@Column(name = "code", nullable = false, length = 9)
@@ -170,15 +180,6 @@ public class Client implements java.io.Serializable {
 
 	public void setFax(String fax) {
 		this.fax = fax;
-	}
-
-	@Column(name = "banque", nullable = false)
-	public int getBanque() {
-		return this.banque;
-	}
-
-	public void setBanque(int banque) {
-		this.banque = banque;
 	}
 
 	@Column(name = "num_bic", nullable = false, length = 50)

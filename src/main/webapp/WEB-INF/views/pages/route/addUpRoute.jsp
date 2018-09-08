@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
+                        <h1 class="page-header"> <fmt:message code="common.route.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.ajouter" />
+	                            <fmt:message code="common.route.soustitre2" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
@@ -71,8 +71,8 @@
                                     <c:if test="${ttt=='nouveau' }">
 										<div class="form-group">
 		                                    <label>Sous-Prefecture</label>
-		                                    <select name="s_pref_id" class = "form-control" id="listRoutes">
-		                                    	<option value = "-1">Select Sous-Prefecture</option>
+		                                    <select name="s_pref_id" class = "form-control" >
+		                                    	<option value = "1">Select Sous-Prefecture</option>
 		                                    	<c:forEach items = "${sousPrefectures }" var = "sousPrefecture">
 		                                    		<option value = "${sousPrefecture.getId() }" >${sousPrefecture.getNom() }</option>
 		                                    	</c:forEach>
@@ -80,8 +80,8 @@
 		                                </div>
 		                                
 										<div class="form-group">
-		                                    <label>Port</label>
-		                                    <select name="port_id" class = "form-control" id="listRoutes">
+		                                    <label>Porte</label>
+		                                    <select name="port_id" class = "form-control" >
 		                                    	<option value = "-1">Select Port</option>
 		                                    	<c:forEach items = "${ports }" var = "port">
 		                                    		<option value = "${port.getId() }" >${port.getNom() }</option>
@@ -96,7 +96,7 @@
 	                               <c:if test="${ttt=='modifier' }"> 
 		                                <div class="form-group">
 		                                    <label>Sous-Prefecture</label>
-		                                    <select name="s_pref_id" class = "form-control" id="listRoutes">
+		                                    <select name="s_pref_id" class = "form-control">
 		                                    	<option value = "${route.getSousPrefecture().getId() }">${route.getSousPrefecture().getNom() }</option>
 		                                    	<c:forEach items = "${sousPrefectures }" var = "sousPrefecture">
 		                                    		<c:if test="${route.getSousPrefecture().getId()!=sousPrefecture.getId() }"> 
@@ -107,8 +107,8 @@
 		                                </div>
 		                                
 		                                <div class="form-group">
-		                                    <label>Port</label>
-		                                    <select name="port_id" class = "form-control" id="listRoutes">
+		                                    <label>Porte</label>
+		                                    <select name="port_id" class = "form-control" >
 		                                    	<option value = "${route.getPort().getId() }">${route.getPort().getNom() }</option>
 		                                    	<c:forEach items = "${ports }" var = "port">
 		                                    		<c:if test="${route.getPort().getId()!=port.getId() }"> 
@@ -125,12 +125,12 @@
                                     
 									<div class="form-group">
                                         <label>Cout TKM</label>
-                                        <f:input path="coutTkm" class="form-control"  />
+                                        <f:input path="coutTkm" class="form-control" required="true" />
                                     </div>
                                     
 									<div class="form-group">
                                         <label>Prix Entrée Usine</label>
-                                        <f:input path="prixEntreeUsine" class="form-control" />
+                                        <f:input path="prixEntreeUsine" class="form-control" required="true" />
                                     </div>
                                     
                                     

@@ -52,7 +52,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"><fmt:message code="common.variete" /></h1>
+                        <h1 class="page-header"><fmt:message code="common.variete.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -70,7 +70,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <fmt:message code="variete.liste" />
+                            <fmt:message code="common.variete.soustitre1" />
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -88,7 +88,7 @@
                                 <tbody>
                                 	<c:forEach items="${varietes }" var = "variete">
 	                                    <tr class="odd gradeX">
-	                                        <td >${variete.getCode() }</td>
+	                                        <td>${variete.getCode() }</td>
 	                                        <td>${variete.getNom() }</td>
 	                                        <td>${variete.getProduit().getNom() }</td>
 	                                        <td>${variete.getAbrege() }</td>
@@ -106,7 +106,7 @@
 																<h4 class="modal-title" id="myModalLabel"><fmt:message code="common.confirm.suppression" /></h4>
 															</div>
 															<div class="modal-body">
-																<fmt:message code="variete.confirm.suppression.msg" />
+																<fmt:message code="common.msg.suppression" />
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message code="common.annuler" /></button>

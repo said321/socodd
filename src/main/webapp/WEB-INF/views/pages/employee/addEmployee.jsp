@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
+                        <h1 class="page-header"> <fmt:message code="common.employee.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.ajouter" />
+	                            <fmt:message code="common.employee.soustitre2" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
@@ -68,16 +68,16 @@
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="nom" class="form-control" placeholder="Nom" />
+                                        <label>Nom</label>
+                                        <f:input path="nom" class="form-control" placeholder="Nom" required="true"/>
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="matricule" class="form-control" placeholder="Matricule" />
+                                        <label>Matricule</label>
+                                        <f:input path="matricule" class="form-control" placeholder="Matricule" required="true"/>
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="adresse" class="form-control" placeholder="Addresse" />
+                                        <label>Adresse</label>
+                                        <f:input path="adresse" class="form-control" placeholder="Addresse" required="true"/>
                                     </div>
 
 			                            <div class="form-group">
@@ -86,9 +86,9 @@
 			                            </div>
 
 										<div class="form-group">
-		                                    <label>nationalite</label>
-		                                    <select name="nationalite_id" class = "form-control" id="listNationalites">
-		                                    	<option value = "-1"><fmt:message code="common.nom" /></option>
+		                                    <label>Nationalité</label>
+		                                    <select name="nationalite_id" class = "form-control" >
+		                                    	<option value = "1">Select Nationalité</option>
 		                                    	<c:forEach items = "${nationalites }" var = "nationalite">
 		                                    		<option value = "${nationalite.getId() }" >${nationalite.getNom() }</option>
 		                                    	</c:forEach>
@@ -97,9 +97,9 @@
                                     
                                     
 										<div class="form-group">
-		                                    <label>equipe</label>
-		                                    <select name="equipe_id" class = "form-control" id="listNationalites">
-		                                    	<option value = "-1"><fmt:message code="common.nom" /></option>
+		                                    <label>Equipe</label>
+		                                    <select name="equipe_id" class = "form-control" >
+		                                    	<option value = "1">Select Equipe</option>
 		                                    	<c:forEach items = "${equipes }" var = "equipe">
 		                                    		<option value = "${equipe.getId() }" >${equipe.getNom() }</option>
 		                                    	</c:forEach>
@@ -108,9 +108,9 @@
 
 
 										<div class="form-group">
-		                                    <label>departement</label>
-		                                    <select name="departement_id" class = "form-control" id="listNationalites">
-		                                    	<option value = "-1"><fmt:message code="common.nom" /></option>
+		                                    <label>Departement</label>
+		                                    <select name="departement_id" class = "form-control" >
+		                                    	<option value = "-1">Select Departement</option>
 		                                    	<c:forEach items = "${departements }" var = "departement">
 		                                    		<option value = "${departement.getId() }" >${departement.getNom() }</option>
 		                                    	</c:forEach>
@@ -118,9 +118,9 @@
 		                                </div>
 		                                
 										<div class="form-group">
-		                                    <label>banque</label>
-		                                    <select name="banque_id" class = "form-control" id="listNationalites">
-		                                    	<option value = "-1"><fmt:message code="common.nom" /></option>
+		                                    <label>Banque</label>
+		                                    <select name="banque_id" class = "form-control" >
+		                                    	<option value = "1">Select Banque</option>
 		                                    	<c:forEach items = "${banques }" var = "banque">
 		                                    		<option value = "${banque.getId() }" >${banque.getNom() }</option>
 		                                    	</c:forEach>
@@ -135,28 +135,28 @@
 			                            
 			                            
 									<div class="form-group">
-                                        <label>telephone</label>
-                                        <f:input path="telephone" class="form-control" placeholder="telephone" />
+                                        <label>Téléphone</label>
+                                        <f:input path="telephone" class="form-control" placeholder="Telephone" required="true"/>
                                     </div>
 
 									<div class="form-group">
-                                        <label>email</label>
-                                        <f:input path="email" class="form-control" placeholder="email" />
+                                        <label>E-mail</label>
+                                        <f:input path="email" class="form-control" placeholder="E-mail" required="true"/>
                                     </div>
                                     
 									<div class="form-group">
-                                        <label>fonction Occupee</label>
-                                        <f:input path="fonctionOccupee" class="form-control" placeholder="fonction" />
+                                        <label>Fonction Occupée</label>
+                                        <f:input path="fonctionOccupee" class="form-control" placeholder="Fonction" required="true"/>
                                     </div>
                                     
 									<div class="form-group">
-                                        <label>numCompte</label>
-                                        <f:input path="numCompte" class="form-control" placeholder="compte" />
+                                        <label>N° Compte</label>
+                                        <f:input path="numCompte" class="form-control" placeholder="123..." required="true"/>
                                     </div>
                                     
 									<div class="form-group">
-                                        <label>numCompteTier</label>
-                                        <f:input path="numCompteTier" class="form-control" placeholder="compte tier" />
+                                        <label>N° CompteTier</label>
+                                        <f:input path="numCompteTier" class="form-control" placeholder="123..." required="true"/>
                                     </div>
                                     
 	                                <div class="panel-footer">

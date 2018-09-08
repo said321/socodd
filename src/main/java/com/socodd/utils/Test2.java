@@ -1,36 +1,46 @@
 package com.socodd.utils;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.springframework.web.servlet.view.document.AbstractExcelView;
 
 import com.socodd.entities.Zone;
 
-public class XListExcelView extends AbstractExcelView {
+public class Test2 {
 	
-	@Override
-	protected void buildExcelDocument(Map model, HSSFWorkbook workbook,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	
+	public static void main(String[] args) {
+		
+		HSSFWorkbook workbook = new HSSFWorkbook();
+		HSSFSheet excelSheet = workbook.createSheet("X_List_Zones");
+		
+		Zone z1 = new Zone("z1","zone1");
+		z1.setId(1);
+		
+		Zone z2 = new Zone("z2","zone2");
+		z2.setId(2);
+		
+		Zone z3 = new Zone("z3","zone3");
+		z3.setId(3);
+		
+		List<Zone> zones = new ArrayList<Zone>();
 
-		HSSFSheet excelSheet = workbook.createSheet("X List");
+		zones.add(z1);
+		zones.add(z2);
+		zones.add(z3);
+
 		
 		setExcelHeader(excelSheet);
+		setExcelRows(excelSheet, zones);
 		
-		
-		List xList = (List) model.get("xlist");
-		setExcelRows(excelSheet,xList);
+		System.out.println("It's Done : " + workbook.getSheet("X_List_Zones").getRow(1).getCell(2));
 		
 	}
 	
-	public void setExcelHeader(HSSFSheet excelSheet) {
+	public static void setExcelHeader(HSSFSheet excelSheet) {
 		HSSFRow excelHeader = excelSheet.createRow(0);
 		excelHeader.createCell(0).setCellValue("Id");
 		excelHeader.createCell(1).setCellValue("Code");
@@ -38,9 +48,9 @@ public class XListExcelView extends AbstractExcelView {
 	}
 	
 	
-	public void setExcelRows(HSSFSheet excelSheet, List xList){
-		int record = 1;
+	public static void setExcelRows(HSSFSheet excelSheet, List<Zone> xList){
 		
+		int record = 1;
 		
 		for ( Object lst : xList) {
 			HSSFRow excelRow = excelSheet.createRow(record++);

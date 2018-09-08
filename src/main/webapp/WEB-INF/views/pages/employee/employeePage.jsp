@@ -52,7 +52,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"><fmt:message code="common.employee" /></h1>
+                        <h1 class="page-header"><fmt:message code="common.employee.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -70,7 +70,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <fmt:message code="employee.liste" />
+                            <fmt:message code="common.employee.soustitre1" />
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

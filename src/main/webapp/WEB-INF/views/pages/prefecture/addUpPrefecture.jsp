@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
+                        <h1 class="page-header"> <fmt:message code="common.prefecture.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.ajouter" />
+	                            <fmt:message code="common.prefecture.soustitre2" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
@@ -68,8 +68,8 @@
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="nom" class="form-control" placeholder="Nom" />
+                                        <label>Nom</label>
+                                        <f:input path="nom" class="form-control" placeholder="Nom" required="true"/>
                                     </div>
                                     
                                     
@@ -77,8 +77,8 @@
                                     <c:if test="${ttt=='nouveau' }">
 										<div class="form-group">
 		                                    <label>Region</label>
-		                                    <select name="reg_id" class = "form-control" id="listPrefectures">
-		                                    	<option value = "-1">Select Region</option>
+		                                    <select name="reg_id" class = "form-control" >
+		                                    	<option value = "1">Select Région</option>
 		                                    	<c:forEach items = "${regions }" var = "region">
 		                                    		<option value = "${region.getId() }" >${region.getNom() }</option>
 		                                    	</c:forEach>
@@ -90,8 +90,8 @@
 	                                
 	                               <c:if test="${ttt=='modifier' }"> 
 		                                <div class="form-group">
-		                                    <label>Region</label>
-		                                    <select name="reg_id" class = "form-control" id="listPrefectures">
+		                                    <label>Région</label>
+		                                    <select name="reg_id" class = "form-control" >
 		                                    	<option value = "${prefecture.getRegion().getId() }">${prefecture.getRegion().getNom() }</option>
 		                                    	<c:forEach items = "${regions }" var = "region">
 		                                    		<c:if test="${prefecture.getRegion().getId()!=region.getId() }"> 
@@ -107,12 +107,12 @@
                                     
 									<div class="form-group">
                                         <label>Longitude</label>
-                                        <f:input path="longitude" class="form-control"  />
+                                        <f:input path="longitude" class="form-control" placeholder="00.00" />
                                     </div>
                                     
 									<div class="form-group">
                                         <label>Latitude</label>
-                                        <f:input path="latitude" class="form-control" />
+                                        <f:input path="latitude" class="form-control" placeholder="00.00" />
                                     </div>
                                     
                                     

@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
+                        <h1 class="page-header"> <fmt:message code="common.sousPrefecture.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.ajouter" />
+	                            <fmt:message code="common.sousPrefecture.soustitre2" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
@@ -68,8 +68,8 @@
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="nom" class="form-control" placeholder="Nom" />
+                                        <label>Nom</label>
+                                        <f:input path="nom" class="form-control" placeholder="Nom" required="true"/>
                                     </div>
                                     
                                     
@@ -107,12 +107,12 @@
                                     
 									<div class="form-group">
                                         <label>Longitude</label>
-                                        <f:input path="longitude" class="form-control"  />
+                                        <f:input path="longitude" class="form-control" placeholder="00.00" required="true"/>
                                     </div>
                                     
 									<div class="form-group">
                                         <label>Latitude</label>
-                                        <f:input path="latitude" class="form-control" />
+                                        <f:input path="latitude" class="form-control" placeholder="00.00" required="true"/>
                                     </div>
                                     
                                     

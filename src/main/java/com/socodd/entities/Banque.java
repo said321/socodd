@@ -1,5 +1,5 @@
 package com.socodd.entities;
-// Generated 25 août 2018 14:31:28 by Hibernate Tools 3.6.0.Final
+// Generated 7 sept. 2018 13:04:21 by Hibernate Tools 3.6.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,6 +22,7 @@ public class Banque implements java.io.Serializable {
 	private Integer id;
 	private String code;
 	private String nom;
+	private Set<Client> clients = new HashSet<Client>(0);
 	private Set<Employee> employees = new HashSet<Employee>(0);
 	private Set<Fournisseur> fournisseurs = new HashSet<Fournisseur>(0);
 
@@ -33,9 +34,11 @@ public class Banque implements java.io.Serializable {
 		this.nom = nom;
 	}
 
-	public Banque(String code, String nom, Set<Employee> employees, Set<Fournisseur> fournisseurs) {
+	public Banque(String code, String nom, Set<Client> clients, Set<Employee> employees,
+			Set<Fournisseur> fournisseurs) {
 		this.code = code;
 		this.nom = nom;
+		this.clients = clients;
 		this.employees = employees;
 		this.fournisseurs = fournisseurs;
 	}
@@ -68,6 +71,15 @@ public class Banque implements java.io.Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "banque")
+	public Set<Client> getClients() {
+		return this.clients;
+	}
+
+	public void setClients(Set<Client> clients) {
+		this.clients = clients;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "banque")

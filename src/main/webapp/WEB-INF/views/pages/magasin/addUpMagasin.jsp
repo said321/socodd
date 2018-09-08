@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
+                        <h1 class="page-header"> <fmt:message code="common.magasin.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.ajouter" />
+	                            <fmt:message code="common.magasin.soustitre1" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
@@ -68,8 +68,8 @@
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="nom" class="form-control" placeholder="Nom" />
+                                        <label>Nom</label>
+                                        <f:input path="nom" class="form-control" placeholder="Nom" required="true"/>
                                     </div>
                                     
                                     
@@ -77,7 +77,7 @@
 										<div class="form-group">
 		                                    <label>Localité</label>
 		                                    <select name="loc_id" class = "form-control" id="listLocalites">
-		                                    	<option value = "-1">Select Localité</option>
+		                                    	<option value = "1">Select Localité</option>
 		                                    	<c:forEach items = "${localites }" var = "localite">
 		                                    		<option value = "${localite.getId() }" >${localite.getNom() }</option>
 		                                    	</c:forEach>

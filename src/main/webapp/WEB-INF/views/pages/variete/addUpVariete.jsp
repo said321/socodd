@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
+                        <h1 class="page-header"><fmt:message code="common.variete.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.ajouter" />
+	                            <fmt:message code="common.variete.soustitre1" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
@@ -68,26 +68,26 @@
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="nom" class="form-control" placeholder="Nom" />
+                                        <label>Nom</label>
+                                        <f:input path="nom" class="form-control" placeholder="Nom" required="true"/>
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="abrege" class="form-control" placeholder="Nom" />
+                                        <label>Abrege</label>
+                                        <f:input path="abrege" class="form-control" placeholder="Abrege" required="true"/>
                                     </div>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="ordre" class="form-control" placeholder="Nom" />
+                                        <label>Ordre</label>
+                                        <f:input path="ordre" class="form-control" placeholder="00.00" required="true"/>
                                     </div>
 
 
 
                                     
                                     <c:if test="${ttt=='nouveau' }">
-										<div class="col-md-4 mb-3">
-		                                    <label><fmt:message code="common.nom" /></label>
+										<div class="form-group">
+		                                    <label>Produit</label>
 		                                    <select name="pid" class = "form-control" id="listProduits">
-		                                    	<option value = "-1"><fmt:message code="common.nom" /></option>
+		                                    	<option value = "1">Select Produit</option>
 		                                    	<c:forEach items = "${produits }" var = "produit">
 		                                    		<option value = "${produit.getId() }" >${produit.getNom() }</option>
 		                                    	</c:forEach>
@@ -98,8 +98,8 @@
 	                                
 	                                
 	                               <c:if test="${ttt=='modifier' }"> 
-		                               <div class="col-md-4 mb-3">
-		                                    <label><fmt:message code="common.nom" /></label>
+		                               <div class="form-group">
+		                                    <label>Produit</label>
 		                                    <select name="pid" class = "form-control" id="listProduits">
 		                                    	<option value = "${variete.getProduit().getId() }">${variete.getProduit().getNom() }</option>
 		                                    	<c:forEach items = "${produits }" var = "produit">

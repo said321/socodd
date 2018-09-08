@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
+                        <h1 class="page-header"><fmt:message code="common.fournisseur.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.ajouter" />
+	                            <fmt:message code="common.fournisseur.soustitre1" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
@@ -68,31 +68,31 @@
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
 									<div class="form-group">
-                                        <label><fmt:message code="common.nom" /></label>
-                                        <f:input path="nom" class="form-control" placeholder="Nom" />
+                                        <label>Nom</label>
+                                        <f:input path="nom" class="form-control" placeholder="Nom" required="true"/>
                                     </div>
 									<div class="form-group">
-                                        <label>adresse</label>
-                                        <f:input path="adresse" class="form-control" placeholder="Adresse" />
+                                        <label>Adresse</label>
+                                        <f:input path="adresse" class="form-control" placeholder="Adresse" required="true"/>
                                     </div>
 									<div class="form-group">
                                         <label>Téléphone</label>
-                                        <f:input path="telephone" class="form-control" placeholder="Telephone" />
+                                        <f:input path="telephone" class="form-control" placeholder="Telephone" required="true"/>
                                     </div>
 									<div class="form-group">
                                         <label>Fax</label>
-                                        <f:input path="fax" class="form-control" placeholder="Fax" />
+                                        <f:input path="fax" class="form-control" placeholder="Fax" required="true"/>
                                     </div>
 									<div class="form-group">
                                         <label>E-mail</label>
-                                        <f:input path="email" class="form-control" placeholder="Fax" />
+                                        <f:input path="email" class="form-control" placeholder="E-mail" />
                                     </div>
 
 
 										<div class="form-group">
-		                                    <label><fmt:message code="common.nom" /></label>
+		                                    <label>Type de Fournisseur</label>
 		                                    <select name="t_four_id" class = "form-control" id="listTypeFournisseurs">
-		                                    	<option value = "-1">Type fournisseur</option>
+		                                    	<option value = "-1">Select Type de Fournisseur</option>
 		                                    	<c:forEach items = "${typeFournisseurs }" var = "typeFournisseur">
 		                                    		<option value = "${typeFournisseur.getId() }" >${typeFournisseur.getNom() }</option>
 		                                    	</c:forEach>
@@ -118,28 +118,28 @@
                                     
 									<div class="form-group">
                                         <label>N° Compte Tiers</label>
-                                        <f:input path="numCompteTiers" class="form-control" placeholder="" />
+                                        <f:input path="numCompteTiers" class="form-control" placeholder="123..." />
                                     </div>
                                     
 									<div class="form-group">
                                         <label>N° C.C</label>
-                                        <f:input path="numCc" class="form-control" placeholder="" />
+                                        <f:input path="numCc" class="form-control" placeholder="123..." />
                                     </div>
                                     
 									<div class="form-group">
                                         <label>N° R.C.C.M</label>
-                                        <f:input path="numRccm" class="form-control" placeholder="" />
+                                        <f:input path="numRccm" class="form-control" placeholder="123..." />
                                     </div>
                                     
 									<div class="form-group">
                                         <label>N° Agrement</label>
-                                        <f:input path="numAgrement" class="form-control" placeholder="" />
+                                        <f:input path="numAgrement" class="form-control" placeholder="123..." />
                                     </div>
                                     
 									<div class="form-group">
-		                                  <label><fmt:message code="common.nom" /></label>
+		                                  <label>Banque</label>
 		                                  <select name="banque_id" class = "form-control" id="listTypeFournisseurs">
-		                                   	<option value = "-1">Banque</option>
+		                                   	<option value = "1">Select Banque</option>
 		                                   	<c:forEach items = "${banques }" var = "banque">
 		                                   		<option value = "${banque.getId() }" >${banque.getNom() }</option>
 		                                   	</c:forEach>
@@ -148,7 +148,7 @@
                                     
 									<div class="form-group">
                                         <label>N° Banque</label>
-                                        <f:input path="numBanque" class="form-control" placeholder="" />
+                                        <f:input path="numBanque" class="form-control" placeholder="123..." />
                                     </div>
 	                                
 	                                

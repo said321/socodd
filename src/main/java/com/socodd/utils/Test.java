@@ -10,10 +10,8 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jackson.map.util.JSONPObject;
 import org.codehaus.jackson.type.TypeReference;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.socodd.entities.Zone;
-import com.socodd.services.IZoneService;
 
 public class Test {
 	

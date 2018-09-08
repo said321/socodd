@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.titre" /></h1>
+                        <h1 class="page-header"> <fmt:message code="common.produit.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.soustitre3" />
+	                            <fmt:message code="common.produit.soustitre1" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.socodd.entities.Client;
 import com.socodd.services.ITypeClientService;
 import com.socodd.utils.FormatingDate;
+import com.socodd.services.IBanqueService;
 import com.socodd.services.IClientService;
 
 
@@ -28,6 +29,9 @@ public class ClientController {
 	@Autowired
 	private ITypeClientService typeClientService;
 	
+	@Autowired
+	private IBanqueService banqueService;
+	
 	@RequestMapping(value = {"", "/"})
 	public String all(Model model) {
 		
@@ -40,6 +44,7 @@ public class ClientController {
 		for(int i=0 ; i<clients.size(); i++) {
 			
 			clients.get(i).setTypeClient(typeClientService.getById(clients.get(i).getTypeClient().getId()));
+			clients.get(i).setBanque(banqueService.getById(clients.get(i).getBanque().getId()));
 			
 		}
 		
@@ -56,6 +61,7 @@ public class ClientController {
 		
 		model.addAttribute("typeClients", typeClientService.selectAll());
 		model.addAttribute("client", client);
+		model.addAttribute("banques", banqueService.selectAll());
 		
 		return "pages/client/addClient";
 		
@@ -69,6 +75,7 @@ public class ClientController {
 		int t_client_id = Integer.parseInt(request.getParameter("t_client_id"));
 		Date dateEntree = FormatingDate.stringToDate(request.getParameter("date_entree"), "yyyy-MM-dd");
 		String import_bic = request.getParameter("import_bic");	
+		int banque_id = Integer.parseInt(request.getParameter("banque_id"));
 		
 		
 		if(client != null) {
@@ -76,6 +83,7 @@ public class ClientController {
 			client.setTypeClient(typeClientService.getById(t_client_id));
 			client.setDateEntree(dateEntree);
 			client.setNumBic(import_bic);
+			client.setBanque(banqueService.getById(banque_id));
 			
 			if (client.getId() != null) {
 				clientService.update(client);
@@ -100,10 +108,11 @@ public class ClientController {
 				
 				model.addAttribute("typeClients", typeClientService.selectAll());
 				
-				
-				
 				client.setTypeClient(typeClientService.getById(client.getTypeClient().getId()));
-
+				client.setBanque(banqueService.getById(client.getBanque().getId()));
+				
+				model.addAttribute("banques", banqueService.selectAll());
+				
 				
 				model.addAttribute("client", client);
 			}
