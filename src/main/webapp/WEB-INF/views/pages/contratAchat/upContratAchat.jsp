@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
+                        <h1 class="page-header"> <fmt:message code="common.contratAchat.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.ajouter" />
+	                            <fmt:message code="common.contratAchat.soustitre2" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
@@ -68,14 +68,14 @@
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
 									<div class="form-group">
-                                        <label>reference</label>
-                                        <f:input path="reference" class="form-control" placeholder="Nom" />
+                                        <label>Référence</label>
+                                        <f:input path="reference" class="form-control" placeholder="reference" required="true"/>
                                     </div>
                                     
 
 										<div class="form-group">
 		                                    <label>fournisseur</label>
-		                                    <select name="fid" class = "form-control" id="listFournisseurs">
+		                                    <select name="fid" class = "form-control" >
 		                                    	<option value = "${contratAchat.getFournisseur().getId() }">${contratAchat.getFournisseur().getNom() }</option>
 		                                    	<c:forEach items = "${fournisseurs }" var = "fournisseur">
 		                                    		<c:if test="${contratAchat.getFournisseur().getId() != fournisseur.getId() }">
@@ -101,8 +101,8 @@
 		                                </div>
 
 										<div class="form-group">
-		                                    <label><fmt:message code="common.produit" /></label>
-		                                    <select name="pid" class = "form-control" id="listProduits">
+		                                    <label>Produit</label>
+		                                    <select name="pid" class = "form-control">
 		                                    	<option value = "${contratAchat.getProduit().getId() }">${contratAchat.getProduit().getNom() }</option>
 		                                    	<c:forEach items = "${produits }" var = "produit">
 		                                    		<c:if test="${contratAchat.getFournisseur().getId() != produit.getId() }">
@@ -114,7 +114,7 @@
 
 										<div class="form-group">
 		                                    <label>Unite Mesure</label>
-		                                    <select name="umid" class = "form-control" id="listUniteMesure">
+		                                    <select name="umid" class = "form-control" >
 		                                    	<option value = "${contratAchat.getUniteMesure().getId() }">${contratAchat.getUniteMesure().getNom() }</option>
 		                                    	<c:forEach items = "${uniteMesure }" var = "um">
 		                                    		<c:if test="${contratAchat.getUniteMesure().getId() != um.getId() }">
@@ -127,7 +127,7 @@
 		                              	<div class="form-group">
 			                                <div class="col-md-4 mb-3">
 			                                	<label>Date D'achat</label>
-			                                	<input name="date_achat" value="${contratAchat.getDateAchat() }" type="date" class="form-control"/>
+			                                	<input name="date_achat" value="${contratAchat.getDateAchat() }" type="date" class="form-control" required/>
 			                                </div>
 		                                </div> 
 		                                
@@ -147,14 +147,14 @@
 		                                
 		                                
 									<div class="form-group">
-                                        <label>Quantite</label>
-                                        <f:input path="quantite" class="form-control" placeholder="Nom" />
+                                        <label>Quantité</label>
+                                        <f:input path="quantite" class="form-control" placeholder="Quantite" required="true"/>
                                     </div>
 		                                
 		                                
 									<div class="form-group">
                                         <label>Prix Unitaire Indicatif</label>
-                                        <f:input path="prixUIndicatif" class="form-control" placeholder="Nom" />
+                                        <f:input path="prixUIndicatif" class="form-control" placeholder="Prix Unitaire Indicatif" required="true"/>
                                     </div>
                                     
            
@@ -164,13 +164,13 @@
                                     </div>
                                     
 									<div class="form-group">
-                                        <label>Quantite livrée</label>
-                                        <f:input path="quantiteLivree" class="form-control" placeholder="Nom" />
+                                        <label>Quantité livrée</label>
+                                        <f:input path="quantiteLivree" class="form-control" placeholder="Quantité livrée" required="true"/>
                                     </div>
                                     
 									<div class="form-group">
                                         <label>Reste à Livrer</label>
-                                        <f:input path="resteLivrer" class="form-control" placeholder="Nom" />
+                                        <f:input path="resteLivrer" class="form-control" placeholder="Reste à Livrer" required="true"/>
                                     </div>                         
 
                                     

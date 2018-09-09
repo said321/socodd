@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> <fmt:message code="common.ajouter" /></h1>
+                        <h1 class="page-header"> <fmt:message code="common.contratVente.titre" /></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -59,7 +59,7 @@
 	                <div class="col-lg-12">
 	                    <div class="panel panel-primary">
 	                        <div class="panel-heading">
-	                            <fmt:message code="common.ajouter" />
+	                            <fmt:message code="common.contratVente.soustitre2" />
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
@@ -69,13 +69,13 @@
 									<f:hidden path="code"/>
 									<div class="form-group">
                                         <label>reference</label>
-                                        <f:input path="reference" class="form-control" placeholder="Nom" />
+                                        <f:input path="reference" class="form-control" placeholder="Reference" required="true"/>
                                     </div>
                                     
 
 										<div class="form-group">
 		                                    <label>client</label>
-		                                    <select name="cid" class = "form-control" id="listClients">
+		                                    <select name="cid" class = "form-control" >
 		                                    	<option value = "${contratVente.getClient().getId() }">${contratVente.getClient().getNom() }</option>
 		                                    	<c:forEach items = "${clients }" var = "client">
 		                                    		<c:if test="${contratVente.getClient().getId() != client.getId() }">
@@ -102,7 +102,7 @@
 
 										<div class="form-group">
 		                                    <label><fmt:message code="common.produit" /></label>
-		                                    <select name="pid" class = "form-control" id="listProduits">
+		                                    <select name="pid" class = "form-control">
 		                                    	<option value = "${contratVente.getProduit().getId() }">${contratVente.getProduit().getNom() }</option>
 		                                    	<c:forEach items = "${produits }" var = "produit">
 		                                    		<c:if test="${contratVente.getClient().getId() != produit.getId() }">
@@ -114,7 +114,7 @@
 
 										<div class="form-group">
 		                                    <label>Devise</label>
-		                                    <select name="devid" class = "form-control" id="listDevise">
+		                                    <select name="devid" class = "form-control" >
 		                                    	<option value = "${contratVente.getDevise().getId() }">${contratVente.getDevise().getNom() }</option>
 		                                    	<c:forEach items = "${devise }" var = "dv">
 		                                    		<c:if test="${contratVente.getDevise().getId() != dv.getId() }">
@@ -126,7 +126,7 @@
 		                                
 		                              	<div class="form-group">
 			                                	<label>Date De vente</label>
-			                                	<input name="date_vente" value="${contratVente.getDateVente() }" type="date" class="form-control"/>
+			                                	<input name="date_vente" value="${contratVente.getDateVente() }" type="date" class="form-control" required/>
 		                                </div> 
 
 
@@ -134,13 +134,13 @@
 		                                
 									<div class="form-group">
                                         <label>Poids</label>
-                                        <f:input path="poids" class="form-control" placeholder="poids" />
+                                        <f:input path="poids" class="form-control" placeholder="poids" required="true"/>
                                     </div>
 		                                
 		                                
 									<div class="form-group">
                                         <label>Prix Fixé</label>
-                                        <f:input path="prixFixe" class="form-control" placeholder="prix fixe" />
+                                        <f:input path="prixFixe" class="form-control" placeholder="prix fixe" required="true"/>
                                     </div>
                                     
            
@@ -151,12 +151,12 @@
                                     
 									<div class="form-group">
                                         <label>Parité</label>
-                                        <f:input path="parite" class="form-control" placeholder="parite" />
+                                        <f:input path="parite" class="form-control" placeholder="parite" required="true"/>
                                     </div>
                                     
 									<div class="form-group">
                                         <label>Reste</label>
-                                        <f:input path="reste" class="form-control" placeholder="reste" />
+                                        <f:input path="reste" class="form-control" placeholder="reste" required="true"/>
                                     </div> 
                                     
                                     
