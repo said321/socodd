@@ -125,7 +125,7 @@
 													<!-- /.modal-dialog -->
 												</div>
 												&nbsp;|&nbsp;
-												<a href="javascript:void(0);"><i id="details-control" class="fa fa-info-circle"></i></a>
+												<a href="#" onclick="toto(${produit.getId() })"><i id="details-control" class="fa fa-info-circle"></i></a>
 	                                        </td>
 	                                    </tr>
                                 	</c:forEach>
@@ -168,21 +168,40 @@
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     
-    function format (d) {
+    function format (id) {
         // `d` is the original data object for the row
+
+        alert(id);
         
-        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'
-        
-        
-        
-       
-			'<tr><td>salam</td></tr>' +
-			'<tr><td> said </td></tr>' +
-		
-        
-        
-        '</table>';
-    }
+        var url = 'http://localhost:8099/app/produit/details/'+id;
+        var result = null;
+        $.ajax({
+            async: false,
+            url: "http://localhost:8099/app/produit/details/1",
+            dataType: "json",
+            success: function(data){
+                result = data;
+            }
+        });
+
+        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+        '<tr>'+
+            '<td>Full name:</td>'+
+            '<td>'+result[0]+'</td>'+
+        '</tr>'+
+        '<tr>'+
+            '<td>Extension number:</td>'+
+            '<td>'+result[1]+'</td>'+
+        '</tr>'+
+    '</table>';
+
+  			
+    } 
+
+    
+    
+    
+    
     
     $(document).ready(function() {
     
@@ -196,6 +215,12 @@
             
         });
         
+    });
+    
+    
+function toto(id){
+    $(document).ready(function(){
+    	
         // Add event listener for opening and closing details
         $('#dataTables-example tbody').on('click', '#details-control', function () {
         	var tr = $(this).closest('tr');
@@ -209,14 +234,15 @@
             }
             else {
                 // Open this row
-                row.child( format(row.data()) ).show();
+                row.child( format(id) ).show();
                 tr.addClass('shown');
             } 
             
             
         } );
-        
+    	
     });
+}
     
 
     </script>

@@ -68,13 +68,13 @@
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
 									<div class="form-group">
-                                        <label>reference</label>
+                                        <label>Référence</label>
                                         <f:input path="reference" class="form-control" placeholder="Reference" required="true"/>
                                     </div>
                                     
 
 										<div class="form-group">
-		                                    <label>client</label>
+		                                    <label>Client</label>
 		                                    <select name="cid" class = "form-control" >
 		                                    	<option value = "${contratVente.getClient().getId() }">${contratVente.getClient().getNom() }</option>
 		                                    	<c:forEach items = "${clients }" var = "client">
@@ -101,7 +101,7 @@
 		                                </div>
 
 										<div class="form-group">
-		                                    <label><fmt:message code="common.produit" /></label>
+		                                    <label>Produit</label>
 		                                    <select name="pid" class = "form-control">
 		                                    	<option value = "${contratVente.getProduit().getId() }">${contratVente.getProduit().getNom() }</option>
 		                                    	<c:forEach items = "${produits }" var = "produit">

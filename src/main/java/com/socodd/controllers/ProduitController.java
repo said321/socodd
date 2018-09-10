@@ -1,15 +1,21 @@
 package com.socodd.controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.SerializationConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.socodd.entities.Produit;
 import com.socodd.services.IProduitService;
@@ -117,4 +123,33 @@ public class ProduitController {
 		return "redirect:/produit";
 	}
 
+	
+	@RequestMapping(value = "/details/{idProduit}")
+	public @ResponseBody List<Object> details(Model model, @PathVariable Integer idProduit) throws JsonGenerationException, JsonMappingException, IOException {
+
+		Produit produit = produitService.getById(idProduit);
+		produit.setTypeSacBySacBrousse(typeSacService.getById(produit.getTypeSacBySacBrousse().getId()));
+		produit.setTypeSacBySacExport(typeSacService.getById(produit.getTypeSacBySacExport().getId()));
+		
+		
+		List<Object> zz = new ArrayList<Object>();
+		
+		zz.add(produit.getId());
+		zz.add(produit.getPrefixeNumCdc());
+		zz.add(produit.getCode());
+		
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.enable(SerializationConfig.Feature.INDENT_OUTPUT);
+		String jsonString = mapper.writeValueAsString(zz);
+		
+		System.out.println(jsonString);
+		
+		model.addAttribute("json_produit", jsonString);
+		
+		return zz;
+	}
+	
+
+	
+	
 }
