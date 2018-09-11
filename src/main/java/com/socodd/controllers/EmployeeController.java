@@ -23,7 +23,7 @@ import com.socodd.utils.FormatingDate;
 
 
 @Controller
-@RequestMapping(value = "/employee")
+@RequestMapping(value = "/u/employee")
 public class EmployeeController {
 
 	@Autowired

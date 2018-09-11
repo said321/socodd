@@ -14,7 +14,7 @@ import com.socodd.services.IUniteMesureService;
 
 
 @Controller
-@RequestMapping(value = "/unite_mesure")
+@RequestMapping(value = "/u/unite_mesure")
 public class UniteMesureController {
 
 	@Autowired

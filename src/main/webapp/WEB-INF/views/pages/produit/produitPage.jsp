@@ -170,14 +170,12 @@
     
     function format (id) {
         // `d` is the original data object for the row
-
-        alert(id);
-        
+       
         var url = 'http://localhost:8099/app/produit/details/'+id;
         var result = null;
         $.ajax({
             async: false,
-            url: "http://localhost:8099/app/produit/details/1",
+            url: url,
             dataType: "json",
             success: function(data){
                 result = data;
@@ -219,14 +217,18 @@
     
     
 function toto(id){
+	
     $(document).ready(function(){
+    	
+
     	
         // Add event listener for opening and closing details
         $('#dataTables-example tbody').on('click', '#details-control', function () {
         	var tr = $(this).closest('tr');
-        	var table = $('#dataTables-example').DataTable()
+        	var table = $('#dataTables-example').DataTable();
             var row = table.row(tr);
      
+            
             if ( row.child.isShown() ) {
                 // This row is already open - close it
                 row.child.hide();

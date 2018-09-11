@@ -20,7 +20,7 @@ import com.socodd.services.IFournisseurService;
 
 
 @Controller
-@RequestMapping(value = "/fournisseur")
+@RequestMapping(value = "/u/fournisseur")
 public class FournisseurController {
 
 	@Autowired

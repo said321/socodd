@@ -60,7 +60,7 @@
                 <div class="row">
 					<div class="col-lg-12">
 						<ol class="breadcrumb">
-						  <li><a href="<c:url value="/localite/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
+						  <li><a href="<c:url value="/u/localite/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
 						  <li><a href="#"><i class="fa fa-download">&nbsp;<fmt:message code="common.exporter" /></i></a></li>
 						</ol>					
 					</div>                
@@ -94,7 +94,7 @@
 	                                        <td>${localite.getLongitude() }</td>
 	                                        <td>${localite.getLatitude() }</td>
 	                                        <td>
-	                                        	<c:url value="/localite/modifier/${localite.getId() }" var="urlModif" />
+	                                        	<c:url value="/u/localite/modifier/${localite.getId() }" var="urlModif" />
 	                                        	<a href="${urlModif }"><i class="fa fa-edit"></i></a>
 	                                        	&nbsp;|&nbsp;
 	                                        	<a href="javascript:void(0);" data-toggle="modal" data-target="#modalLocalite${localite.getId() }"><i class="fa fa-trash-o"></i></a>
@@ -110,7 +110,7 @@
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message code="common.annuler" /></button>
-																<c:url value="/localite/supprimer/${localite.getId() }" var="urlSuppression" />
+																<c:url value="/u/localite/supprimer/${localite.getId() }" var="urlSuppression" />
 																<a href="${urlSuppression }" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp;<fmt:message code="common.confirmer" /></a>
 															</div>
 														</div>

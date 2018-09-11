@@ -20,7 +20,7 @@ import com.socodd.services.ISousPrefectureService;
 
 
 @Controller
-@RequestMapping(value = "/route")
+@RequestMapping(value = "/u/route")
 public class RouteController {
 
 	@Autowired

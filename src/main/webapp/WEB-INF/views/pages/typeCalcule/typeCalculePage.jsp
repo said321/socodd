@@ -60,7 +60,7 @@
                 <div class="row">
 					<div class="col-lg-12">
 						<ol class="breadcrumb">
-						  <li><a href="<c:url value="/typeCalcule/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
+						  <li><a href="<c:url value="/u/typeCalcule/nouveau" />" ><i class="fa fa-plus">&nbsp;<fmt:message code="common.ajouter" /></i></a></li>
 						  <li><a href="#"><i class="fa fa-download">&nbsp;<fmt:message code="common.exporter" /></i></a></li>
 						</ol>					
 					</div>                
@@ -88,7 +88,7 @@
 	                                        <td >${typeCalcule.getCode() }</td>
 	                                        <td>${typeCalcule.getNom() }</td>
 	                                        <td>
-	                                        	<c:url value="/typeCalcule/modifier/${typeCalcule.getId() }" var="urlModif" />
+	                                        	<c:url value="/u/typeCalcule/modifier/${typeCalcule.getId() }" var="urlModif" />
 	                                        	<a href="${urlModif }"><i class="fa fa-edit"></i></a>
 	                                        	&nbsp;|&nbsp;
 	                                        	<a href="javascript:void(0);" data-toggle="modal" data-target="#modalTypeCalcule${typeCalcule.getId() }"><i class="fa fa-trash-o"></i></a>
@@ -104,7 +104,7 @@
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message code="common.annuler" /></button>
-																<c:url value="/typeCalcule/supprimer/${typeCalcule.getId() }" var="urlSuppression" />
+																<c:url value="/u/typeCalcule/supprimer/${typeCalcule.getId() }" var="urlSuppression" />
 																<a href="${urlSuppression }" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp;<fmt:message code="common.confirmer" /></a>
 															</div>
 														</div>

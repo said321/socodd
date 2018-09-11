@@ -17,7 +17,7 @@ import com.socodd.services.ILocaliteService;
 
 
 @Controller
-@RequestMapping(value = "/usine")
+@RequestMapping(value = "/u/usine")
 public class UsineController {
 
 	@Autowired

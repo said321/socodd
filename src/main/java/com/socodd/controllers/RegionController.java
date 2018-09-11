@@ -14,7 +14,7 @@ import com.socodd.services.IRegionService;
 
 
 @Controller
-@RequestMapping(value = "/region")
+@RequestMapping(value = "/u/region")
 public class RegionController {
 
 	@Autowired

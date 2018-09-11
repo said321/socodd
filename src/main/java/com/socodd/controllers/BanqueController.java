@@ -14,7 +14,7 @@ import com.socodd.services.IBanqueService;
 
 
 @Controller
-@RequestMapping(value = "/banque")
+@RequestMapping(value = "/u/banque")
 public class BanqueController {
 
 	@Autowired

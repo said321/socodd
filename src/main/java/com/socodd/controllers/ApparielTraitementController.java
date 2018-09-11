@@ -14,7 +14,7 @@ import com.socodd.services.IApparielTraitementService;
 
 
 @Controller
-@RequestMapping(value = "/apparielTraitement")
+@RequestMapping(value = "/u/apparielTraitement")
 public class ApparielTraitementController {
 
 	@Autowired

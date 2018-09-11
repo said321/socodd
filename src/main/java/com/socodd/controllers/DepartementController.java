@@ -14,7 +14,7 @@ import com.socodd.services.IDepartementService;
 
 
 @Controller
-@RequestMapping(value = "/departement")
+@RequestMapping(value = "/u/departement")
 public class DepartementController {
 
 	@Autowired

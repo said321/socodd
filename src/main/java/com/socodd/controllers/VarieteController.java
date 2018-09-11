@@ -17,7 +17,7 @@ import com.socodd.services.IVarieteService;
 
 
 @Controller
-@RequestMapping(value = "/variete")
+@RequestMapping(value = "/u/variete")
 public class VarieteController {
 
 	@Autowired

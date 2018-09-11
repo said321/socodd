@@ -57,6 +57,15 @@ public class LoginController {
 		model = getAchatProduiChart(model);
 		//model = getClientChart(model);
 		
+		
+	  	  //check if user is login
+	  	  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	  	  if (!(auth instanceof AnonymousAuthenticationToken)) {
+	  		UserDetails userDetail = (UserDetails) auth.getPrincipal();	
+	  		model.addAttribute("username", userDetail.getUsername());
+	  	  }
+		
+		
 		return "home/home";
 		
 	}

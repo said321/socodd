@@ -14,7 +14,7 @@ import com.socodd.services.ITypeFournisseurService;
 
 
 @Controller
-@RequestMapping(value = "/typeFournisseur")
+@RequestMapping(value = "/u/typeFournisseur")
 public class TypeFournisseurController {
 
 	@Autowired

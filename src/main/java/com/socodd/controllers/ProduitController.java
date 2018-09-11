@@ -24,7 +24,7 @@ import com.socodd.entities.TypeSac;
 
 
 @Controller
-@RequestMapping(value = "/produit")
+@RequestMapping(value = "/u/produit")
 public class ProduitController {
 
 	@Autowired

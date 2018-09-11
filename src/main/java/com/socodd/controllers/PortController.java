@@ -14,7 +14,7 @@ import com.socodd.services.IPortService;
 
 
 @Controller
-@RequestMapping(value = "/port")
+@RequestMapping(value = "/u/port")
 public class PortController {
 
 	@Autowired

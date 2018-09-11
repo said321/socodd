@@ -14,7 +14,7 @@ import com.socodd.services.ITypeCalculeService;
 
 
 @Controller
-@RequestMapping(value = "/typeCalcule")
+@RequestMapping(value = "/u/typeCalcule")
 public class TypeCalculeController {
 
 	@Autowired

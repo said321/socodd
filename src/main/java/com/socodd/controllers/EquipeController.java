@@ -17,7 +17,7 @@ import com.socodd.services.IEquipeService;
 
 
 @Controller
-@RequestMapping(value = "/equipe")
+@RequestMapping(value = "/u/equipe")
 public class EquipeController {
 
 	@Autowired

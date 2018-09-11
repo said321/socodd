@@ -16,7 +16,7 @@ import com.socodd.services.IZoneService;
 
 
 @Controller
-@RequestMapping(value = "/zone")
+@RequestMapping(value = "/u/zone")
 public class ZoneController {
 
 	@Autowired

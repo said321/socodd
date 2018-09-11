@@ -14,7 +14,7 @@ import com.socodd.services.IChargeurService;
 
 
 @Controller
-@RequestMapping(value = "/chargeur")
+@RequestMapping(value = "/u/chargeur")
 public class ChargeurController {
 
 	@Autowired

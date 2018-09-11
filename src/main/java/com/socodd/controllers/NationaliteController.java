@@ -14,7 +14,7 @@ import com.socodd.services.INationaliteService;
 
 
 @Controller
-@RequestMapping(value = "/nationalite")
+@RequestMapping(value = "/u/nationalite")
 public class NationaliteController {
 
 	@Autowired

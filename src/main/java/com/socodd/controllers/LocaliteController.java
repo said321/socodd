@@ -17,7 +17,7 @@ import com.socodd.services.ISousPrefectureService;
 
 
 @Controller
-@RequestMapping(value = "/localite")
+@RequestMapping(value = "/u/localite")
 public class LocaliteController {
 
 	@Autowired

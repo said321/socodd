@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         
-						<h1 class="page-header">Dashboard (Admin)</h1>
+						<h1 class="page-header">Dashboard (Admin) ${username }</h1>
 		                        
 		                <div class="col-lg-6">
 		                    <div class="panel panel-default">

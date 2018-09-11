@@ -20,7 +20,7 @@ import com.socodd.services.IClientService;
 
 
 @Controller
-@RequestMapping(value = "/client")
+@RequestMapping(value = "/u/client")
 public class ClientController {
 
 	@Autowired

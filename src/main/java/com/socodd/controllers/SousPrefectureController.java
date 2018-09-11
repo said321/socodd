@@ -17,7 +17,7 @@ import com.socodd.services.IPrefectureService;
 
 
 @Controller
-@RequestMapping(value = "/sousPrefecture")
+@RequestMapping(value = "/u/sousPrefecture")
 public class SousPrefectureController {
 
 	@Autowired

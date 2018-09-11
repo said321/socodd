@@ -21,22 +21,22 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Conseil Agricole <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/zone">Zone</a>
+                                    <a href="<%=request.getContextPath() %>/u/zone">Zone</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/region">Region</a>
+                                    <a href="<%=request.getContextPath() %>/u/region">Region</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/prefecture">Prefecture</a>
+                                    <a href="<%=request.getContextPath() %>/u/prefecture">Prefecture</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/sousPrefecture">Sous-Prefecture</a>
+                                    <a href="<%=request.getContextPath() %>/u/sousPrefecture">Sous-Prefecture</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/localite">Localité</a>
+                                    <a href="<%=request.getContextPath() %>/u/localite">Localité</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/apparielTraitement">Appariel Traitement</a>
+                                    <a href="<%=request.getContextPath() %>/u/apparielTraitement">Appariel Traitement</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -47,13 +47,13 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Achats <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/contratAchat">Contrat d'achat</a>
+                                    <a href="<%=request.getContextPath() %>/u/contratAchat">Contrat d'achat</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/produit">Produit</a>
+                                    <a href="<%=request.getContextPath() %>/u/produit">Produit</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/variete">Variétés</a>
+                                    <a href="<%=request.getContextPath() %>/u/variete">Variétés</a>
                                 </li>
                                 <li>
                                     <a href="#">Type de Sacs</a>
@@ -65,16 +65,16 @@
                                     <a href="#">Qualité</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/route">Routes</a>
+                                    <a href="<%=request.getContextPath() %>/u/route">Routes</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/unite_mesure">Unité de Mesure</a>
+                                    <a href="<%=request.getContextPath() %>/u/unite_mesure">Unité de Mesure</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/typeFournisseur">Type Fournisseur</a>
+                                    <a href="<%=request.getContextPath() %>/u/typeFournisseur">Type Fournisseur</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/fournisseur">Fournisseurs</a>
+                                    <a href="<%=request.getContextPath() %>/u/fournisseur">Fournisseurs</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -83,10 +83,10 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Ventes <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/typeClient">Type Client</a>
+                                    <a href="<%=request.getContextPath() %>/u/typeClient">Type Client</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/client">Client</a>
+                                    <a href="<%=request.getContextPath() %>/u/client">Client</a>
                                 </li>
                                 <li>
                                     <a href="#">Transitaire</a>
@@ -95,22 +95,22 @@
                                     <a href="#">Marque</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/usine">Usine</a>
+                                    <a href="<%=request.getContextPath() %>/u/usine">Usine</a>
                                 </li>
                                 <li>
                                     <a href="#">Type de Contrat</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/devise">Devises</a>
+                                    <a href="<%=request.getContextPath() %>/u/devise">Devises</a>
                                 </li>
                                 <li>
                                     <a href="#">Assurance</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/chargeur">Chargeur</a>
+                                    <a href="<%=request.getContextPath() %>/u/chargeur">Chargeur</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/port">Port</a>
+                                    <a href="<%=request.getContextPath() %>/u/port">Port</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -120,7 +120,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Logistique & Stock<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/magasin">Magasin</a>
+                                    <a href="<%=request.getContextPath() %>/u/magasin">Magasin</a>
                                 </li>
                                 <li>
                                     <a href="#">type parc auto</a>
@@ -167,13 +167,13 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Outils <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/utilisateur">Utilisateur</a>
+                                    <a href="<%=request.getContextPath() %>/p/utilisateur">Utilisateur</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/societe">Parametre Sciété</a>
+                                    <a href="<%=request.getContextPath() %>/p/societe">Parametre Sciété</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath() %>/listeConnectes">liste des Utilisateurs Connectés</a>
+                                    <a href="<%=request.getContextPath() %>/p/listeConnectes">liste des Utilisateurs Connectés</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

@@ -63,7 +63,7 @@
 	                        </div>
 	                        <!-- /.panel-heading -->
 	                        <div class="panel-body">
-	                        	<c:url value="/departement/enregistrer" var ="urlEnregistrer" />
+	                        	<c:url value="/u/departement/enregistrer" var ="urlEnregistrer" />
 								<f:form modelAttribute="departement" action="${urlEnregistrer }" role = "form">
 									<f:hidden path="id"/>
 									<f:hidden path="code"/>
@@ -73,7 +73,7 @@
                                     </div>
 	                                <div class="panel-footer">
                                     	<button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;<fmt:message code="common.enregister" /></i></button>
-                                    	<a href="<c:url value="/departement/" />" class="btn btn-danger"> <i class="fa fa-arrow-left">&nbsp;<fmt:message code="common.annuler" /></i></a>
+                                    	<a href="<c:url value="/u/departement/" />" class="btn btn-danger"> <i class="fa fa-arrow-left">&nbsp;<fmt:message code="common.annuler" /></i></a>
                                     </div>
 								</f:form>	                        
 	                        </div>

@@ -17,7 +17,7 @@ import com.socodd.services.IUtilisateurService;
 
 
 @Controller
-@RequestMapping(value = "/utilisateur")
+@RequestMapping(value = "/p/utilisateur")
 public class UtilisateurController {
 
 	@Autowired

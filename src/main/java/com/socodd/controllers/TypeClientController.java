@@ -14,7 +14,7 @@ import com.socodd.services.ITypeClientService;
 
 
 @Controller
-@RequestMapping(value = "/typeClient")
+@RequestMapping(value = "/u/typeClient")
 public class TypeClientController {
 
 	@Autowired

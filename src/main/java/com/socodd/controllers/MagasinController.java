@@ -17,7 +17,7 @@ import com.socodd.services.IMagasinService;
 
 
 @Controller
-@RequestMapping(value = "/magasin")
+@RequestMapping(value = "/u/magasin")
 public class MagasinController {
 
 	@Autowired

@@ -17,7 +17,7 @@ import com.socodd.services.IRegionService;
 
 
 @Controller
-@RequestMapping(value = "/prefecture")
+@RequestMapping(value = "/u/prefecture")
 public class PrefectureController {
 
 	@Autowired

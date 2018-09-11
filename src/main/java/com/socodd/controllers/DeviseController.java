@@ -14,7 +14,7 @@ import com.socodd.services.IDeviseService;
 
 
 @Controller
-@RequestMapping(value = "/devise")
+@RequestMapping(value = "/u/devise")
 public class DeviseController {
 
 	@Autowired

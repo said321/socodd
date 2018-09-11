@@ -21,7 +21,7 @@ import com.socodd.utils.FormatingDate;
 
 
 @Controller
-@RequestMapping(value = "/contratAchat")
+@RequestMapping(value = "/u/contratAchat")
 public class ContratAchatController {
 
 	@Autowired
