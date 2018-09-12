@@ -25,6 +25,12 @@
 	
 	<context:component-scan base-package="com.socodd.controllers" />
 	
+	
+	
+	<beans:import resource="classpath:META-INF/config/internationalisation-config.xml"/>
+	
+	
+	
 <!-- 	<beans:bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
 
 	<beans:bean class="org.springframework.web.servlet.view.XmlViewResolver">

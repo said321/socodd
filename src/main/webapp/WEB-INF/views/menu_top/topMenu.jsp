@@ -205,7 +205,13 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                    	<li><a href="#"><i class="fa fa-language fa-fw"></i> English</a>
+                    
+                    <c:if test="${pageContext.response.locale == 'fr' }"><c:set var="lang" value="English"/> </c:if>
+                    <c:if test="${pageContext.response.locale == 'en' }"><c:set var="lang" value="Francais"/> </c:if>
+                    
+                    	<li><a href="javascript:locales('${lang }')"><i class="fa fa-language fa-fw" id="locales"></i>
+                    		${lang }
+                    	</a>
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
@@ -230,7 +236,19 @@
 	</form>
             
     <script>
+    
+    	//for logout
 		function logoutForm() {
 			document.getElementById("logoutForm").submit();
 		}
+		
+		
+		function locales(lang){
+		        if (lang != 'English'){ 
+		            window.location.replace('?locale=fr');
+		        }else{
+		        	window.location.replace('?locale=en');
+		        }
+		}
+		
 	</script>

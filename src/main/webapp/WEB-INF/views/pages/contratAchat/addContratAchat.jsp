@@ -95,7 +95,7 @@
 										<div class="form-group">
 		                                    <label>Produit</label>
 		                                    <select name="pid" class = "form-control" >
-		                                    	<option value = "-1">Select Produit</option>
+		                                    	<option value = "1">Select Produit</option>
 		                                    	<c:forEach items = "${produits }" var = "produit">
 		                                    		<option value = "${produit.getId() }" >${produit.getNom() }</option>
 		                                    	</c:forEach>

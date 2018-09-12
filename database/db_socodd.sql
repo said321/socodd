@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 05, 2018 at 10:41 AM
+-- Generation Time: Sep 11, 2018 at 07:53 PM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -143,7 +143,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `code`, `nom`, `adresse`, `date_entree`, `email`, `telephone`, `fax`, `banque`, `num_bic`, `num_agrement`, `num_cc`, `num_compte_tiers`, `num_rccm`, `type_client`, `num_banque`) VALUES
-(1, 'CL1', 'client1', 'aaa jgfhb 8876 ffff', '2018-08-10', 'client1@gmail.com', '1234567890', '12347890', 0, 'exonore', 786876, 875324, 98776571, 86876, 1, 876278362);
+(1, 'CL1', 'client1', 'aaa jgfhb 8876 ffff', '2018-08-10', 'client1@gmail.com', '1234567890', '12347890', 1, 'exonore', 786876, 875324, 98776571, 86876, 1, 876278362);
 
 -- --------------------------------------------------------
 
@@ -863,6 +863,13 @@ CREATE TABLE `type_calcule` (
   `nom` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `type_calcule`
+--
+
+INSERT INTO `type_calcule` (`id`, `code`, `nom`) VALUES
+(1, 'D1', 'typeCalc1');
+
 -- --------------------------------------------------------
 
 --
@@ -1135,7 +1142,8 @@ ALTER TABLE `chargeur`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `type_client` (`type_client`);
+  ADD KEY `type_client` (`type_client`),
+  ADD KEY `banque` (`banque`);
 
 --
 -- Indexes for table `compagnie_maritime`
@@ -1611,7 +1619,7 @@ ALTER TABLE `producteur`
 -- AUTO_INCREMENT for table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `profile_utilisateur`
 --
@@ -1666,7 +1674,7 @@ ALTER TABLE `transporteur`
 -- AUTO_INCREMENT for table `type_calcule`
 --
 ALTER TABLE `type_calcule`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `type_client`
 --
@@ -1746,7 +1754,8 @@ ALTER TABLE `analyse`
 -- Constraints for table `client`
 --
 ALTER TABLE `client`
-  ADD CONSTRAINT `client_ibfk_1` FOREIGN KEY (`type_client`) REFERENCES `type_client` (`id`);
+  ADD CONSTRAINT `client_ibfk_1` FOREIGN KEY (`type_client`) REFERENCES `type_client` (`id`),
+  ADD CONSTRAINT `client_ibfk_2` FOREIGN KEY (`banque`) REFERENCES `banque` (`id`);
 
 --
 -- Constraints for table `consommables_pieces`
